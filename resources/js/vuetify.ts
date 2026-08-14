@@ -13,20 +13,24 @@ export const vuetify = createVuetify({
 
         themes: {
             light: {
-                colors: {
-                    primary: colors.light.primary,
-                    secondary: colors.light.secondary,
-                    background: colors.light.background,
-                },
+                colors: colors.light,
             },
 
             dark: {
-                colors: {
-                    primary: colors.dark.primary,
-                    secondary: colors.dark.secondary,
-                    background: colors.dark.background,
-                },
+                colors: colors.dark,
             },
+        },
+    },
+
+    display: {
+        mobileBreakpoint: 'md',
+        thresholds: {
+            xs: 0,
+            sm: 640,
+            md: 768,
+            lg: 1024,
+            xl: 1280,
+            xxl: 1536,
         },
     },
 })

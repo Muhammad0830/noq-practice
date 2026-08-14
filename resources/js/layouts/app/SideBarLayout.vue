@@ -1,47 +1,40 @@
 <script setup lang="ts">
-import { dashboard, settings, shopsList, test } from '@/routes';
-import { Link } from '@inertiajs/vue3';
-import { LayoutDashboard, ListTodo, Settings, Store } from '@lucide/vue';
-import { ref } from 'vue';
+import SidebarNavLinks from '@/Components/sidebar/SidebarNavLinks.vue';
+import SidebarToggler from '@/Components/sidebar/SidebarToggler.vue';
+import { useSidebarStore } from '@/stores/sidebarStore';
+import type { NavItemProps } from '@/types/general';
+import { PanelLeft } from '@lucide/vue';
+import { storeToRefs } from 'pinia';
+import { useDisplay } from 'vuetify';
 
-const isOpen = ref(true)
+interface Props {
+    sidebarOpenWidth: number,
+    sidebarRailWidth: number,
+    navItems: NavItemProps[],
+}
 
-const navItems = [
-    {
-        id: 0,
-        label: 'Dashboard',
-        route: dashboard(),
-        icon: LayoutDashboard,
-    },
-    {
-        id: 1,
-        label: 'Shops',
-        route: shopsList(),
-        icon: Store,
-    },
-    {
-        id: 2,
-        label: 'Settings',
-        route: settings(),
-        icon: Settings,
-    },
-    {
-        id: 3,
-        label: 'TestPage',
-        route: test(),
-        icon: ListTodo,
-    }
-]
+const { sidebarOpenWidth, sidebarRailWidth, navItems } = defineProps<Props>()
+
+const sidebarStore = useSidebarStore();
+const { isOpen } = storeToRefs(sidebarStore);
+const { mdAndUp, lgAndUp, lgAndDown } = useDisplay()
+const { toggleSidebar } = sidebarStore;
 </script>
 
 <template>
-    <div class="w-65 h-screen bg-primary">
-        <v-list class="flex flex-col bg-transparent">
-            <Link v-for="item in navItems" :href="item.route" :key="item.id">
-                <v-list-item :value="item.id" :ripple="false" color="white">
-                    {{ item.label }}
-                </v-list-item>
-            </Link>
+    <v-navigation-drawer v-if="mdAndUp && !lgAndUp" location="left" temporary :width="sidebarOpenWidth" v-model="isOpen"
+        class="bg-secondary flex! flex-col justify-between!">
+        <v-list density="compact" nav class="h-full flex flex-col justify-between">
+            <SidebarNavLinks :nav-items="navItems" />
         </v-list>
-    </div>
+    </v-navigation-drawer>
+
+    <v-navigation-drawer v-if="lgAndUp" permanent :rail="!isOpen" :width="sidebarOpenWidth"
+        :rail-width="sidebarRailWidth" class="bg-secondary flex! flex-col justify-between!">
+        <v-list density="compact" nav class="h-full flex flex-col justify-between">
+            <SidebarNavLinks :nav-items="navItems" />
+
+            <SidebarToggler />
+        </v-list>
+    </v-navigation-drawer>
 </template>

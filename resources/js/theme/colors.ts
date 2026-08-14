@@ -1,13 +1,15 @@
 export const colors = {
     light: {
-        primary: '#add8e6',
+        primary: '#29c1ff',
         secondary: '#d6ecf6',
         background: '#eff7fa',
+        foreground: '#000000',
     },
 
     dark: {
-        primary: '#269ac9',
-        secondary: '#23404d',
-        background: '#101b20',
+        primary: '#29c1ff',
+        secondary: '#0c2836',
+        background: '#021821',
+        foreground: '#ffffff',
     },
 }

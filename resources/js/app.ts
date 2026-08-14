@@ -31,7 +31,11 @@ createInertiaApp({
         return pages[`./Pages/${name}.vue`] as DefineComponent
     },
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        createApp({
+            render: () => h('v-app', null, [
+                h(App, props),
+            ])
+        })
             .use(plugin)
             .use(pinia)
             .use(vuetify)
