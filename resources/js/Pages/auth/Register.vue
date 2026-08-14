@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import ThemeToggler from '@/components/header/ThemeToggler.vue';
-import { useLoginForm } from '@/forms/loginForm';
-import { registerPage } from '@/routes';
+import { useRegisterForm } from '@/forms/registerForm';
+import { loginPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 
-const { form, submit } = useLoginForm();
+const { submit, form } = useRegisterForm()
 </script>
 
 <template>
@@ -13,7 +13,7 @@ const { form, submit } = useLoginForm();
             NoQ
         </div>
 
-        <div class="text-xl font-bold">Login</div>
+        <div class="text-xl font-bold">Register</div>
 
         <div class="absolute right-0 scale-80">
             <ThemeToggler />
@@ -21,6 +21,9 @@ const { form, submit } = useLoginForm();
     </div>
 
     <form @submit.prevent="submit" class="w-full flex flex-col gap-2">
+        <v-text-field :error-messages="form.errors.name" v-model="form.name" density="comfortable" class="w-full"
+            placeholder="Email"></v-text-field>
+
         <v-text-field :error-messages="form.errors.email" v-model="form.email" density="comfortable" class="w-full"
             placeholder="Email"></v-text-field>
 
@@ -31,7 +34,7 @@ const { form, submit } = useLoginForm();
     </form>
 
     <div class="flex items-center justify-end gap-2 text-[13px]">
-        <span>You do not have an account?</span>
-        <Link :href="registerPage()" class="text-primary underline underline-offset-2">Register</Link>
+        <span>You already have an account?</span>
+        <Link :href="loginPage()" class="text-primary underline underline-offset-2">Login</Link>
     </div>
 </template>

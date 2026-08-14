@@ -5,12 +5,12 @@ import { Menu, PanelLeft } from '@lucide/vue';
 import { storeToRefs } from 'pinia';
 import { logout } from '@/actions/App/Http/Controllers/AuthController';
 import { ref } from 'vue';
-import HeaderDialog from '@/Components/header/HeaderDialog.vue';
-import HeaderProfileMenu from '@/Components/header/HeaderProfileMenu.vue';
-import ThemeToggler from '@/Components/header/ThemeToggler.vue';
+import HeaderDialog from '@/components/header/HeaderDialog.vue';
+import HeaderProfileMenu from '@/components/header/HeaderProfileMenu.vue';
+import ThemeToggler from '@/components/header/ThemeToggler.vue';
 import { useDisplay } from 'vuetify';
 import { NavItemProps } from '@/types/general';
-import HeeaderNavMenu from '@/Components/header/HeeaderNavMenu.vue';
+import HeeaderNavMenu from '@/components/header/HeeaderNavMenu.vue';
 
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);

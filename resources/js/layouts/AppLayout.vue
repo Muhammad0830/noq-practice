@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { dashboard, settings, shopsList, test } from '@/routes/index.js';
+import { dashboard, favourites, servcies, shopsList, todo } from '@/routes/index.js';
 import HeaderLayout from './app/HeaderLayout.vue';
 import SideBarLayout from './app/SideBarLayout.vue';
-import { LayoutDashboard, ListTodo, Settings, Store } from '@lucide/vue';
-import { useDisplay } from 'vuetify'
+import { CircleCheckBig, Heart, LayoutDashboard, LayoutList, Store } from '@lucide/vue';
 
 const sidebarOpenWidth = 250;
 const sidebarRailWidth = 80;
-const { mdAndUp } = useDisplay()
 
 const navItems = [
     {
@@ -26,17 +24,24 @@ const navItems = [
     },
     {
         id: 2,
-        label: 'Settings',
-        route: settings(),
-        url: '/settings',
-        icon: Settings,
+        label: 'Services',
+        route: servcies(),
+        url: '/services',
+        icon: LayoutList,
     },
     {
         id: 3,
-        label: 'TestPage',
-        route: test(),
-        url: '/test',
-        icon: ListTodo,
+        label: 'Favourites',
+        route: favourites(),
+        url: '/favourites',
+        icon: Heart,
+    },
+    {
+        id: 4,
+        label: 'Todo',
+        route: todo(),
+        url: '/todo',
+        icon: CircleCheckBig,
     }
 ]
 
@@ -46,11 +51,13 @@ const navItems = [
     <v-layout>
         <HeaderLayout :nav-items="navItems" :sidebar-open-width="sidebarOpenWidth"
             :sidebar-rail-width="sidebarRailWidth" />
-        <div>
+        <div class="flex flex-1">
             <SideBarLayout :nav-items="navItems" :sidebar-open-width="sidebarOpenWidth"
                 :sidebar-rail-width="sidebarRailWidth" />
             <v-main class="h-screen overflow-y-scroll overflow-x-hidden flex-1">
-                <slot />
+                <div class="lg:p-8 md:6 p-4">
+                    <slot />
+                </div>
             </v-main>
         </div>
     </v-layout>

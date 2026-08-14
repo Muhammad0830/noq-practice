@@ -2,8 +2,8 @@
 import { useTodos } from '../stores/TodosStore';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
-import TodoList from '@/Components/Todos/TodoList.vue';
-import TodoSearch from '@/Components/Todos/TodoSearch.vue';
+import TodoList from '@/components/Todos/TodoList.vue';
+import TodoSearch from '@/components/Todos/TodoSearch.vue';
 
 const todosStore = useTodos()
 const { filter, filteredTodos, allTodos } = storeToRefs(todosStore)

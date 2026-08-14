@@ -18,7 +18,7 @@ const emit = defineEmits<{ openModal: [] }>()
                         <v-list-item class="px-2 cursor-pointer hover:bg-foreground/10! rounded">
                             <div class="flex gap-2 items-center">
                                 <v-icon :icon="UserRound" varianat="outlined"
-                                    class="border-1 border-foreground rounded-full p-1 aspect-square"
+                                    class="border! border-foreground rounded-full p-1 aspect-square"
                                     size="large"></v-icon>
                                 <div class="flex flex-col flex-1 min-w-0!">
                                     <span class="truncate text-sm">Abduqayumov Muhammad</span>

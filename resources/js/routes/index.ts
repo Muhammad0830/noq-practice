@@ -2,44 +2,44 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-export const test = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: test.url(options),
+export const todo = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: todo.url(options),
     method: 'get',
 })
 
-test.definition = {
+todo.definition = {
     methods: ["get","head"],
-    url: '/test',
+    url: '/todo',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-test.url = (options?: RouteQueryOptions) => {
-    return test.definition.url + queryParams(options)
+todo.url = (options?: RouteQueryOptions) => {
+    return todo.definition.url + queryParams(options)
 }
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-test.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: test.url(options),
+todo.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: todo.url(options),
     method: 'get',
 })
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-test.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: test.url(options),
+todo.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: todo.url(options),
     method: 'head',
 })
 
@@ -264,8 +264,184 @@ profile.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/login'
+*/
+export const loginPage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: loginPage.url(options),
+    method: 'get',
+})
+
+loginPage.definition = {
+    methods: ["get","head"],
+    url: '/auth/login',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/login'
+*/
+loginPage.url = (options?: RouteQueryOptions) => {
+    return loginPage.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/login'
+*/
+loginPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: loginPage.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/login'
+*/
+loginPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: loginPage.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+export const registerPage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: registerPage.url(options),
+    method: 'get',
+})
+
+registerPage.definition = {
+    methods: ["get","head"],
+    url: '/auth/register',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+registerPage.url = (options?: RouteQueryOptions) => {
+    return registerPage.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+registerPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: registerPage.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+registerPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: registerPage.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: servcies.url(options),
+    method: 'get',
+})
+
+servcies.definition = {
+    methods: ["get","head"],
+    url: '/services',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+servcies.url = (options?: RouteQueryOptions) => {
+    return servcies.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: servcies.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: servcies.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: favourites.url(options),
+    method: 'get',
+})
+
+favourites.definition = {
+    methods: ["get","head"],
+    url: '/favourites',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+favourites.url = (options?: RouteQueryOptions) => {
+    return favourites.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: favourites.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: favourites.url(options),
+    method: 'head',
+})
+
+/**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:10
+* @see app/Http/Controllers/AuthController.php:55
 * @route '/logout'
 */
 export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -280,7 +456,7 @@ logout.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:10
+* @see app/Http/Controllers/AuthController.php:55
 * @route '/logout'
 */
 logout.url = (options?: RouteQueryOptions) => {
@@ -289,7 +465,7 @@ logout.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:10
+* @see app/Http/Controllers/AuthController.php:55
 * @route '/logout'
 */
 logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -298,23 +474,23 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\AuthController::login
+* @see app/Http/Controllers/AuthController.php:16
 * @route '/login'
 */
-export const login = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+export const login = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: login.url(options),
-    method: 'get',
+    method: 'post',
 })
 
 login.definition = {
-    methods: ["get","head"],
+    methods: ["post"],
     url: '/login',
-} satisfies RouteDefinition<["get","head"]>
+} satisfies RouteDefinition<["post"]>
 
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\AuthController::login
+* @see app/Http/Controllers/AuthController.php:16
 * @route '/login'
 */
 login.url = (options?: RouteQueryOptions) => {
@@ -322,22 +498,46 @@ login.url = (options?: RouteQueryOptions) => {
 }
 
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @see \App\Http\Controllers\AuthController::login
+* @see app/Http/Controllers/AuthController.php:16
 * @route '/login'
 */
-login.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: login.url(options),
-    method: 'get',
+    method: 'post',
 })
 
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/login'
+* @see \App\Http\Controllers\AuthController::register
+* @see app/Http/Controllers/AuthController.php:38
+* @route '/register'
 */
-login.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: login.url(options),
-    method: 'head',
+export const register = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: register.url(options),
+    method: 'post',
+})
+
+register.definition = {
+    methods: ["post"],
+    url: '/register',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\AuthController::register
+* @see app/Http/Controllers/AuthController.php:38
+* @route '/register'
+*/
+register.url = (options?: RouteQueryOptions) => {
+    return register.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\AuthController::register
+* @see app/Http/Controllers/AuthController.php:38
+* @route '/register'
+*/
+register.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: register.url(options),
+    method: 'post',
 })
 

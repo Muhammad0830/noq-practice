@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SidebarNavLinks from '@/Components/sidebar/SidebarNavLinks.vue';
-import SidebarToggler from '@/Components/sidebar/SidebarToggler.vue';
+import SidebarNavLinks from '@/components/sidebar/SidebarNavLinks.vue';
+import SidebarToggler from '@/components/sidebar/SidebarToggler.vue';
 import { useSidebarStore } from '@/stores/sidebarStore';
 import type { NavItemProps } from '@/types/general';
 import { PanelLeft } from '@lucide/vue';

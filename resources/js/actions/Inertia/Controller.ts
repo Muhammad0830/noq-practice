@@ -2,44 +2,44 @@ import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-const Controller00777c1cd09820c6807c8fdc0ec88209 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controller00777c1cd09820c6807c8fdc0ec88209.url(options),
+const Controller31dd3171972b268e9bafa47fa8c6ffa2 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller31dd3171972b268e9bafa47fa8c6ffa2.url(options),
     method: 'get',
 })
 
-Controller00777c1cd09820c6807c8fdc0ec88209.definition = {
+Controller31dd3171972b268e9bafa47fa8c6ffa2.definition = {
     methods: ["get","head"],
-    url: '/test',
+    url: '/todo',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-Controller00777c1cd09820c6807c8fdc0ec88209.url = (options?: RouteQueryOptions) => {
-    return Controller00777c1cd09820c6807c8fdc0ec88209.definition.url + queryParams(options)
+Controller31dd3171972b268e9bafa47fa8c6ffa2.url = (options?: RouteQueryOptions) => {
+    return Controller31dd3171972b268e9bafa47fa8c6ffa2.definition.url + queryParams(options)
 }
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-Controller00777c1cd09820c6807c8fdc0ec88209.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controller00777c1cd09820c6807c8fdc0ec88209.url(options),
+Controller31dd3171972b268e9bafa47fa8c6ffa2.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller31dd3171972b268e9bafa47fa8c6ffa2.url(options),
     method: 'get',
 })
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/test'
+* @route '/todo'
 */
-Controller00777c1cd09820c6807c8fdc0ec88209.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: Controller00777c1cd09820c6807c8fdc0ec88209.url(options),
+Controller31dd3171972b268e9bafa47fa8c6ffa2.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: Controller31dd3171972b268e9bafa47fa8c6ffa2.url(options),
     method: 'head',
 })
 
@@ -266,44 +266,176 @@ Controlleraed0d18b6699640aa4d85cb0451e9ce2.head = (options?: RouteQueryOptions):
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/login'
+* @route '/auth/login'
 */
-const Controllerb6041c76e8e1cd791f8f89d035d48611 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controllerb6041c76e8e1cd791f8f89d035d48611.url(options),
+const Controller5937d986ec6e69c76864e78bfceac6a5 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller5937d986ec6e69c76864e78bfceac6a5.url(options),
     method: 'get',
 })
 
-Controllerb6041c76e8e1cd791f8f89d035d48611.definition = {
+Controller5937d986ec6e69c76864e78bfceac6a5.definition = {
     methods: ["get","head"],
-    url: '/login',
+    url: '/auth/login',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/login'
+* @route '/auth/login'
 */
-Controllerb6041c76e8e1cd791f8f89d035d48611.url = (options?: RouteQueryOptions) => {
-    return Controllerb6041c76e8e1cd791f8f89d035d48611.definition.url + queryParams(options)
+Controller5937d986ec6e69c76864e78bfceac6a5.url = (options?: RouteQueryOptions) => {
+    return Controller5937d986ec6e69c76864e78bfceac6a5.definition.url + queryParams(options)
 }
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/login'
+* @route '/auth/login'
 */
-Controllerb6041c76e8e1cd791f8f89d035d48611.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: Controllerb6041c76e8e1cd791f8f89d035d48611.url(options),
+Controller5937d986ec6e69c76864e78bfceac6a5.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller5937d986ec6e69c76864e78bfceac6a5.url(options),
     method: 'get',
 })
 
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/login'
+* @route '/auth/login'
 */
-Controllerb6041c76e8e1cd791f8f89d035d48611.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: Controllerb6041c76e8e1cd791f8f89d035d48611.url(options),
+Controller5937d986ec6e69c76864e78bfceac6a5.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: Controller5937d986ec6e69c76864e78bfceac6a5.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+const Controller694f388d01b54be09f3b70932e0ac9c7 = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller694f388d01b54be09f3b70932e0ac9c7.url(options),
+    method: 'get',
+})
+
+Controller694f388d01b54be09f3b70932e0ac9c7.definition = {
+    methods: ["get","head"],
+    url: '/auth/register',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+Controller694f388d01b54be09f3b70932e0ac9c7.url = (options?: RouteQueryOptions) => {
+    return Controller694f388d01b54be09f3b70932e0ac9c7.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+Controller694f388d01b54be09f3b70932e0ac9c7.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller694f388d01b54be09f3b70932e0ac9c7.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/auth/register'
+*/
+Controller694f388d01b54be09f3b70932e0ac9c7.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: Controller694f388d01b54be09f3b70932e0ac9c7.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+const Controllerbbee0fd5659320176905772cd001770a = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controllerbbee0fd5659320176905772cd001770a.url(options),
+    method: 'get',
+})
+
+Controllerbbee0fd5659320176905772cd001770a.definition = {
+    methods: ["get","head"],
+    url: '/services',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+Controllerbbee0fd5659320176905772cd001770a.url = (options?: RouteQueryOptions) => {
+    return Controllerbbee0fd5659320176905772cd001770a.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+Controllerbbee0fd5659320176905772cd001770a.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controllerbbee0fd5659320176905772cd001770a.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/services'
+*/
+Controllerbbee0fd5659320176905772cd001770a.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: Controllerbbee0fd5659320176905772cd001770a.url(options),
+    method: 'head',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+const Controller6d96482a32cf6844d6b355df28d819ff = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller6d96482a32cf6844d6b355df28d819ff.url(options),
+    method: 'get',
+})
+
+Controller6d96482a32cf6844d6b355df28d819ff.definition = {
+    methods: ["get","head"],
+    url: '/favourites',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+Controller6d96482a32cf6844d6b355df28d819ff.url = (options?: RouteQueryOptions) => {
+    return Controller6d96482a32cf6844d6b355df28d819ff.definition.url + queryParams(options)
+}
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+Controller6d96482a32cf6844d6b355df28d819ff.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: Controller6d96482a32cf6844d6b355df28d819ff.url(options),
+    method: 'get',
+})
+
+/**
+* @see \Inertia\Controller::__invoke
+* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
+* @route '/favourites'
+*/
+Controller6d96482a32cf6844d6b355df28d819ff.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: Controller6d96482a32cf6844d6b355df28d819ff.url(options),
     method: 'head',
 })
 
@@ -313,13 +445,16 @@ Controllerb6041c76e8e1cd791f8f89d035d48611.head = (options?: RouteQueryOptions):
 * or import the route by name from your generated `routes/` directory.
 */
 const Controller = {
-    '/test': Controller00777c1cd09820c6807c8fdc0ec88209,
+    '/todo': Controller31dd3171972b268e9bafa47fa8c6ffa2,
     '/about': Controller535fd093ca1d5254af5dc12ac208e8d5,
     '/shops': Controllere86674a617f032efbd0961e58ddc62fc,
     '/dashboard': Controller42a740574ecbfbac32f8cc353fc32db9,
     '/settings': Controller4b87d2df7e3aa853f6720faea796e36c,
     '/profile': Controlleraed0d18b6699640aa4d85cb0451e9ce2,
-    '/login': Controllerb6041c76e8e1cd791f8f89d035d48611,
+    '/auth/login': Controller5937d986ec6e69c76864e78bfceac6a5,
+    '/auth/register': Controller694f388d01b54be09f3b70932e0ac9c7,
+    '/services': Controllerbbee0fd5659320176905772cd001770a,
+    '/favourites': Controller6d96482a32cf6844d6b355df28d819ff,
 }
 
 export default Controller

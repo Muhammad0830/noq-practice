@@ -27,8 +27,8 @@ createInertiaApp({
         }
     },
     resolve: (name) => {
-        const pages = import.meta.glob('./Pages/**/*.vue', { eager: true, import: 'default' })
-        return pages[`./Pages/${name}.vue`] as DefineComponent
+        const pages = import.meta.glob('./pages/**/*.vue', { eager: true, import: 'default' })
+        return pages[`./pages/${name}.vue`] as DefineComponent
     },
     setup({ el, App, props, plugin }) {
         createApp({

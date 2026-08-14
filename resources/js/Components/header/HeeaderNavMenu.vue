@@ -23,7 +23,7 @@ const page = usePage();
 
             <!-- x/close button -->
             <button @click="() => isActive.value = false"
-                class="absolute top-10 right-10 border-1 border-foreground rounded-full p-1">
+                class="absolute top-10 right-10 border! border-foreground rounded-full p-1">
                 <X class="size-10" />
             </button>
         </div>
