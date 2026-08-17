@@ -6,14 +6,14 @@ use Inertia\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
 
-class ServicesController extends Controller
+class ShopsController extends Controller
 {
     public function getAll(): Response
     {
-        $services = [];
+        $shops = [];
 
-        return Inertia::render('Service', [
-            'data' => $services,
+        return Inertia::render('shops/Index', [
+            'data' => $shops,
         ]);
     }
 }

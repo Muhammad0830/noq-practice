@@ -1,9 +1,11 @@
 import { login } from "@/routes";
 import { InertiaForm, useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 import z from "zod";
 
 interface UseLoginFormProps {
     form: InertiaForm<LoginForm>,
+    error: string;
     submit: () => void,
     validate: () => boolean,
 }
@@ -16,6 +18,8 @@ export const loginSchema = z.object({
 export type LoginForm = z.infer<typeof loginSchema>;
 
 export function useLoginForm(): UseLoginFormProps {
+    const error = ref('');
+
     const form = useForm<LoginForm>({
         email: '',
         password: '',
@@ -41,10 +45,18 @@ export function useLoginForm(): UseLoginFormProps {
         if (!validate()) return;
 
         form.submit(login(), {
-            onSuccess: () => form.reset(),
-            onError: () => console.error('error', 'Failed To Login')
+            onSuccess: () => {
+                console.log('succes')
+                form.reset()
+                error.value = ''
+            },
+            onError: (e) => {
+                console.error(e)
+                error.value = e.message
+                console.error('error', 'Failed To Login')
+            }
         });
     }
 
-    return { form, submit, validate };
+    return { form, submit, validate, error: error.value };
 }

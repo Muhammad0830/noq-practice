@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSidebarStore } from '@/stores/sidebarStore';
-import { router } from '@inertiajs/vue3';
+import { router, usePage } from '@inertiajs/vue3';
 import { Menu, PanelLeft } from '@lucide/vue';
 import { storeToRefs } from 'pinia';
 import { logout } from '@/actions/App/Http/Controllers/AuthController';
@@ -12,6 +12,8 @@ import { useDisplay } from 'vuetify';
 import { NavItemProps } from '@/types/general';
 import HeeaderNavMenu from '@/components/header/HeeaderNavMenu.vue';
 
+const page = usePage();
+const user = page.props.auth.user;
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
 const { toggleSidebar } = sidebarStore;
@@ -45,6 +47,9 @@ function handleToggle() {
             <!-- sidebar toggler-->
             <v-btn v-if="lgAndUp" @click="toggleSidebar" variant="flat" color="background" class="text-primary"
                 :icon="PanelLeft" rounded density="comfortable"></v-btn>
+
+            <!-- user name -->
+            <span>{{ user?.name || 'Unknown' }}</span>
 
             <div class="flex items-center gap-4 max-lg:flex-1 max-lg:justify-end">
                 <!-- menu toggler -->

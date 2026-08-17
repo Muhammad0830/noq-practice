@@ -90,50 +90,6 @@ about.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 /**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/shops'
-*/
-export const shopsList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: shopsList.url(options),
-    method: 'get',
-})
-
-shopsList.definition = {
-    methods: ["get","head"],
-    url: '/shops',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/shops'
-*/
-shopsList.url = (options?: RouteQueryOptions) => {
-    return shopsList.definition.url + queryParams(options)
-}
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/shops'
-*/
-shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: shopsList.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/shops'
-*/
-shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: shopsList.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
 * @route '/dashboard'
 */
 export const dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -264,6 +220,172 @@ profile.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
+* @see \App\Http\Controllers\ShopsController::shopsList
+* @see app/Http/Controllers/ShopsController.php:11
+* @route '/shops'
+*/
+export const shopsList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: shopsList.url(options),
+    method: 'get',
+})
+
+shopsList.definition = {
+    methods: ["get","head"],
+    url: '/shops',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ShopsController::shopsList
+* @see app/Http/Controllers/ShopsController.php:11
+* @route '/shops'
+*/
+shopsList.url = (options?: RouteQueryOptions) => {
+    return shopsList.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ShopsController::shopsList
+* @see app/Http/Controllers/ShopsController.php:11
+* @route '/shops'
+*/
+shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: shopsList.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ShopsController::shopsList
+* @see app/Http/Controllers/ShopsController.php:11
+* @route '/shops'
+*/
+shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: shopsList.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::servcies
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/services'
+*/
+export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: servcies.url(options),
+    method: 'get',
+})
+
+servcies.definition = {
+    methods: ["get","head"],
+    url: '/services',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::servcies
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/services'
+*/
+servcies.url = (options?: RouteQueryOptions) => {
+    return servcies.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::servcies
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/services'
+*/
+servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: servcies.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::servcies
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/services'
+*/
+servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: servcies.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::favourites
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/favourites'
+*/
+export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: favourites.url(options),
+    method: 'get',
+})
+
+favourites.definition = {
+    methods: ["get","head"],
+    url: '/favourites',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::favourites
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/favourites'
+*/
+favourites.url = (options?: RouteQueryOptions) => {
+    return favourites.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::favourites
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/favourites'
+*/
+favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: favourites.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::favourites
+* @see app/Http/Controllers/ServicesController.php:11
+* @route '/favourites'
+*/
+favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: favourites.url(options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\AuthController::logout
+* @see app/Http/Controllers/AuthController.php:58
+* @route '/logout'
+*/
+export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: logout.url(options),
+    method: 'post',
+})
+
+logout.definition = {
+    methods: ["post"],
+    url: '/logout',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\AuthController::logout
+* @see app/Http/Controllers/AuthController.php:58
+* @route '/logout'
+*/
+logout.url = (options?: RouteQueryOptions) => {
+    return logout.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\AuthController::logout
+* @see app/Http/Controllers/AuthController.php:58
+* @route '/logout'
+*/
+logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: logout.url(options),
+    method: 'post',
+})
+
+/**
 * @see \Inertia\Controller::__invoke
 * @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
 * @route '/auth/login'
@@ -352,130 +474,8 @@ registerPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
 /**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/services'
-*/
-export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: servcies.url(options),
-    method: 'get',
-})
-
-servcies.definition = {
-    methods: ["get","head"],
-    url: '/services',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/services'
-*/
-servcies.url = (options?: RouteQueryOptions) => {
-    return servcies.definition.url + queryParams(options)
-}
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/services'
-*/
-servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: servcies.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/services'
-*/
-servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: servcies.url(options),
-    method: 'head',
-})
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/favourites'
-*/
-export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: favourites.url(options),
-    method: 'get',
-})
-
-favourites.definition = {
-    methods: ["get","head"],
-    url: '/favourites',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/favourites'
-*/
-favourites.url = (options?: RouteQueryOptions) => {
-    return favourites.definition.url + queryParams(options)
-}
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/favourites'
-*/
-favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: favourites.url(options),
-    method: 'get',
-})
-
-/**
-* @see \Inertia\Controller::__invoke
-* @see vendor/inertiajs/inertia-laravel/src/Controller.php:13
-* @route '/favourites'
-*/
-favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: favourites.url(options),
-    method: 'head',
-})
-
-/**
-* @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:55
-* @route '/logout'
-*/
-export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: logout.url(options),
-    method: 'post',
-})
-
-logout.definition = {
-    methods: ["post"],
-    url: '/logout',
-} satisfies RouteDefinition<["post"]>
-
-/**
-* @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:55
-* @route '/logout'
-*/
-logout.url = (options?: RouteQueryOptions) => {
-    return logout.definition.url + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:55
-* @route '/logout'
-*/
-logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
-    url: logout.url(options),
-    method: 'post',
-})
-
-/**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:16
+* @see app/Http/Controllers/AuthController.php:17
 * @route '/login'
 */
 export const login = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -490,7 +490,7 @@ login.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:16
+* @see app/Http/Controllers/AuthController.php:17
 * @route '/login'
 */
 login.url = (options?: RouteQueryOptions) => {
@@ -499,7 +499,7 @@ login.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:16
+* @see app/Http/Controllers/AuthController.php:17
 * @route '/login'
 */
 login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -509,7 +509,7 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:41
 * @route '/register'
 */
 export const register = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -524,7 +524,7 @@ register.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:41
 * @route '/register'
 */
 register.url = (options?: RouteQueryOptions) => {
@@ -533,7 +533,7 @@ register.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:41
 * @route '/register'
 */
 register.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({

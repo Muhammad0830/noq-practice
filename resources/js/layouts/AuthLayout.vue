@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useDisplay } from 'vuetify';
 
-
 const { smAndDown } = useDisplay()
 </script>
 

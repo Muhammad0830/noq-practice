@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { profile, settings } from '@/routes';
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
 import { UserRound } from '@lucide/vue';
 
 const emit = defineEmits<{ openModal: [] }>()
+const page = usePage()
+const user = page.props.auth.user;
 </script>
 
 <template>
@@ -21,8 +23,9 @@ const emit = defineEmits<{ openModal: [] }>()
                                     class="border! border-foreground rounded-full p-1 aspect-square"
                                     size="large"></v-icon>
                                 <div class="flex flex-col flex-1 min-w-0!">
-                                    <span class="truncate text-sm">Abduqayumov Muhammad</span>
-                                    <span class="text-xs text-foreground/70 truncate">229453m@jdu.uz</span>
+                                    <span class="truncate text-sm">{{ user?.name || 'Unknown' }}</span>
+                                    <span class="text-xs text-foreground/70 truncate">{{ user?.email || 'Unknown'
+                                        }}</span>
                                 </div>
                             </div>
                         </v-list-item>

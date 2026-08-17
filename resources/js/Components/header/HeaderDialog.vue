@@ -1,12 +1,15 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
 
 const isModalOpen = defineModel<boolean>()
 
 const emit = defineEmits<{ logout: [] }>()
+
+const { xs } = useDisplay();
 </script>
 
 <template>
-    <v-dialog max-width="500" v-model="isModalOpen">
+    <v-dialog :max-width="xs ? 320 : 500" v-model="isModalOpen">
         <template v-slot:default="{ isActive }">
             <v-card title="Logout" class="bg-secondary">
                 <v-card-text>

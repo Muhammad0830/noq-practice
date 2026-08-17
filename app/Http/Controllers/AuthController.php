@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 use Inertia\Controller;
 use Throwable;
 
@@ -24,14 +25,16 @@ class AuthController extends Controller
             ]);
 
             if (!$loginSuccessfull) {
-                return redirect()->back()->with('error', 'Email or Password is incorrect.');
+                throw ValidationException::withMessages([
+                    'email' => 'Email or Password is incorrect',
+                ]);
             }
 
             $request->session()->regenerate();
 
             return redirect()->route('dashboard')->with('success', 'Logged bowqain successfully');
         } catch (Throwable $e) {
-            return redirect()->back()->with('error', 'Failed to Login, Please try again.');
+            return throw $e;
         }
     }
 

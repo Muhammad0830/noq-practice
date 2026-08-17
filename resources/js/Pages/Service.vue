@@ -3,6 +3,7 @@
 </script>
 
 <template>
-    Dashboard
-   
+    <div>
+        Services
+    </div>
 </template>
