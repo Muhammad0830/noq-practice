@@ -3,8 +3,8 @@ import type { DefineComponent } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
 import { createPinia } from 'pinia'
 import { vuetify } from './vuetify.js';
-import AuthLayout from './layouts/AuthLayout.vue';
-import AppLayout from './layouts/AppLayout.vue';
+import AuthLayout from './presenter/layouts/AuthLayout.vue';
+import AppLayout from './presenter/layouts/AppLayout.vue';
 
 const pinia = createPinia();
 
@@ -27,8 +27,8 @@ createInertiaApp({
         }
     },
     resolve: (name) => {
-        const pages = import.meta.glob('./pages/**/*.vue', { eager: true, import: 'default' })
-        return pages[`./pages/${name}.vue`] as DefineComponent
+        const pages = import.meta.glob('./presenter/pages/**/*.vue', { eager: true, import: 'default' })
+        return pages[`./presenter/pages/${name}.vue`] as DefineComponent
     },
     setup({ el, App, props, plugin }) {
         createApp({
