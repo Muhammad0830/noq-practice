@@ -30,7 +30,8 @@ const { submit, form } = useRegisterForm()
         <v-text-field :error-messages="form.errors.password" v-model="form.password" density="comfortable"
             class="w-full" placeholder="Password"></v-text-field>
 
-        <v-btn type="submit" variant="flat" color="primary" class="text-white font-bold!">Register</v-btn>
+        <v-btn type="submit" :disabled="form.processing" variant="flat" color="primary"
+            class="text-white font-bold!">Register</v-btn>
     </form>
 
     <div class="flex items-center justify-end gap-2 text-[13px]">

@@ -10,11 +10,17 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shop_admins', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('admin_id')->constrained()->cascadeOnDelete();
-            $table->enum('role', ['owner', 'staff']);
+            $table->string('name');
+            $table->decimal('price');
+            $table->integer('duration_min');
+            $table->boolean('is_active');
+            $table->integer('buffer_time')->nullable();
+            $table->string('description')->nullable();
+
+            $table->index(['shop_id']);
 
             $table->timestamps();
         });
@@ -25,6 +31,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shop_admins');
+        Schema::dropIfExists('services');
     }
 };

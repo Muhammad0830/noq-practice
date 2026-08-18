@@ -17,11 +17,11 @@ export const registerSchema = z.object({
 export type RegisterForm = z.infer<typeof registerSchema>;
 
 export function useRegisterForm(): UseRegisterFormProps {
-    const form = useForm<RegisterForm>({
+    const form = useForm<RegisterForm>('RegisterForm', {
         name: '',
         email: '',
         password: '',
-    })
+    }).dontRemember('password');
 
     function validate(): boolean {
         form.clearErrors();
@@ -33,7 +33,6 @@ export function useRegisterForm(): UseRegisterFormProps {
                 const fieldName = issue.path[0] as keyof typeof form.data;
                 form.setError(fieldName, issue.message);
             })
-
 
             return false;
         }

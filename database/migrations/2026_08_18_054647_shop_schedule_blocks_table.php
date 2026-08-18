@@ -10,10 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('shops', function (Blueprint $table) {
+        Schema::create('shop_schedule_blocks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('description')->nullable();
+            $table->foreignId('shop_id')->constrained('shops')->cascadeOnDelete();
+
+            $table->datetime('start_time');
+            $table->dateTime('end_time');
+
+            $table->string('reason')->nullable();
+
+            $table->index(['shop_id']);
 
             $table->timestamps();
         });
@@ -24,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('shops');
+        Schema::dropIfExists('shop_schedule_blocks');
     }
 };

@@ -20,10 +20,10 @@ export type LoginForm = z.infer<typeof loginSchema>;
 export function useLoginForm(): UseLoginFormProps {
     const error = ref('');
 
-    const form = useForm<LoginForm>({
+    const form = useForm<LoginForm>('LoginForm', {
         email: '',
         password: '',
-    })
+    }).dontRemember('password');
 
     function validate(): boolean {
         form.clearErrors();

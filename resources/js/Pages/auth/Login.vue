@@ -28,7 +28,8 @@ const { form, submit } = useLoginForm();
 
         <PasswordInput v-model="form.password" :password-error="form.errors.password" />
 
-        <v-btn type="submit" variant="flat" color="primary" class="text-white font-bold!">Login</v-btn>
+        <v-btn type="submit" :disabled="form.processing" variant="flat" color="primary"
+            class="text-white font-bold!">Login</v-btn>
     </form>
 
     <div class="flex items-center justify-end gap-2 text-[13px]">
