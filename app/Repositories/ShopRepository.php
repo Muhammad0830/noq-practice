@@ -12,4 +12,9 @@ class ShopRepository implements ShopRepositoryContract
     {
         return Shop::get();
     }
+
+    public function find(string $id): Shop
+    {
+        return Shop::with('services')->find($id);
+    }
 }

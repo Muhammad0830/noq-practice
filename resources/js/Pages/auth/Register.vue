@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRegisterForm } from '@/forms/registerForm';
+import ThemeToggler from '@/layouts/app/header/ThemeToggler.vue';
 import { loginPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 

@@ -1,7 +1,12 @@
+import { Service } from "./Service";
+
 export interface Shop {
     id: string;
     name: string;
     description: string;
-    createdAt?: Date;
-    updatedAt?: Date;
+
+    services: Service[];
+
+    created_at?: Date;
+    updated_at?: Date;
 }

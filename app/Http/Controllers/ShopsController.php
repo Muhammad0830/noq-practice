@@ -17,4 +17,13 @@ class ShopsController extends Controller
             'data' => $shops,
         ]);
     }
+
+    public function getOne(string $shopId, ShopRepositoryContract $repository): Response
+    {
+        $shop = $repository->find($shopId);
+
+        return Inertia::render('user/shops/View', [
+            'data' => $shop
+        ]);
+    }
 }

@@ -14,6 +14,7 @@ Route::middleware('auth')->group(function () {
     Route::inertia('/profile', 'Profile')->name('profile');
 
     Route::get('/shops', [ShopsController::class, 'getAll'])->name('shops-list');
+    Route::get('/shops/{shop}/view', [ShopsController::class, 'getOne'])->name('shop-view');
     Route::get('/services', [ServicesController::class, 'getAll'])->name('servcies');
     Route::get('/favourites', [ServicesController::class, 'getAll'])->name('favourites');
 
