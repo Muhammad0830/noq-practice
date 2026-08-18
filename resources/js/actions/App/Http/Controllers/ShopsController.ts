@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 export const getAll = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ getAll.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 getAll.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ getAll.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 getAll.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ getAll.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 getAll.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({

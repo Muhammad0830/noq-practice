@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 const getAllbbee0fd5659320176905772cd001770a = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ getAllbbee0fd5659320176905772cd001770a.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 getAllbbee0fd5659320176905772cd001770a.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ getAllbbee0fd5659320176905772cd001770a.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 getAllbbee0fd5659320176905772cd001770a.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ getAllbbee0fd5659320176905772cd001770a.get = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 getAllbbee0fd5659320176905772cd001770a.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ getAllbbee0fd5659320176905772cd001770a.head = (options?: RouteQueryOptions): Rou
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 const getAll6d96482a32cf6844d6b355df28d819ff = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -60,7 +60,7 @@ getAll6d96482a32cf6844d6b355df28d819ff.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 getAll6d96482a32cf6844d6b355df28d819ff.url = (options?: RouteQueryOptions) => {
@@ -69,7 +69,7 @@ getAll6d96482a32cf6844d6b355df28d819ff.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 getAll6d96482a32cf6844d6b355df28d819ff.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -79,7 +79,7 @@ getAll6d96482a32cf6844d6b355df28d819ff.get = (options?: RouteQueryOptions): Rout
 
 /**
 * @see \App\Http\Controllers\ServicesController::getAll
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 getAll6d96482a32cf6844d6b355df28d819ff.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({

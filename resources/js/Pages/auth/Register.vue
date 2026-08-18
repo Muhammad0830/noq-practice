@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ThemeToggler from '@/components/header/ThemeToggler.vue';
 import { useRegisterForm } from '@/forms/registerForm';
 import { loginPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
@@ -22,7 +21,7 @@ const { submit, form } = useRegisterForm()
 
     <form @submit.prevent="submit" class="w-full flex flex-col gap-2">
         <v-text-field :error-messages="form.errors.name" v-model="form.name" density="comfortable" class="w-full"
-            placeholder="Email"></v-text-field>
+            placeholder="Name"></v-text-field>
 
         <v-text-field :error-messages="form.errors.email" v-model="form.email" density="comfortable" class="w-full"
             placeholder="Email"></v-text-field>
@@ -30,7 +29,7 @@ const { submit, form } = useRegisterForm()
         <v-text-field :error-messages="form.errors.password" v-model="form.password" density="comfortable"
             class="w-full" placeholder="Password"></v-text-field>
 
-        <v-btn type="submit" variant="flat" color="primary" class="text-foreground font-bold!">Login</v-btn>
+        <v-btn type="submit" variant="flat" color="primary" class="text-white font-bold!">Register</v-btn>
     </form>
 
     <div class="flex items-center justify-end gap-2 text-[13px]">

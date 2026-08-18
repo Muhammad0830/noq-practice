@@ -10,7 +10,7 @@ const { smAndDown } = useDisplay()
 
             <v-card class="bg-secondary" :min-width="smAndDown ? '300px' : '350px'">
                 <div class="p-4 flex flex-col items-center gap-4">
-                    <slot />
+                    <slot></slot>
                 </div>
             </v-card>
 

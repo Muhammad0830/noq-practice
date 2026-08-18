@@ -34,10 +34,4 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./resources/js', import.meta.url)),
         },
     },
-
-    server: {
-        watch: {
-            ignored: ['**/storage/framerwork/views/**'],
-        },
-    },
 });

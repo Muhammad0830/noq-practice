@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { NavItemProps } from '@/types/general';
+import { navItems } from '@/layouts/navItems';
 import { Link, usePage } from '@inertiajs/vue3';
 import { X } from '@lucide/vue';
 
-const { navItems } = defineProps<{ navItems: NavItemProps[] }>()
 const isMenuOpen = defineModel<boolean>();
 const page = usePage();
 </script>

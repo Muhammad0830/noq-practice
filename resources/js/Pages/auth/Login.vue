@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ThemeToggler from '@/components/header/ThemeToggler.vue';
 import PasswordInput from '@/components/shared/PasswordInput.vue';
 import { useLoginForm } from '@/forms/loginForm';
+import ThemeToggler from '@/layouts/app/header/ThemeToggler.vue';
 import { registerPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 
@@ -28,7 +28,7 @@ const { form, submit } = useLoginForm();
 
         <PasswordInput v-model="form.password" :password-error="form.errors.password" />
 
-        <v-btn type="submit" variant="flat" color="primary" class="text-foreground font-bold!">Login</v-btn>
+        <v-btn type="submit" variant="flat" color="primary" class="text-white font-bold!">Login</v-btn>
     </form>
 
     <div class="flex items-center justify-end gap-2 text-[13px]">

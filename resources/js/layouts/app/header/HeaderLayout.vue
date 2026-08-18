@@ -5,28 +5,29 @@ import { Menu, PanelLeft } from '@lucide/vue';
 import { storeToRefs } from 'pinia';
 import { logout } from '@/actions/App/Http/Controllers/AuthController';
 import { ref } from 'vue';
-import HeaderDialog from '@/components/header/HeaderDialog.vue';
-import HeaderProfileMenu from '@/components/header/HeaderProfileMenu.vue';
-import ThemeToggler from '@/components/header/ThemeToggler.vue';
 import { useDisplay } from 'vuetify';
-import { NavItemProps } from '@/types/general';
-import HeeaderNavMenu from '@/components/header/HeeaderNavMenu.vue';
+import HeaderDialog from './HeaderDialog.vue';
+import HeeaderNavMenu from './HeeaderNavMenu.vue';
+import HeaderProfileMenu from './HeaderProfileMenu.vue';
+import ThemeToggler from './ThemeToggler.vue';
+
+interface HeaderLayoutProps {
+    sidebarOpenWidth: number,
+    sidebarRailWidth: number,
+}
+const { sidebarOpenWidth, sidebarRailWidth } = defineProps<HeaderLayoutProps>()
+
+const { lgAndUp, mdAndUp, mdAndDown } = useDisplay()
 
 const page = usePage();
 const user = page.props.auth.user;
+
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
 const { toggleSidebar } = sidebarStore;
+
 const isModalOpen = ref(false);
 const isMenuOpen = ref(false);
-
-const { sidebarOpenWidth, sidebarRailWidth, navItems } = defineProps<{
-    sidebarOpenWidth: number,
-    sidebarRailWidth: number,
-    navItems: NavItemProps[],
-}>()
-
-const { lgAndUp, mdAndUp, mdAndDown } = useDisplay()
 
 function handleToggle() {
     if (mdAndUp.value) toggleSidebar()
@@ -69,5 +70,5 @@ function handleToggle() {
     <HeaderDialog v-model="isModalOpen" @logout="() => router.post(logout())" />
 
     <!-- mobile navLinks menu -->
-    <HeeaderNavMenu v-model="isMenuOpen" :nav-items="navItems" />
+    <HeeaderNavMenu v-model="isMenuOpen" />
 </template>

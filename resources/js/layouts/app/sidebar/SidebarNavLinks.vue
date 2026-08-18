@@ -1,10 +1,8 @@
 <script setup lang="ts">
+import { navItems } from '@/layouts/navItems';
 import { useSidebarStore } from '@/stores/sidebarStore';
-import { NavItemProps } from '@/types/general';
 import { Link, usePage } from '@inertiajs/vue3';
 import { storeToRefs } from 'pinia';
-
-const { navItems } = defineProps<{ navItems: NavItemProps[] }>()
 
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);

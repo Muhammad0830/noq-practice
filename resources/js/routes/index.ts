@@ -221,7 +221,7 @@ profile.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 export const shopsList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -236,7 +236,7 @@ shopsList.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 shopsList.url = (options?: RouteQueryOptions) => {
@@ -245,7 +245,7 @@ shopsList.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -255,7 +255,7 @@ shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:11
+* @see app/Http/Controllers/ShopsController.php:12
 * @route '/shops'
 */
 shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -265,7 +265,7 @@ shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -280,7 +280,7 @@ servcies.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 servcies.url = (options?: RouteQueryOptions) => {
@@ -289,7 +289,7 @@ servcies.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -299,7 +299,7 @@ servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/services'
 */
 servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -309,7 +309,7 @@ servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ favourites.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 favourites.url = (options?: RouteQueryOptions) => {
@@ -333,7 +333,7 @@ favourites.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -343,7 +343,7 @@ favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:11
+* @see app/Http/Controllers/ServicesController.php:12
 * @route '/favourites'
 */
 favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
