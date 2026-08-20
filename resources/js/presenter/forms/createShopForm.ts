@@ -77,15 +77,19 @@ export function useCreateShopForm(): UseCreateShopFormProps {
             return false;
         }
 
+        form.services = result.data;
+
         return true;
     }
 
     function submit(): void {
-        if (!validateDefinition || !validateScheduling || !validateServices()) return;
+        if (!validateDefinition() || !validateScheduling() || !validateServices()) return;
+
+        console.log(form.services)
 
         form.submit(createShop(), {
             onSuccess: () => form.resetAndClearErrors(),
-            onError: (e) => console.error('error', 'Failed To Login'),
+            onError: (e) => console.error('error', 'Failed to create a shop', e),
         })
     }
 

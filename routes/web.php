@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ShopsController;
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/create-shop', [ShopsController::class, 'createShop'])->name('create-shop');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardPage'])->name('admin_dashboard');
 });
 Route::inertia('/auth/login', 'auth/Login')->name('login-page');
 Route::inertia('/auth/register', 'auth/Register')->name('register-page');

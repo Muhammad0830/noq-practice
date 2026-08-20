@@ -12,7 +12,10 @@ class Shop extends Model
 
     protected $fillable = [
         'name',
+        'category_id',
         'description',
+        'address',
+        'phone_number'
     ];
 
     public function services(): HasMany

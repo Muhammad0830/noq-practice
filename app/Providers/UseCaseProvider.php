@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Contracts\UseCases\ShopCreateUseCaseContract;
 use App\Contracts\UseCases\UserRegisterUseCaseContract;
+use App\UseCases\ShopCreateUseCase;
 use App\UseCases\UserRegisterUseCase;
 use Illuminate\Support\ServiceProvider;
 use App\UseCases\UserLoginUseCase;
@@ -20,6 +22,11 @@ class UseCaseProvider extends ServiceProvider
         $this->app->bind(
             UserRegisterUseCaseContract::class,
             UserRegisterUseCase::class
+        );
+
+        $this->app->bind(
+            ShopCreateUseCaseContract::class,
+            ShopCreateUseCase::class
         );
     }
 }

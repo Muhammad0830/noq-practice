@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\ShopsController::createPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 export const createPage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ createPage.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createPage.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ createPage.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ createPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::createPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ createPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 export const getAll = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -60,7 +60,7 @@ getAll.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 getAll.url = (options?: RouteQueryOptions) => {
@@ -69,7 +69,7 @@ getAll.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 getAll.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -79,7 +79,7 @@ getAll.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 getAll.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -89,7 +89,7 @@ getAll.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::getOne
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 export const getOne = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -104,7 +104,7 @@ getOne.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::getOne
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 getOne.url = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -131,7 +131,7 @@ getOne.url = (args: { shop: string | number } | [shop: string | number ] | strin
 
 /**
 * @see \App\Http\Controllers\ShopsController::getOne
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 getOne.get = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -141,7 +141,7 @@ getOne.get = (args: { shop: string | number } | [shop: string | number ] | strin
 
 /**
 * @see \App\Http\Controllers\ShopsController::getOne
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 getOne.head = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -151,7 +151,7 @@ getOne.head = (args: { shop: string | number } | [shop: string | number ] | stri
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 export const createShop = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -166,7 +166,7 @@ createShop.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 createShop.url = (options?: RouteQueryOptions) => {
@@ -175,7 +175,7 @@ createShop.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 createShop.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({

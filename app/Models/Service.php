@@ -11,8 +11,13 @@ class Service extends Model
     use HasFactory;
 
     protected $fillable = [
+        'shop_id',
         'name',
         'description',
+        'price',
+        'duration_min',
+        'buffer_time',
+        'is_active',
     ];
 
     public function shop(): BelongsTo

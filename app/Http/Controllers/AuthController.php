@@ -11,7 +11,6 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Controller;
 use Exception;
 use Throwable;
 

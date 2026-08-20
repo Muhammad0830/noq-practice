@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\UseCases\ShopCreateUseCaseContract;
+use App\DTOs\ShopCreateDTO;
+use App\Http\Requests\CreateShopRequest;
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 use App\Contracts\Repositories\ShopRepositoryContract;
@@ -39,8 +42,13 @@ class ShopsController extends Controller
         ]);
     }
 
-    public function createShop(Request $request)
+    public function createShop(CreateShopRequest $request, ShopCreateUseCaseContract $useCase)
     {
+        $validated = $request->validated();
+
+        $dto = ShopCreateDTO::fromRequest($validated);
+
+        $useCase->execute($dto);
 
         return redirect()->route('admin_dashboard');
     }

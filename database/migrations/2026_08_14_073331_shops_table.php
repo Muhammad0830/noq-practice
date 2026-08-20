@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('address');
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained('shop_categories')->cascadeOnDelete();
             $table->string('description')->nullable();
             $table->string('logo_url')->nullable();
             $table->string('phone_number')->nullable();

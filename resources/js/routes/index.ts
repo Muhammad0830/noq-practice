@@ -221,7 +221,7 @@ profile.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShopPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 export const createShopPage = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -236,7 +236,7 @@ createShopPage.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShopPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createShopPage.url = (options?: RouteQueryOptions) => {
@@ -245,7 +245,7 @@ createShopPage.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShopPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createShopPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -255,7 +255,7 @@ createShopPage.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShopPage
-* @see app/Http/Controllers/ShopsController.php:31
+* @see app/Http/Controllers/ShopsController.php:34
 * @route '/create-shop'
 */
 createShopPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -265,7 +265,7 @@ createShopPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => 
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 export const shopsList = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -280,7 +280,7 @@ shopsList.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 shopsList.url = (options?: RouteQueryOptions) => {
@@ -289,7 +289,7 @@ shopsList.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -299,7 +299,7 @@ shopsList.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopsList
-* @see app/Http/Controllers/ShopsController.php:13
+* @see app/Http/Controllers/ShopsController.php:16
 * @route '/shops'
 */
 shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -309,7 +309,7 @@ shopsList.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopView
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 export const shopView = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -324,7 +324,7 @@ shopView.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopView
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 shopView.url = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions) => {
@@ -351,7 +351,7 @@ shopView.url = (args: { shop: string | number } | [shop: string | number ] | str
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopView
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 shopView.get = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -361,7 +361,7 @@ shopView.get = (args: { shop: string | number } | [shop: string | number ] | str
 
 /**
 * @see \App\Http\Controllers\ShopsController::shopView
-* @see app/Http/Controllers/ShopsController.php:22
+* @see app/Http/Controllers/ShopsController.php:25
 * @route '/shops/{shop}/view'
 */
 shopView.head = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -459,7 +459,7 @@ favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 export const createShop = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -474,7 +474,7 @@ createShop.definition = {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 createShop.url = (options?: RouteQueryOptions) => {
@@ -483,7 +483,7 @@ createShop.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ShopsController::createShop
-* @see app/Http/Controllers/ShopsController.php:42
+* @see app/Http/Controllers/ShopsController.php:45
 * @route '/create-shop'
 */
 createShop.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -493,7 +493,7 @@ createShop.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:61
+* @see app/Http/Controllers/AuthController.php:60
 * @route '/logout'
 */
 export const logout = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -508,7 +508,7 @@ logout.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:61
+* @see app/Http/Controllers/AuthController.php:60
 * @route '/logout'
 */
 logout.url = (options?: RouteQueryOptions) => {
@@ -517,12 +517,56 @@ logout.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::logout
-* @see app/Http/Controllers/AuthController.php:61
+* @see app/Http/Controllers/AuthController.php:60
 * @route '/logout'
 */
 logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: logout.url(options),
     method: 'post',
+})
+
+/**
+* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
+* @see app/Http/Controllers/AdminDashboardController.php:10
+* @route '/admin/dashboard'
+*/
+export const admin_dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: admin_dashboard.url(options),
+    method: 'get',
+})
+
+admin_dashboard.definition = {
+    methods: ["get","head"],
+    url: '/admin/dashboard',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
+* @see app/Http/Controllers/AdminDashboardController.php:10
+* @route '/admin/dashboard'
+*/
+admin_dashboard.url = (options?: RouteQueryOptions) => {
+    return admin_dashboard.definition.url + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
+* @see app/Http/Controllers/AdminDashboardController.php:10
+* @route '/admin/dashboard'
+*/
+admin_dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: admin_dashboard.url(options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
+* @see app/Http/Controllers/AdminDashboardController.php:10
+* @route '/admin/dashboard'
+*/
+admin_dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: admin_dashboard.url(options),
+    method: 'head',
 })
 
 /**
@@ -615,7 +659,7 @@ registerPage.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:20
+* @see app/Http/Controllers/AuthController.php:19
 * @route '/login'
 */
 export const login = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -630,7 +674,7 @@ login.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:20
+* @see app/Http/Controllers/AuthController.php:19
 * @route '/login'
 */
 login.url = (options?: RouteQueryOptions) => {
@@ -639,7 +683,7 @@ login.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::login
-* @see app/Http/Controllers/AuthController.php:20
+* @see app/Http/Controllers/AuthController.php:19
 * @route '/login'
 */
 login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -649,7 +693,7 @@ login.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:37
 * @route '/register'
 */
 export const register = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -664,7 +708,7 @@ register.definition = {
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:37
 * @route '/register'
 */
 register.url = (options?: RouteQueryOptions) => {
@@ -673,7 +717,7 @@ register.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\AuthController::register
-* @see app/Http/Controllers/AuthController.php:38
+* @see app/Http/Controllers/AuthController.php:37
 * @route '/register'
 */
 register.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({

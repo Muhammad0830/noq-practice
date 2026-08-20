@@ -17,6 +17,9 @@ function handlePrevious() {
 }
 
 function handleNext() {
+    console.log(form.services)
+    validateServices();
+    console.log(form.errors)
     if (!validateServices()) return;
 
     emit('submit')

@@ -61,7 +61,10 @@ export function schedulingOneDayInitials(
     startTime?: string,
     endTime?: string
 ): SchedulingOneDayProps {
-    return { items: [schedulingTimeLineInitials(day), schedulingTimeLineInitials(day, type, startTime, endTime)], isOpen: true }
+    return {
+        items: [schedulingTimeLineInitials(day), schedulingTimeLineInitials(day, type, startTime, endTime)],
+        isOpen: true
+    }
 }
 
 export function schedulingTimeLineInitials(
