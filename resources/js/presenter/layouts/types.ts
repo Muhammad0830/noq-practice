@@ -1,4 +1,4 @@
-import { RouteDefinition } from "@/presenter/wayfinder";
+import { RouteDefinition } from "@/wayfinder";
 import { IconValue } from "vuetify/lib/composables/icons.mjs";
 
 export interface NavItemProps {

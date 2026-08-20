@@ -1,4 +1,4 @@
-import { dashboard, favourites, servcies, shopsList, todo } from '@/presenter/routes/index.js';
+import { dashboard, favourites, servcies, shopsList, todo } from '@/routes/index.js';
 import { CircleCheckBig, Heart, LayoutDashboard, LayoutList, Store } from '@lucide/vue';
 
 export const navItems = [

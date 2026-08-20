@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { profile, settings } from '@/presenter/routes';
-import { Link, usePage } from '@inertiajs/vue3';
+import { settings } from '@/routes/index.js';
+import { Link } from '@inertiajs/vue3';
 import { UserRound } from '@lucide/vue';
+import ProfileMenuProfileItem from './ProfileMenuProfileItem.vue';
+import { createShopPage } from '@/routes/index.js';
 
 const emit = defineEmits<{ openModal: [] }>()
-const page = usePage()
-const user = page.props.auth.user;
 </script>
 
 <template>
@@ -15,19 +15,15 @@ const user = page.props.auth.user;
         </template>
         <template v-slot:default="{ isActive }">
             <v-card min-width=" 200" max-width="250" rounded="lg">
-                <v-list class="flex flex-col justify-space-between pa-2 bg-secondary">
-                    <Link @click="() => isActive.value = false" :href="profile()">
-                        <v-list-item class="px-2 cursor-pointer hover:bg-foreground/10! rounded">
-                            <div class="flex gap-2 items-center">
-                                <v-icon :icon="UserRound" varianat="outlined"
-                                    class="border! border-foreground rounded-full p-1 aspect-square"
-                                    size="large"></v-icon>
-                                <div class="flex flex-col flex-1 min-w-0!">
-                                    <span class="truncate text-sm">{{ user?.name || 'Unknown' }}</span>
-                                    <span class="text-xs text-foreground/70 truncate">{{ user?.email || 'Unknown'
-                                        }}</span>
-                                </div>
-                            </div>
+                <v-list class="flex flex-col gap-1 justify-space-between pa-2 bg-secondary">
+                    <ProfileMenuProfileItem :is-active="isActive" />
+
+                    <Link @click="() => isActive.value = false" :href="createShopPage({
+                        query: { 'step': 'shop-definition' }
+                    })">
+                        <v-list-item
+                            class="px-2 min-h-8! h-4! cursor-pointer text-yellow-400! hover:bg-foreground/10! rounded">
+                            <span>Add your own shop!</span>
                         </v-list-item>
                     </Link>
 

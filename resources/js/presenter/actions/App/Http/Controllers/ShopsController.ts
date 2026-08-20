@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from '../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\ShopsController::getAll
 * @see app/Http/Controllers/ShopsController.php:12

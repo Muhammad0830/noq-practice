@@ -2,7 +2,7 @@
 import PasswordInput from '@/presenter/components/shared/PasswordInput.vue';
 import { useLoginForm } from '@/presenter/forms/loginForm';
 import ThemeToggler from '@/presenter/layouts/app/header/ThemeToggler.vue';
-import { registerPage } from '@/presenter/routes';
+import { registerPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 
 const { form, submit } = useLoginForm();

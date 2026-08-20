@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Shop } from '@/core/types/Shop';
-import { shopView } from '@/presenter/routes';
+import { shopView } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 import { Heart, MessageCircle } from '@lucide/vue';
 

@@ -10,3 +10,9 @@ export interface Shop {
     created_at?: Date;
     updated_at?: Date;
 }
+
+export interface ShopCategory {
+    id: string;
+    name: string;
+    icon: string;
+}

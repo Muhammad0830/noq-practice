@@ -140,3 +140,37 @@
         @apply bg-background text-foreground;
     }
 }
+
+.step-number {
+    @apply w-8 h-8 scale-100 border-[1.5px] border-primary font-semibold text-primary rounded-full flex items-center justify-center bg-background z-10 transition-all delay-0 duration-150;
+}
+
+.step-number.active {
+    @apply z-10 scale-120 delay-300 relative;
+}
+
+.step-number::after {
+    content: '';
+    @apply absolute inset-0 bg-primary/0 rounded-full delay-300 transition-all;
+    z-index: -1;
+}
+
+.step-number.active::after {
+    @apply bg-primary/10;
+}
+
+.step-number.passed {
+    @apply bg-primary text-white;
+}
+
+.step-separator {
+    @apply relative flex-1 h-1 border-[0.5px] border-primary;
+}
+
+.step-separator::after {
+    @apply content-[''] absolute inset-y-0 left-0 bg-primary right-full transition-all duration-300;
+}
+
+.step-separator.passed::after {
+    @apply right-0;
+}

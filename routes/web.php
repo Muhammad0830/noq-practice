@@ -13,10 +13,13 @@ Route::middleware('auth')->group(function () {
     Route::inertia('/settings', 'Settings')->name('settings');
     Route::inertia('/profile', 'Profile')->name('profile');
 
+    Route::get('/create-shop', [ShopsController::class, 'createPage'])->name('create-shop-page');
     Route::get('/shops', [ShopsController::class, 'getAll'])->name('shops-list');
     Route::get('/shops/{shop}/view', [ShopsController::class, 'getOne'])->name('shop-view');
     Route::get('/services', [ServicesController::class, 'getAll'])->name('servcies');
     Route::get('/favourites', [ServicesController::class, 'getAll'])->name('favourites');
+
+    Route::post('/create-shop', [ShopsController::class, 'createShop'])->name('create-shop');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

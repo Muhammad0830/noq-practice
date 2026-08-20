@@ -1,4 +1,4 @@
-import { login } from "@/presenter/routes";
+import { login } from "@/routes";
 import { InertiaForm, useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
 import z from "zod";
@@ -46,7 +46,6 @@ export function useLoginForm(): UseLoginFormProps {
 
         form.submit(login(), {
             onSuccess: () => {
-                console.log('succes')
                 form.reset()
                 error.value = ''
             },

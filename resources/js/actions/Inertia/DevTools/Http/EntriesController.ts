@@ -1,4 +1,4 @@
-import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from '../../../../../wayfinder'
+import { queryParams, type RouteQueryOptions, type RouteDefinition, applyUrlDefaults } from './../../../../wayfinder'
 /**
 * @see \Inertia\DevTools\Http\EntriesController::index
 * @see vendor/inertiajs/inertia-laravel/src/DevTools/Http/EntriesController.php:17
