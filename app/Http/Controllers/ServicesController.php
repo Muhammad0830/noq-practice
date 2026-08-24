@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Services\ServicesServiceContract;
+use App\DTOs\ServiceDTO;
 use App\Http\Requests\CreateServiceRequest;
 use App\Models\Service;
 use App\Models\Shop;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Inertia\Controller;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -31,14 +33,19 @@ class ServicesController extends Controller
         ]);
     }
 
-    public function createServices(CreateServiceRequest $request, ServicesServiceContract $service): RedirectResponse
+    public function createServices(Shop $shop, CreateServiceRequest $request, ServicesServiceContract $service): RedirectResponse
     {
         try {
             $data = $request->validated();
 
-            // $service->create($data);
+            $services = array_map(
+                fn(array $service) => ServiceDTO::fromArray($service),
+                $data['services'] ?? []
+            );
 
-            return redirect()->route('admin-service-list')->with('message', "Services created successfully");
+            $service->create($services, $shop->id);
+
+            return redirect()->route('admin-service-list', ['shop' => $shop->id])->with('message', "Services created successfully");
         } catch (Throwable $e) {
             return redirect()->back()->with('message', $e);
         }

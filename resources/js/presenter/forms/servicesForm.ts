@@ -56,12 +56,9 @@ export const useServicesForm = (
                 ...data,
                 shop_id: shop_id,
             }))
-            .submit(createServices({ shop: 1 }), {
-                onSuccess: (e) => {
-                    console.log(e.props.flash.message)
-                },
+            .submit(createServices({ shop: shop_id }), {
                 onError: (e: any) => {
-                    console.error(e);
+                    console.error('error', e);
                 }
             });
     }

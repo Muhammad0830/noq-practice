@@ -371,7 +371,7 @@ shopView.head = (args: { shop: string | number } | [shop: string | number ] | st
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/services'
 */
 export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -386,7 +386,7 @@ servcies.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/services'
 */
 servcies.url = (options?: RouteQueryOptions) => {
@@ -395,7 +395,7 @@ servcies.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/services'
 */
 servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -405,7 +405,7 @@ servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/services'
 */
 servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -415,7 +415,7 @@ servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/favourites'
 */
 export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -430,7 +430,7 @@ favourites.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/favourites'
 */
 favourites.url = (options?: RouteQueryOptions) => {
@@ -439,7 +439,7 @@ favourites.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/favourites'
 */
 favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -449,7 +449,7 @@ favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:18
+* @see app/Http/Controllers/ServicesController.php:20
 * @route '/favourites'
 */
 favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -595,7 +595,7 @@ adminDashboard.head = (args: { shop: number | { id: number } } | [shop: number |
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceList
-* @see app/Http/Controllers/ServicesController.php:47
+* @see app/Http/Controllers/ServicesController.php:54
 * @route '/admin/shop/{shop}/service/list'
 */
 export const adminServiceList = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -610,7 +610,7 @@ adminServiceList.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceList
-* @see app/Http/Controllers/ServicesController.php:47
+* @see app/Http/Controllers/ServicesController.php:54
 * @route '/admin/shop/{shop}/service/list'
 */
 adminServiceList.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -643,7 +643,7 @@ adminServiceList.url = (args: { shop: number | { id: number } } | [shop: number 
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceList
-* @see app/Http/Controllers/ServicesController.php:47
+* @see app/Http/Controllers/ServicesController.php:54
 * @route '/admin/shop/{shop}/service/list'
 */
 adminServiceList.get = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -653,7 +653,7 @@ adminServiceList.get = (args: { shop: number | { id: number } } | [shop: number 
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceList
-* @see app/Http/Controllers/ServicesController.php:47
+* @see app/Http/Controllers/ServicesController.php:54
 * @route '/admin/shop/{shop}/service/list'
 */
 adminServiceList.head = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -663,7 +663,7 @@ adminServiceList.head = (args: { shop: number | { id: number } } | [shop: number
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
-* @see app/Http/Controllers/ServicesController.php:27
+* @see app/Http/Controllers/ServicesController.php:29
 * @route '/admin/shop/{shop}/service/create'
 */
 export const adminServiceCreatePage = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -678,7 +678,7 @@ adminServiceCreatePage.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
-* @see app/Http/Controllers/ServicesController.php:27
+* @see app/Http/Controllers/ServicesController.php:29
 * @route '/admin/shop/{shop}/service/create'
 */
 adminServiceCreatePage.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
@@ -711,7 +711,7 @@ adminServiceCreatePage.url = (args: { shop: number | { id: number } } | [shop: n
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
-* @see app/Http/Controllers/ServicesController.php:27
+* @see app/Http/Controllers/ServicesController.php:29
 * @route '/admin/shop/{shop}/service/create'
 */
 adminServiceCreatePage.get = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -721,7 +721,7 @@ adminServiceCreatePage.get = (args: { shop: number | { id: number } } | [shop: n
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
-* @see app/Http/Controllers/ServicesController.php:27
+* @see app/Http/Controllers/ServicesController.php:29
 * @route '/admin/shop/{shop}/service/create'
 */
 adminServiceCreatePage.head = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -731,7 +731,7 @@ adminServiceCreatePage.head = (args: { shop: number | { id: number } } | [shop: 
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEditPage
-* @see app/Http/Controllers/ServicesController.php:57
+* @see app/Http/Controllers/ServicesController.php:64
 * @route '/admin/shop/{shop}/service/{service}/edit'
 */
 export const adminServiceEditPage = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -746,7 +746,7 @@ adminServiceEditPage.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEditPage
-* @see app/Http/Controllers/ServicesController.php:57
+* @see app/Http/Controllers/ServicesController.php:64
 * @route '/admin/shop/{shop}/service/{service}/edit'
 */
 adminServiceEditPage.url = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -774,7 +774,7 @@ adminServiceEditPage.url = (args: { shop: string | number, service: number | { i
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEditPage
-* @see app/Http/Controllers/ServicesController.php:57
+* @see app/Http/Controllers/ServicesController.php:64
 * @route '/admin/shop/{shop}/service/{service}/edit'
 */
 adminServiceEditPage.get = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -784,7 +784,7 @@ adminServiceEditPage.get = (args: { shop: string | number, service: number | { i
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEditPage
-* @see app/Http/Controllers/ServicesController.php:57
+* @see app/Http/Controllers/ServicesController.php:64
 * @route '/admin/shop/{shop}/service/{service}/edit'
 */
 adminServiceEditPage.head = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -794,7 +794,7 @@ adminServiceEditPage.head = (args: { shop: string | number, service: number | { 
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEdit
-* @see app/Http/Controllers/ServicesController.php:64
+* @see app/Http/Controllers/ServicesController.php:71
 * @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
 */
 export const adminServiceEdit = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -809,7 +809,7 @@ adminServiceEdit.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEdit
-* @see app/Http/Controllers/ServicesController.php:64
+* @see app/Http/Controllers/ServicesController.php:71
 * @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
 */
 adminServiceEdit.url = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions) => {
@@ -837,7 +837,7 @@ adminServiceEdit.url = (args: { shop: string | number, service: number | { id: n
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceEdit
-* @see app/Http/Controllers/ServicesController.php:64
+* @see app/Http/Controllers/ServicesController.php:71
 * @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
 */
 adminServiceEdit.put = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
@@ -847,10 +847,10 @@ adminServiceEdit.put = (args: { shop: string | number, service: number | { id: n
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreate
-* @see app/Http/Controllers/ServicesController.php:34
+* @see app/Http/Controllers/ServicesController.php:36
 * @route '/admin/shop/{shop}/service/create'
 */
-export const adminServiceCreate = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const adminServiceCreate = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: adminServiceCreate.url(args, options),
     method: 'post',
 })
@@ -862,12 +862,16 @@ adminServiceCreate.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreate
-* @see app/Http/Controllers/ServicesController.php:34
+* @see app/Http/Controllers/ServicesController.php:36
 * @route '/admin/shop/{shop}/service/create'
 */
-adminServiceCreate.url = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions) => {
+adminServiceCreate.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { shop: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { shop: args.id }
     }
 
     if (Array.isArray(args)) {
@@ -879,7 +883,9 @@ adminServiceCreate.url = (args: { shop: string | number } | [shop: string | numb
     args = applyUrlDefaults(args)
 
     const parsedArgs = {
-        shop: args.shop,
+        shop: typeof args.shop === 'object'
+        ? args.shop.id
+        : args.shop,
     }
 
     return adminServiceCreate.definition.url
@@ -889,10 +895,10 @@ adminServiceCreate.url = (args: { shop: string | number } | [shop: string | numb
 
 /**
 * @see \App\Http\Controllers\ServicesController::adminServiceCreate
-* @see app/Http/Controllers/ServicesController.php:34
+* @see app/Http/Controllers/ServicesController.php:36
 * @route '/admin/shop/{shop}/service/create'
 */
-adminServiceCreate.post = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+adminServiceCreate.post = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: adminServiceCreate.url(args, options),
     method: 'post',
 })
