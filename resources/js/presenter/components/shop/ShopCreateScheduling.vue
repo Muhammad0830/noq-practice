@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { CreateShopForm } from '@/presenter/forms/createShopForm';
-import { createShopPage } from '@/presenter/routes';
 import { InertiaForm, router } from '@inertiajs/vue3';
 import ShopCreateSchedulingItem from './ShopCreateSchedulingItem.vue';
 import { onMounted } from 'vue';
+import { createShopPage } from '@/routes/index.js';
 
 const { form, validateDefinition, validateScheduling } = defineProps<{
     form: InertiaForm<CreateShopForm>,
@@ -23,8 +23,7 @@ function handleNext() {
 
 onMounted(() => {
     if (!validateDefinition) {
-        console.log(form.definition)
-        // router.visit(createShopPage({ query: { 'step': 'shop-definition' } }))
+        router.visit(createShopPage({ query: { 'step': 'shop-definition' } }))
     }
 })
 

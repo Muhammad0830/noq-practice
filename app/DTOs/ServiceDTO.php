@@ -17,9 +17,9 @@ class ServiceDTO
     {
         return new self(
             name: $data['name'],
-            duration_min: (int) $data['durationMin'],
+            duration_min: (int) $data['duration_min'],
             price: (float) $data['price'],
-            buffer_time: isset($data['bufferTime']) ? (int) $data['bufferTime'] : null,
+            buffer_time: isset($data['buffer_time']) ? (int) $data['buffer_time'] : null,
             description: $data['description'] ?? null,
         );
     }

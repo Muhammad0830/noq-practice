@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import SidebarNavLinks from '@/presenter/layouts/app/sidebar/SidebarNavLinks.vue';
-import SidebarToggler from '@/presenter/layouts/app/sidebar/SidebarToggler.vue';
 import { useSidebarStore } from '@/presenter/stores/sidebarStore';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
+import SidebarNavLinks from './SidebarNavLinks.vue';
+import SidebarToggler from '../../shared/SidebarToggler.vue';
 
 export interface SidebarLayoutProps {
     sidebarOpenWidth: number,
     sidebarRailWidth: number,
+    shop_id: number,
 }
 
-const { sidebarOpenWidth, sidebarRailWidth } = defineProps<SidebarLayoutProps>()
+const { sidebarOpenWidth, sidebarRailWidth, shop_id } = defineProps<SidebarLayoutProps>()
 
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
@@ -21,14 +22,14 @@ const { mdAndUp, lgAndUp } = useDisplay()
     <v-navigation-drawer v-if="mdAndUp && !lgAndUp" location="left" temporary :width="sidebarOpenWidth" v-model="isOpen"
         class="bg-secondary flex! flex-col justify-between!">
         <v-list density="compact" nav class="h-full flex flex-col justify-between">
-            <SidebarNavLinks />
+            <SidebarNavLinks :shop_id="shop_id" />
         </v-list>
     </v-navigation-drawer>
 
     <v-navigation-drawer v-if="lgAndUp" permanent :rail="!isOpen" :width="sidebarOpenWidth"
         :rail-width="sidebarRailWidth" class="bg-secondary flex! flex-col justify-between!">
         <v-list density="compact" nav class="h-full flex flex-col justify-between">
-            <SidebarNavLinks />
+            <SidebarNavLinks :shop_id="shop_id" />
 
             <SidebarToggler />
         </v-list>

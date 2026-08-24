@@ -2,13 +2,13 @@
 import { dashboard } from '@/routes';
 import { router, usePage } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
-import ShopCreateSteps from '../components/shop/ShopCreateSteps.vue';
-import { useCreateShopForm } from '../forms/createShopForm.js';
+import { useCreateShopForm } from '../../forms/createShopForm.js';
 import { ShopCategory } from '@/core/types/Shop.js';
 import { computed } from 'vue';
-import ShopCreateDefinition from '../components/shop/ShopCreateDefinition.vue';
-import ShopCreateScheduling from '../components/shop/ShopCreateScheduling.vue';
-import ShopCreateServices from '../components/shop/ShopCreateServices.vue';
+import ShopCreateDefinition from '@/presenter/components/shop/ShopCreateDefinition.vue';
+import ShopCreateScheduling from '@/presenter/components/shop/ShopCreateScheduling.vue';
+import ShopCreateServices from '@/presenter/components/shop/ShopCreateServices.vue';
+import ShopCreateSteps from '@/presenter/components/shop/ShopCreateSteps.vue';
 
 const page = usePage();
 

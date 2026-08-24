@@ -3,19 +3,20 @@ import { useSidebarStore } from '@/presenter/stores/sidebarStore.js';
 import { router, usePage } from '@inertiajs/vue3';
 import { Menu, PanelLeft } from '@lucide/vue';
 import { storeToRefs } from 'pinia';
-import { logout } from '@/presenter/actions/App/Http/Controllers/AuthController.js';
 import { ref } from 'vue';
 import { useDisplay } from 'vuetify';
-import HeaderDialog from './HeaderDialog.vue';
 import HeeaderNavMenu from './HeeaderNavMenu.vue';
-import HeaderProfileMenu from './HeaderProfileMenu.vue';
-import ThemeToggler from './ThemeToggler.vue';
+import { logout } from '@/routes/index.js';
+import ThemeToggler from '../../shared/ThemeToggler.vue';
+import HeaderProfileMenu from '../../shared/HeaderProfileMenu.vue';
+import HeaderDialog from '../../shared/HeaderDialog.vue';
 
 interface HeaderLayoutProps {
     sidebarOpenWidth: number,
     sidebarRailWidth: number,
+    shop_id: number,
 }
-const { sidebarOpenWidth, sidebarRailWidth } = defineProps<HeaderLayoutProps>()
+const { sidebarOpenWidth, sidebarRailWidth, shop_id } = defineProps<HeaderLayoutProps>()
 
 const { lgAndUp, mdAndUp, mdAndDown } = useDisplay()
 
@@ -70,5 +71,5 @@ function handleToggle() {
     <HeaderDialog v-model="isModalOpen" @logout="() => router.post(logout())" />
 
     <!-- mobile navLinks menu -->
-    <HeeaderNavMenu v-model="isMenuOpen" />
+    <HeeaderNavMenu :shop_id="shop_id" v-model="isMenuOpen" />
 </template>

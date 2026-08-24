@@ -1,8 +1,10 @@
 import z from "zod";
 
-export const servicesSchema = z.object({
+export const servicesItemSchema = z.object({
+    id: z.number(),
+    shop_id: z.number(),
     name: z.string().min(1, 'Name is required'),
-    durationMin: z.preprocess((val) => {
+    duration_min: z.preprocess((val) => {
         if (typeof val === 'string' && val.includes(':')) {
             const [hours, minutes] = val.split(':').map(Number);
             return (hours * 60) + minutes;
@@ -10,7 +12,7 @@ export const servicesSchema = z.object({
         return val;
     }, z.number().int().min(1, 'Duration is required')),
     price: z.coerce.number().min(1, 'Price is required'),
-    bufferTime: z.preprocess((val) => {
+    buffer_time: z.preprocess((val) => {
         if (typeof val === 'string' && val.includes(':')) {
             const [hours, minutes] = val.split(':').map(Number);
             return (hours * 60) + minutes;
@@ -18,12 +20,18 @@ export const servicesSchema = z.object({
         return val;
     }, z.number().int().min(0).nullable().optional()),
     description: z.string().min(0).nullable().optional(),
+    is_active: z.boolean().default(true),
 })
 
-export const servicesInitials = {
+export const servicesInitials = () => ({
+    id: Math.random(),
+    shop_id: Math.random(),
     name: '',
-    durationMin: 0,
+    duration_min: 0,
     price: 0,
-    bufferTime: null,
+    buffer_time: 0,
     description: '',
-}
+    is_active: true,
+})
+
+export type servicesSchemeProps = z.infer<typeof servicesItemSchema>; 

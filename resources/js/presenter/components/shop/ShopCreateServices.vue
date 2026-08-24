@@ -17,8 +17,7 @@ function handlePrevious() {
 }
 
 function handleNext() {
-    console.log(form.services)
-    validateServices();
+    validateServices()
     console.log(form.errors)
     if (!validateServices()) return;
 
@@ -53,30 +52,32 @@ onMounted(() => {
                     <span>Price</span>
                     <span class="text-red-600">*</span>
                 </label>
-                <v-text-field prefix="$" :error-messages="form.errors['definition.name']" v-model="item.price" id="name"
-                    placeholder="$" density="comfortable"></v-text-field>
+                <v-text-field prefix="$" :error-messages="form.errors[`services.${index}.price`]" v-model="item.price"
+                    id="name" placeholder="$" density="comfortable" class="sm:w-28"></v-text-field>
             </div>
 
             <div class="row-span-2">
                 <label for="description" class="text-sm">Description</label>
-                <v-textarea rows="5" :error-messages="form.errors['definition.name']" v-model="item.description"
-                    id="name" placeholder="Describe Your Sevrice" density="comfortable" />
+                <v-textarea rows="5" :error-messages="form.errors[`services.${index}.description`]"
+                    v-model="item.description" id="name" placeholder="Describe Your Sevrice" density="comfortable" />
             </div>
 
             <div class="max-sm:flex gap-4">
                 <div class="flex-1">
-                    <label for="durationMin" class="text-sm">
+                    <label for="duration_min" class="text-sm">
                         <span>Duration (min)</span>
                         <span class="text-red-600">*</span>
                     </label>
-                    <v-text-field class="sm:w-28" type="time" :error-messages="form.errors['definition.name']"
-                        v-model="item.durationMin" id="name" density="comfortable"></v-text-field>
+                    <v-text-field class="sm:w-28" type="time"
+                        :error-messages="form.errors[`services.${index}.duration_min`]" v-model="item.duration_min"
+                        id="name" density="comfortable"></v-text-field>
                 </div>
 
                 <div class="flex-1">
-                    <label for="bufferTime" class="text-sm">Buffer (min)</label>
-                    <v-text-field class="sm:w-28" type="time" :error-messages="form.errors['definition.name']"
-                        v-model="item.bufferTime" id="name" density="comfortable"></v-text-field>
+                    <label for="buffer_time" class="text-sm">Buffer (min)</label>
+                    <v-text-field class="sm:w-28" type="time"
+                        :error-messages="form.errors[`services.${index}.buffer_time`]" v-model="item.buffer_time"
+                        id="name" density="comfortable"></v-text-field>
                 </div>
             </div>
         </div>

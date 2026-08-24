@@ -27,9 +27,9 @@ class CreateShopRequest extends FormRequest
             // Services Validation
             'services' => ['required', 'array', 'min:1'],
             'services.*.name' => ['required', 'string', 'max:255'],
-            'services.*.durationMin' => ['required', 'integer', 'min:1'],
+            'services.*.duration_min' => ['required', 'integer', 'min:1'],
             'services.*.price' => ['required', 'numeric', 'min:1'],
-            'services.*.bufferTime' => ['nullable', 'integer', 'min:0'],
+            'services.*.buffer_time' => ['nullable', 'integer', 'min:0'],
             'services.*.description' => ['nullable', 'string'],
         ];
 

@@ -1,21 +1,21 @@
 <script setup lang="ts">
-import HeaderLayout from './app/header/HeaderLayout.vue';
-import SideBarLayout from './app/sidebar/SideBarLayout.vue';
+import { usePage } from '@inertiajs/vue3';
+import AdminLayout from './admin/AdminLayout.vue';
+import UserLayout from './user/UserLayout.vue';
+import { computed } from 'vue';
 
-const sidebarOpenWidth = 250;
-const sidebarRailWidth = 80;
+const page = usePage();
+const adminPanel = computed(() => page.url.startsWith('/admin/'))
+const isAdmin = computed(() => page.props.auth.isAdmin)
 </script>
 
 <template>
     <v-layout>
-        <HeaderLayout :sidebar-open-width="sidebarOpenWidth" :sidebar-rail-width="sidebarRailWidth" />
-        <div class="flex flex-1">
-            <SideBarLayout :sidebar-open-width="sidebarOpenWidth" :sidebar-rail-width="sidebarRailWidth" />
-            <v-main class="h-screen overflow-y-scroll overflow-x-hidden flex-1">
-                <div class="lg:p-8 md:6 p-4 max-w-250 mx-auto">
-                    <slot></slot>
-                </div>
-            </v-main>
-        </div>
+        <AdminLayout v-if="adminPanel && isAdmin">
+            <slot />
+        </AdminLayout>
+        <UserLayout v-else>
+            <slot />
+        </UserLayout>
     </v-layout>
 </template>

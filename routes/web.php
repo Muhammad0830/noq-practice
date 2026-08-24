@@ -10,7 +10,7 @@ Route::middleware('auth')->group(function () {
     Route::inertia('/todo', 'TodoPage')->name('todo');
     Route::inertia('/about', 'AboutPage')->name('about');
 
-    Route::inertia('/dashboard', 'Dashboard')->name('dashboard');
+    Route::inertia('/dashboard', 'user/Dashboard')->name('dashboard');
     Route::inertia('/settings', 'Settings')->name('settings');
     Route::inertia('/profile', 'Profile')->name('profile');
 
@@ -25,9 +25,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [AdminDashboardController::class, 'dashboardPage'])->name('admin_dashboard');
+Route::middleware(['auth', 'admin'])->prefix('admin/shop/{shop}')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'dashboardPage'])->name('admin-dashboard');
+
+    Route::get('/service/list', [ServicesController::class, 'list'])->name('admin-service-list');
+    Route::get('/service/create', [ServicesController::class, 'createServicesPage'])->name('admin-service-create-page');
+    Route::get('/service/{service}/edit', [ServicesController::class, 'editPage'])->name('admin-service-edit-page');
+    Route::put('/service/{service}/edit/toggleActive', [ServicesController::class, 'toggleActive'])->name('admin-service-edit');
+
+    Route::post('/service/create', [ServicesController::class, 'createServices'])->name('admin-service-create');
 });
+
 Route::inertia('/auth/login', 'auth/Login')->name('login-page');
 Route::inertia('/auth/register', 'auth/Register')->name('register-page');
 

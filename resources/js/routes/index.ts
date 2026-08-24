@@ -371,7 +371,7 @@ shopView.head = (args: { shop: string | number } | [shop: string | number ] | st
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/services'
 */
 export const servcies = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -386,7 +386,7 @@ servcies.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/services'
 */
 servcies.url = (options?: RouteQueryOptions) => {
@@ -395,7 +395,7 @@ servcies.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/services'
 */
 servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -405,7 +405,7 @@ servcies.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::servcies
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/services'
 */
 servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -415,7 +415,7 @@ servcies.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/favourites'
 */
 export const favourites = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -430,7 +430,7 @@ favourites.definition = {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/favourites'
 */
 favourites.url = (options?: RouteQueryOptions) => {
@@ -439,7 +439,7 @@ favourites.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/favourites'
 */
 favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -449,7 +449,7 @@ favourites.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Http\Controllers\ServicesController::favourites
-* @see app/Http/Controllers/ServicesController.php:12
+* @see app/Http/Controllers/ServicesController.php:18
 * @route '/favourites'
 */
 favourites.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -526,47 +526,375 @@ logout.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 })
 
 /**
-* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
-* @see app/Http/Controllers/AdminDashboardController.php:10
-* @route '/admin/dashboard'
+* @see \App\Http\Controllers\AdminDashboardController::adminDashboard
+* @see app/Http/Controllers/AdminDashboardController.php:11
+* @route '/admin/shop/{shop}/dashboard'
 */
-export const admin_dashboard = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: admin_dashboard.url(options),
+export const adminDashboard = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminDashboard.url(args, options),
     method: 'get',
 })
 
-admin_dashboard.definition = {
+adminDashboard.definition = {
     methods: ["get","head"],
-    url: '/admin/dashboard',
+    url: '/admin/shop/{shop}/dashboard',
 } satisfies RouteDefinition<["get","head"]>
 
 /**
-* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
-* @see app/Http/Controllers/AdminDashboardController.php:10
-* @route '/admin/dashboard'
+* @see \App\Http\Controllers\AdminDashboardController::adminDashboard
+* @see app/Http/Controllers/AdminDashboardController.php:11
+* @route '/admin/shop/{shop}/dashboard'
 */
-admin_dashboard.url = (options?: RouteQueryOptions) => {
-    return admin_dashboard.definition.url + queryParams(options)
+adminDashboard.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { shop: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { shop: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: typeof args.shop === 'object'
+        ? args.shop.id
+        : args.shop,
+    }
+
+    return adminDashboard.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace(/\/+$/, '') + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
-* @see app/Http/Controllers/AdminDashboardController.php:10
-* @route '/admin/dashboard'
+* @see \App\Http\Controllers\AdminDashboardController::adminDashboard
+* @see app/Http/Controllers/AdminDashboardController.php:11
+* @route '/admin/shop/{shop}/dashboard'
 */
-admin_dashboard.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: admin_dashboard.url(options),
+adminDashboard.get = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminDashboard.url(args, options),
     method: 'get',
 })
 
 /**
-* @see \App\Http\Controllers\AdminDashboardController::admin_dashboard
-* @see app/Http/Controllers/AdminDashboardController.php:10
-* @route '/admin/dashboard'
+* @see \App\Http\Controllers\AdminDashboardController::adminDashboard
+* @see app/Http/Controllers/AdminDashboardController.php:11
+* @route '/admin/shop/{shop}/dashboard'
 */
-admin_dashboard.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: admin_dashboard.url(options),
+adminDashboard.head = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: adminDashboard.url(args, options),
     method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceList
+* @see app/Http/Controllers/ServicesController.php:47
+* @route '/admin/shop/{shop}/service/list'
+*/
+export const adminServiceList = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceList.url(args, options),
+    method: 'get',
+})
+
+adminServiceList.definition = {
+    methods: ["get","head"],
+    url: '/admin/shop/{shop}/service/list',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceList
+* @see app/Http/Controllers/ServicesController.php:47
+* @route '/admin/shop/{shop}/service/list'
+*/
+adminServiceList.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { shop: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { shop: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: typeof args.shop === 'object'
+        ? args.shop.id
+        : args.shop,
+    }
+
+    return adminServiceList.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceList
+* @see app/Http/Controllers/ServicesController.php:47
+* @route '/admin/shop/{shop}/service/list'
+*/
+adminServiceList.get = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceList.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceList
+* @see app/Http/Controllers/ServicesController.php:47
+* @route '/admin/shop/{shop}/service/list'
+*/
+adminServiceList.head = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: adminServiceList.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
+* @see app/Http/Controllers/ServicesController.php:27
+* @route '/admin/shop/{shop}/service/create'
+*/
+export const adminServiceCreatePage = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceCreatePage.url(args, options),
+    method: 'get',
+})
+
+adminServiceCreatePage.definition = {
+    methods: ["get","head"],
+    url: '/admin/shop/{shop}/service/create',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
+* @see app/Http/Controllers/ServicesController.php:27
+* @route '/admin/shop/{shop}/service/create'
+*/
+adminServiceCreatePage.url = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { shop: args }
+    }
+
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { shop: args.id }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: typeof args.shop === 'object'
+        ? args.shop.id
+        : args.shop,
+    }
+
+    return adminServiceCreatePage.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
+* @see app/Http/Controllers/ServicesController.php:27
+* @route '/admin/shop/{shop}/service/create'
+*/
+adminServiceCreatePage.get = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceCreatePage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreatePage
+* @see app/Http/Controllers/ServicesController.php:27
+* @route '/admin/shop/{shop}/service/create'
+*/
+adminServiceCreatePage.head = (args: { shop: number | { id: number } } | [shop: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: adminServiceCreatePage.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEditPage
+* @see app/Http/Controllers/ServicesController.php:57
+* @route '/admin/shop/{shop}/service/{service}/edit'
+*/
+export const adminServiceEditPage = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceEditPage.url(args, options),
+    method: 'get',
+})
+
+adminServiceEditPage.definition = {
+    methods: ["get","head"],
+    url: '/admin/shop/{shop}/service/{service}/edit',
+} satisfies RouteDefinition<["get","head"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEditPage
+* @see app/Http/Controllers/ServicesController.php:57
+* @route '/admin/shop/{shop}/service/{service}/edit'
+*/
+adminServiceEditPage.url = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions) => {
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+            service: args[1],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: args.shop,
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
+
+    return adminServiceEditPage.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace('{service}', parsedArgs.service.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEditPage
+* @see app/Http/Controllers/ServicesController.php:57
+* @route '/admin/shop/{shop}/service/{service}/edit'
+*/
+adminServiceEditPage.get = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
+    url: adminServiceEditPage.url(args, options),
+    method: 'get',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEditPage
+* @see app/Http/Controllers/ServicesController.php:57
+* @route '/admin/shop/{shop}/service/{service}/edit'
+*/
+adminServiceEditPage.head = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
+    url: adminServiceEditPage.url(args, options),
+    method: 'head',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEdit
+* @see app/Http/Controllers/ServicesController.php:64
+* @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
+*/
+export const adminServiceEdit = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: adminServiceEdit.url(args, options),
+    method: 'put',
+})
+
+adminServiceEdit.definition = {
+    methods: ["put"],
+    url: '/admin/shop/{shop}/service/{service}/edit/toggleActive',
+} satisfies RouteDefinition<["put"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEdit
+* @see app/Http/Controllers/ServicesController.php:64
+* @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
+*/
+adminServiceEdit.url = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions) => {
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+            service: args[1],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: args.shop,
+        service: typeof args.service === 'object'
+        ? args.service.id
+        : args.service,
+    }
+
+    return adminServiceEdit.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace('{service}', parsedArgs.service.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceEdit
+* @see app/Http/Controllers/ServicesController.php:64
+* @route '/admin/shop/{shop}/service/{service}/edit/toggleActive'
+*/
+adminServiceEdit.put = (args: { shop: string | number, service: number | { id: number } } | [shop: string | number, service: number | { id: number } ], options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+    url: adminServiceEdit.url(args, options),
+    method: 'put',
+})
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreate
+* @see app/Http/Controllers/ServicesController.php:34
+* @route '/admin/shop/{shop}/service/create'
+*/
+export const adminServiceCreate = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: adminServiceCreate.url(args, options),
+    method: 'post',
+})
+
+adminServiceCreate.definition = {
+    methods: ["post"],
+    url: '/admin/shop/{shop}/service/create',
+} satisfies RouteDefinition<["post"]>
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreate
+* @see app/Http/Controllers/ServicesController.php:34
+* @route '/admin/shop/{shop}/service/create'
+*/
+adminServiceCreate.url = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions) => {
+    if (typeof args === 'string' || typeof args === 'number') {
+        args = { shop: args }
+    }
+
+    if (Array.isArray(args)) {
+        args = {
+            shop: args[0],
+        }
+    }
+
+    args = applyUrlDefaults(args)
+
+    const parsedArgs = {
+        shop: args.shop,
+    }
+
+    return adminServiceCreate.definition.url
+            .replace('{shop}', parsedArgs.shop.toString())
+            .replace(/\/+$/, '') + queryParams(options)
+}
+
+/**
+* @see \App\Http\Controllers\ServicesController::adminServiceCreate
+* @see app/Http/Controllers/ServicesController.php:34
+* @route '/admin/shop/{shop}/service/create'
+*/
+adminServiceCreate.post = (args: { shop: string | number } | [shop: string | number ] | string | number, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+    url: adminServiceCreate.url(args, options),
+    method: 'post',
 })
 
 /**

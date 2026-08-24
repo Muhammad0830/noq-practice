@@ -20,11 +20,11 @@ class ShopCreateUseCase implements ShopCreateUseCaseContract
     ) {
     }
 
-    public function execute(ShopCreateDTO $dto): void
+    public function execute(ShopCreateDTO $dto): int|null
     {
-        DB::transaction(function () use ($dto) {
+        return DB::transaction(function () use ($dto) {
             if (!Auth::guard('users')->check()) {
-                return;
+                return null;
             }
 
             $shop_id = $this->shopService->create($dto->definitionDTO);
@@ -33,11 +33,17 @@ class ShopCreateUseCase implements ShopCreateUseCaseContract
 
             $this->servicesService->create($dto->servicesDTO, $shop_id);
 
-            $user_id = Auth::guard('users')->user()->id;
+            if (!Auth::guard('users')->user()->admin) {
+                $user_id = Auth::guard('users')->user()->id;
 
-            $admin_id = $this->adminService->create($user_id);
+                $admin_id = $this->adminService->create($user_id);
+            } else {
+                $admin_id = Auth::guard('users')->user()->admin->id;
+            }
 
             $this->adminService->connectToShop($admin_id, $shop_id);
+
+            return $shop_id;
         });
     }
 }

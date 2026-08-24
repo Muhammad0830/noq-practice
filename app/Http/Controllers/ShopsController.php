@@ -36,7 +36,7 @@ class ShopsController extends Controller
         $step = $request->query('step', 'shop-definition');
         $categories = ShopCategory::get()->toArray();
 
-        return Inertia::render('CreateShop', [
+        return Inertia::render('user/CreateShop', [
             'step' => $step,
             'categories' => $categories,
         ]);
@@ -48,8 +48,8 @@ class ShopsController extends Controller
 
         $dto = ShopCreateDTO::fromRequest($validated);
 
-        $useCase->execute($dto);
+        $shop_id = $useCase->execute($dto);
 
-        return redirect()->route('admin_dashboard');
+        return redirect()->route('admin-dashboard', ['shop' => $shop_id]);
     }
 }

@@ -22,4 +22,14 @@ class Shop extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+    public function admins()
+    {
+        return $this->belongsToMany(
+            Admin::class,
+            'shop_admins',
+            'shop_id',
+            'admin_id'
+        )->withPivot('role');
+    }
 }

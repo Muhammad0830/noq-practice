@@ -1,4 +1,4 @@
-import { register } from "@/presenter/actions/App/Http/Controllers/AuthController";
+import { register } from "@/routes";
 import { InertiaForm, useForm } from "@inertiajs/vue3";
 import z from "zod";
 

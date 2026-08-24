@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PasswordInput from '@/presenter/components/shared/PasswordInput.vue';
 import { useLoginForm } from '@/presenter/forms/loginForm';
-import ThemeToggler from '@/presenter/layouts/app/header/ThemeToggler.vue';
+import ThemeToggler from '@/presenter/layouts/shared/ThemeToggler.vue';
 import { registerPage } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 

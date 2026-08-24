@@ -13,4 +13,13 @@ class Admin extends Authenticatable
         'user_id',
     ];
 
+    public function shops()
+    {
+        return $this->belongsToMany(
+            Shop::class,
+            'shop_admins',
+            'admin_id',
+            'shop_id'
+        )->withPivot('role');
+    }
 }

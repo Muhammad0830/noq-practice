@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { navItems } from '@/presenter/layouts/navItems';
+import { userNavItems } from '@/presenter/layouts/navItems';
 import { Link, usePage } from '@inertiajs/vue3';
 import { X } from '@lucide/vue';
 
@@ -12,7 +12,7 @@ const page = usePage();
         <div class="relative w-screen h-screen flex items-center justify-center bg-background">
 
             <div class="flex flex-col gap-2">
-                <Link v-for="item in navItems" :href="item.route" :key="item.id" @click="() => isActive.value = false">
+                <Link v-for="item in userNavItems" :href="item.route" :key="item.id" @click="() => isActive.value = false">
                     <v-list-item min-width="250px" class="min-h-12! text-headline-small hover:bg-foreground/20!"
                         :class="{ 'bg-foreground/20!': page.url.startsWith(item.url) }">
                         <span class="text-center w-full inline-block">{{ item.label }}</span>
@@ -21,10 +21,8 @@ const page = usePage();
             </div>
 
             <!-- x/close button -->
-            <button @click="() => isActive.value = false"
-                class="absolute top-10 right-10 border! border-foreground rounded-full p-1">
-                <X class="size-10" />
-            </button>
+            <v-btn @click="() => isActive.value = false" class="absolute! top-10 right-10" variant="outlined"
+                color="foreground" size="x-large" density="compact" :icon="X"></v-btn>
         </div>
     </v-overlay>
 </template>

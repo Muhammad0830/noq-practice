@@ -1,7 +1,7 @@
 import { InertiaForm, useForm } from "@inertiajs/vue3";
 import z from "zod";
 import { schedulingInitials, schedulingSchema } from "./schemas/ShopSchedulingSchema";
-import { servicesInitials, servicesSchema } from "./schemas/ShopServicesSchema";
+import { servicesInitials, servicesItemSchema } from "./schemas/ShopServicesSchema";
 import { createShop } from "@/actions/App/Http/Controllers/ShopsController";
 import { definitionInitials, definitionSchema } from "./schemas/ShopDefinitionSchema";
 
@@ -16,7 +16,7 @@ interface UseCreateShopFormProps {
 export const createShopSchema = z.object({
     definition: definitionSchema,
     scheduling: schedulingSchema,
-    services: z.array(servicesSchema),
+    services: z.array(servicesItemSchema),
 })
 
 export type CreateShopForm = z.infer<typeof createShopSchema>;
@@ -26,7 +26,7 @@ export function useCreateShopForm(): UseCreateShopFormProps {
     const form = useForm<CreateShopForm>({
         definition: definitionInitials,
         scheduling: schedulingInitials,
-        services: [servicesInitials],
+        services: [servicesInitials()],
     });
 
     function validateDefinition(): boolean {
@@ -66,7 +66,7 @@ export function useCreateShopForm(): UseCreateShopFormProps {
     function validateServices(): boolean {
         form.clearErrors();
 
-        const result = z.array(servicesSchema).safeParse(form.services);
+        const result = z.array(servicesItemSchema).safeParse(form.services);
 
         if (!result.success) {
             result.error.issues.forEach(issue => {
@@ -84,8 +84,6 @@ export function useCreateShopForm(): UseCreateShopFormProps {
 
     function submit(): void {
         if (!validateDefinition() || !validateScheduling() || !validateServices()) return;
-
-        console.log(form.services)
 
         form.submit(createShop(), {
             onSuccess: () => form.resetAndClearErrors(),
