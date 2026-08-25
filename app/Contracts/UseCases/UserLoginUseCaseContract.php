@@ -2,7 +2,7 @@
 
 namespace App\Contracts\UseCases;
 
-use App\DTOs\UserLoginDTO;
+use App\DTOs\Input\UserLoginDTO;
 
 interface UserLoginUseCaseContract
 {

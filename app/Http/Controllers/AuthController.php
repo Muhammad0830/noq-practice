@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\UserRegisterUseCaseContract;
 use App\Contracts\UseCases\UserLoginUseCaseContract;
-use App\DTOs\UserLoginDTO;
-use App\DTOs\UserRegisterDTO;
+use App\DTOs\Input\UserLoginDTO;
+use App\DTOs\Input\UserRegisterDTO;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Http\RedirectResponse;

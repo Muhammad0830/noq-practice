@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Repositories;
 
-use App\DTOs\SchedulingTimelineDTO;
+use App\DTOs\Input\SchedulingTimelineDTO;
 use Illuminate\Database\Eloquent\Collection;
 
 interface ShopScheduleRepositoryContract

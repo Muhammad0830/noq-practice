@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\UserRepositoryContract;
-use App\DTOs\UserRegisterDTO;
+use App\DTOs\Input\UserRegisterDTO;
 use App\Models\User;
 
 class UserRepository implements UserRepositoryContract

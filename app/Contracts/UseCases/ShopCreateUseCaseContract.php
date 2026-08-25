@@ -2,7 +2,7 @@
 
 namespace App\Contracts\UseCases;
 
-use App\DTOs\ShopCreateDTO;
+use App\DTOs\Input\ShopCreateDTO;
 
 interface ShopCreateUseCaseContract
 {

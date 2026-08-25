@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\ServicesRepositoryContract;
-use App\DTOs\ServiceDTO;
-use App\DTOs\ServiceUpdateDTO;
+use App\DTOs\Input\ServiceDTO;
+use App\DTOs\Input\ServiceUpdateDTO;
 use App\Models\Service;
 
 class ServicesRepository implements ServicesRepositoryContract

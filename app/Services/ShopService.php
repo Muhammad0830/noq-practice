@@ -5,10 +5,8 @@ namespace App\Services;
 use App\Contracts\Repositories\ShopRepositoryContract;
 use App\Contracts\Repositories\ShopScheduleRepositoryContract;
 use App\Contracts\Services\ShopServiceContract;
-use App\DTOs\SchedulingDayDTO;
-use App\DTOs\SchedulingDTO;
-use App\DTOs\SchedulingTimelineDTO;
-use App\DTOs\ShopDefinitionDTO;
+use App\DTOs\Input\SchedulingDTO;
+use App\DTOs\Input\ShopDefinitionDTO;
 
 class ShopService implements ShopServiceContract
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\UseCases\ShopCreateUseCaseContract;
-use App\DTOs\ShopCreateDTO;
+use App\DTOs\Input\ShopCreateDTO;
 use App\Http\Requests\CreateShopRequest;
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;

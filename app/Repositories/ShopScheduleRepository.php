@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\ShopScheduleRepositoryContract;
-use App\DTOs\SchedulingTimelineDTO;
+use App\DTOs\Input\SchedulingTimelineDTO;
 use App\Models\ShopSchedule;
 use Illuminate\Database\Eloquent\Collection;
 

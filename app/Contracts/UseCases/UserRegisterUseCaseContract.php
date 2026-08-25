@@ -2,7 +2,7 @@
 
 namespace App\Contracts\UseCases;
 
-use App\DTOs\UserRegisterDTO;
+use App\DTOs\Input\UserRegisterDTO;
 
 interface UserRegisterUseCaseContract
 {

@@ -2,8 +2,8 @@
 
 namespace App\Contracts\Services;
 
-use App\DTOs\SchedulingDTO;
-use App\DTOs\ShopDefinitionDTO;
+use App\DTOs\Input\SchedulingDTO;
+use App\DTOs\Input\ShopDefinitionDTO;
 
 interface ShopServiceContract
 {

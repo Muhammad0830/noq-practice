@@ -5,8 +5,8 @@ namespace App\UseCases;
 use App\Contracts\Repositories\UserRepositoryContract;
 use App\Contracts\Services\AuthServiceContract;
 use App\Contracts\UseCases\UserRegisterUseCaseContract;
-use App\DTOs\UserLoginDTO;
-use App\DTOs\UserRegisterDTO;
+use App\DTOs\Input\UserLoginDTO;
+use App\DTOs\Input\UserRegisterDTO;
 
 class UserRegisterUseCase implements UserRegisterUseCaseContract
 {

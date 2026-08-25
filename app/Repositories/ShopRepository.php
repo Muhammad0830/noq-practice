@@ -3,7 +3,7 @@
 namespace App\Repositories;
 
 use App\Contracts\Repositories\ShopRepositoryContract;
-use App\DTOs\ShopDefinitionDTO;
+use App\DTOs\Input\ShopDefinitionDTO;
 use App\Models\Shop;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Log;

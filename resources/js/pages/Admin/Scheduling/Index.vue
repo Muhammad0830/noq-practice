@@ -14,13 +14,15 @@ const { xs, smAndUp } = useDisplay();
 </script>
 
 <template>
-    <div class="flex flex-col gap-1">
-        <div v-for="(item, day) in scheduling" class="rounded-lg overflow-hidden">
-            <v-expansion-panels variant="accordion">
-                <v-expansion-panel elevation="0" bg-color="blue">
-                    <v-expansion-panel-title :expand-icon="ChevronDown" :collapse-icon="ChevronUp" color="secondary"
-                        class="border-0! shadow-none!">
-                        <template v-slot:default="{ expanded }">
+    <div>
+        <h1 class="text-xl font-bold mb-6">Create Your Shop</h1>
+
+        <div class="flex flex-col gap-1">
+            <div v-for="(item, day) in scheduling" class="rounded-lg overflow-hidden">
+                <v-expansion-panels variant="accordion">
+                    <v-expansion-panel elevation="0" bg-color="blue">
+                        <v-expansion-panel-title :expand-icon="ChevronDown" :collapse-icon="ChevronUp" color="secondary"
+                            class="border-0! shadow-none!">
                             <v-row density="comfortable">
                                 <v-col class="d-flex flex-col justify-start" :cols="xs ? 12 : 6">
                                     <div class="relative self-start">
@@ -54,51 +56,52 @@ const { xs, smAndUp } = useDisplay();
                                     </div>
                                 </v-col>
                             </v-row>
-                        </template>
-                    </v-expansion-panel-title>
+                        </v-expansion-panel-title>
 
-                    <v-expansion-panel-text class="bg-secondary/90">
-                        <TransitionGroup name="schedulingItems" tag="ul" @before-enter="onBeforeEnter" @enter="onEnter"
-                            @after-enter="onAfterEnter" @before-leave="onBeforeLeave" @leave="onLeave"
-                            @after-leave="onAfterLeave">
-                            <li :key="item.open[0].id"
-                                class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground">
-                                <p class="flex-1">{{ item.open[0].type === 'open' ? 'Open Hours' : 'Break Hours' }}</p>
-                                <div class="flex items-center gap-2 sm:justify-end">
-                                    <label class="max-sm:hidden">Start Time</label>
-                                    <v-text-field type="time" v-model="item.open[0].start_time"
-                                        class="max-w-28 translate-y-2" />
-                                    <span class="sm:hidden">-</span>
-                                    <label class="max-sm:hidden">End Time</label>
-                                    <v-text-field type="time" v-model="item.open[0].end_time"
-                                        class="max-w-28 translate-y-2" />
-                                    <!-- <div class="w-9">
+                        <v-expansion-panel-text class="bg-secondary/90">
+                            <TransitionGroup name="schedulingItems" tag="ul" @before-enter="onBeforeEnter"
+                                @enter="onEnter" @after-enter="onAfterEnter" @before-leave="onBeforeLeave"
+                                @leave="onLeave" @after-leave="onAfterLeave">
+                                <li :key="item.open[0].id"
+                                    class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground">
+                                    <p class="flex-1">{{ item.open[0].type === 'open' ? 'Open Hours' : 'Break Hours' }}
+                                    </p>
+                                    <div class="flex items-center gap-2 sm:justify-end">
+                                        <label class="max-sm:hidden">Start Time</label>
+                                        <v-text-field type="time" v-model="item.open[0].start_time"
+                                            class="max-w-28 translate-y-2" />
+                                        <span class="sm:hidden">-</span>
+                                        <label class="max-sm:hidden">End Time</label>
+                                        <v-text-field type="time" v-model="item.open[0].end_time"
+                                            class="max-w-28 translate-y-2" />
+                                        <!-- <div class="w-9">
                                     <v-btn @click="() => deleteBreak(item)" v-if="item.type === 'closed'"
                                         variant="tonal" color="red" density="comfortable" :icon="Trash2"></v-btn>
                                 </div> -->
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
 
-                            <li v-for="(schedulingItem, index) in item.closed" :key="schedulingItem.id"
-                                class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground">
-                                <p class="flex-1">{{ schedulingItem.type === 'open' ? 'Open Hours' : 'Break Hours' }}
-                                </p>
-                                <div class="flex items-center gap-2 sm:justify-end">
-                                    <label class="max-sm:hidden">Start Time</label>
-                                    <v-text-field type="time" v-model="schedulingItem.start_time"
-                                        class="max-w-28 translate-y-2" />
-                                    <span class="sm:hidden">-</span>
-                                    <label class="max-sm:hidden">End Time</label>
-                                    <v-text-field type="time" v-model="schedulingItem.end_time"
-                                        class="max-w-28 translate-y-2" />
-                                    <!-- <div class="w-9">
+                                <li v-for="(schedulingItem, index) in item.closed" :key="schedulingItem.id"
+                                    class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground">
+                                    <p class="flex-1">{{ schedulingItem.type === 'open' ? 'Open Hours' : 'Break Hours'
+                                    }}
+                                    </p>
+                                    <div class="flex items-center gap-2 sm:justify-end">
+                                        <label class="max-sm:hidden">Start Time</label>
+                                        <v-text-field type="time" v-model="schedulingItem.start_time"
+                                            class="max-w-28 translate-y-2" />
+                                        <span class="sm:hidden">-</span>
+                                        <label class="max-sm:hidden">End Time</label>
+                                        <v-text-field type="time" v-model="schedulingItem.end_time"
+                                            class="max-w-28 translate-y-2" />
+                                        <!-- <div class="w-9">
                                     <v-btn @click="() => deleteBreak(item)" v-if="item.type === 'closed'"
                                         variant="tonal" color="red" density="comfortable" :icon="Trash2"></v-btn>
                                 </div> -->
-                                </div>
-                            </li>
+                                    </div>
+                                </li>
 
-                            <!-- <div key="add-toggle-buttons" class="flex items-center gap-4 justify-center sm:justify-between">
+                                <!-- <div key="add-toggle-buttons" class="flex items-center gap-4 justify-center sm:justify-between">
                             <div class="flex transition-all sm:flex-1 duration-500">
                                 <v-btn @click="addNewBreak(day as DayOfWeekItemType)" class="text-white" color="primary"
                                     :prepend-icon="PlusCircle">
@@ -106,11 +109,12 @@ const { xs, smAndUp } = useDisplay();
                                 </v-btn>
                             </div>
                         </div> -->
-                        </TransitionGroup>
+                            </TransitionGroup>
 
-                    </v-expansion-panel-text>
-                </v-expansion-panel>
-            </v-expansion-panels>
+                        </v-expansion-panel-text>
+                    </v-expansion-panel>
+                </v-expansion-panels>
+            </div>
         </div>
     </div>
 </template>

@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Repositories;
 
-use App\DTOs\ShopDefinitionDTO;
+use App\DTOs\Input\ShopDefinitionDTO;
 use App\Models\Shop;
 use Illuminate\Database\Eloquent\Collection;
 

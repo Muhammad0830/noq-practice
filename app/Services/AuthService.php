@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\Services\AuthServiceContract;
-use App\DTOs\UserLoginDTO;
+use App\DTOs\Input\UserLoginDTO;
 use Illuminate\Support\Facades\Auth;
 
 class AuthService implements AuthServiceContract

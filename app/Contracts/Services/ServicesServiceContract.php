@@ -2,8 +2,7 @@
 
 namespace App\Contracts\Services;
 
-use App\DTOs\ServiceDTO;
-use App\DTOs\ServiceUpdateDTO;
+use App\DTOs\Input\ServiceUpdateDTO;
 
 interface ServicesServiceContract
 {

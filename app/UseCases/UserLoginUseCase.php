@@ -4,7 +4,7 @@ namespace App\UseCases;
 
 use App\Contracts\Services\AuthServiceContract;
 use App\Contracts\UseCases\UserLoginUseCaseContract;
-use App\DTOs\UserLoginDTO;
+use App\DTOs\Input\UserLoginDTO;
 use Illuminate\Validation\ValidationException;
 
 class UserLoginUseCase implements UserLoginUseCaseContract

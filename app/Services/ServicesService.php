@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Contracts\Repositories\ServicesRepositoryContract;
 use App\Contracts\Services\ServicesServiceContract;
-use App\DTOs\ServiceUpdateDTO;
+use App\DTOs\Input\ServiceUpdateDTO;
 
 class ServicesService implements ServicesServiceContract
 {

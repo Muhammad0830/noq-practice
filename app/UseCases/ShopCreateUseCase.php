@@ -6,10 +6,9 @@ use App\Contracts\Services\AdminServiceContract;
 use App\Contracts\Services\ServicesServiceContract;
 use App\Contracts\Services\ShopServiceContract;
 use App\Contracts\UseCases\ShopCreateUseCaseContract;
-use App\DTOs\ShopCreateDTO;
+use App\DTOs\Input\ShopCreateDTO;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class ShopCreateUseCase implements ShopCreateUseCaseContract
 {

@@ -2,7 +2,7 @@
 
 namespace App\Contracts\Repositories;
 
-use App\DTOs\UserRegisterDTO;
+use App\DTOs\Input\UserRegisterDTO;
 use App\Models\User;
 
 interface UserRepositoryContract

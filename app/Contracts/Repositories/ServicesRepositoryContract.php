@@ -2,8 +2,8 @@
 
 namespace App\Contracts\Repositories;
 
-use App\DTOs\ServiceDTO;
-use App\DTOs\ServiceUpdateDTO;
+use App\DTOs\Input\ServiceDTO;
+use App\DTOs\Input\ServiceUpdateDTO;
 use App\Models\Service;
 
 interface ServicesRepositoryContract

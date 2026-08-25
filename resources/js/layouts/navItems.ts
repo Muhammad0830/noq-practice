@@ -1,7 +1,8 @@
 import { adminAnalytics, adminDashboard, adminSchedulingPage, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
-import { ChartNoAxesGantt, ChartPie, Heart, Home, LayoutDashboard, LayoutList, SquareChartGantt, Store } from '@lucide/vue';
+import { AdminNavItemProps, UserNavItemProps } from '@/types/Shared';
+import { ChartPie, Heart, Home, LayoutDashboard, LayoutList, SquareChartGantt, Store } from '@lucide/vue';
 
-export const userNavItems = [
+export const userNavItems: UserNavItemProps[] = [
     {
         id: 0,
         label: 'Home',
@@ -32,7 +33,7 @@ export const userNavItems = [
     },
 ]
 
-export const adminNavItems = [
+export const adminNavItems: AdminNavItemProps[] = [
     {
         id: 0,
         label: 'Dashboard',

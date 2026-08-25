@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Services\ServicesServiceContract;
-use App\DTOs\ServiceDTO;
-use App\DTOs\ServiceUpdateDTO;
+use App\DTOs\Input\ServiceDTO;
+use App\DTOs\Input\ServiceUpdateDTO;
 use App\Http\Requests\CreateServiceRequest;
 use App\Http\Requests\ServiceEditRequest;
 use App\Models\Service;
