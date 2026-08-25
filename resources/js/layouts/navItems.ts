@@ -1,6 +1,6 @@
 import { adminAnalytics, adminDashboard, adminSchedulingPage, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
 import { AdminNavItemProps, UserNavItemProps } from '@/types/Shared';
-import { ChartPie, Heart, Home, LayoutDashboard, LayoutList, SquareChartGantt, Store } from '@lucide/vue';
+import { CalendarDays, ChartPie, Heart, Home, LayoutDashboard, LayoutList, RotateCwFadingClock, SquareChartGantt, Store } from '@lucide/vue';
 
 export const userNavItems: UserNavItemProps[] = [
     {
@@ -60,6 +60,6 @@ export const adminNavItems: AdminNavItemProps[] = [
         label: 'Schedule Manage',
         route: (shop_id: number) => adminSchedulingPage({ shop: shop_id }),
         url: '/scheduling',
-        icon: Heart,
+        icon: CalendarDays,
     },
 ]
