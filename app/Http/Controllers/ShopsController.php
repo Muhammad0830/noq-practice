@@ -17,7 +17,7 @@ class ShopsController extends Controller
     {
         $shops = $repository->getAll();
 
-        return Inertia::render('user/shops/Index', [
+        return Inertia::render('User/shops/Index', [
             'data' => $shops,
         ]);
     }
@@ -26,7 +26,7 @@ class ShopsController extends Controller
     {
         $shop = $repository->find($shopId);
 
-        return Inertia::render('user/shops/View', [
+        return Inertia::render('User/shops/View', [
             'data' => $shop
         ]);
     }
@@ -36,7 +36,7 @@ class ShopsController extends Controller
         $step = $request->query('step', 'shop-definition');
         $categories = ShopCategory::get()->toArray();
 
-        return Inertia::render('user/CreateShop', [
+        return Inertia::render('User/CreateShop', [
             'step' => $step,
             'categories' => $categories,
         ]);

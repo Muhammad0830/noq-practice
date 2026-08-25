@@ -12,7 +12,7 @@ class AdminDashboardController
     {
         $data = [];
 
-        return Inertia::render('admin/Dashboard', [
+        return Inertia::render('Admin/Dashboard/Index', [
             'data' => $data,
             'shop_id' => $shop->id,
         ]);

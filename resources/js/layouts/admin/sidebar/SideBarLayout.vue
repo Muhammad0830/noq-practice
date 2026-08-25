@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useSidebarStore } from '@/stores/sidebarStore.js';
 import { storeToRefs } from 'pinia';
 import { useDisplay } from 'vuetify';
+import { useSidebarStore } from '@/stores/sidebarStore.js';
 import SidebarNavLinks from './SidebarNavLinks.vue';
-import SidebarToggler from '../../shared/SidebarToggler.vue';
+import SidebarToggler from '../../Shared/SidebarToggler.vue';
 
 export interface SidebarLayoutProps {
     sidebarOpenWidth: number,

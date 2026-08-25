@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import HeaderLayout from './header/HeaderLayout.vue';
-import SideBarLayout from './sidebar/SideBarLayout.vue';
+import HeaderLayout from './Header/HeaderLayout.vue';
+import SideBarLayout from './Sidebar/SideBarLayout.vue';
 
 const sidebarOpenWidth = 250;
 const sidebarRailWidth = 80;

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\AdminAnalyticsController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SchedulingController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ShopsController;
 use Illuminate\Support\Facades\Route;
@@ -9,8 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->group(function () {
     Route::inertia('/about', 'AboutPage')->name('about');
 
-    Route::inertia('/dashboard', 'user/Dashboard')->name('dashboard');
-    Route::inertia('/settings', 'Settings')->name('settings');
+    Route::inertia('/dashboard', 'User/Dashboard')->name('dashboard');
+    Route::inertia('/settings', 'User/Settings')->name('settings');
     Route::inertia('/profile', 'Profile')->name('profile');
 
     Route::get('/create-shop', [ShopsController::class, 'createPage'])->name('create-shop-page');
@@ -26,6 +28,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin/shop/{shop}')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'dashboardPage'])->name('admin-dashboard');
+    Route::get('/analytics', [AdminAnalyticsController::class, 'analyticsPage'])->name('admin-analytics');
+    Route::get('/scheduling', [SchedulingController::class, 'schedulingPage'])->name('admin-scheduling-page');
 
     Route::get('/service/list', [ServicesController::class, 'list'])->name('admin-service-list');
     Route::get('/service/create', [ServicesController::class, 'createServicesPage'])->name('admin-service-create-page');
@@ -36,8 +40,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin/shop/{shop}')->group(functio
     Route::post('/service/create', [ServicesController::class, 'createServices'])->name('admin-service-create');
 });
 
-Route::inertia('/auth/login', 'auth/Login')->name('login-page');
-Route::inertia('/auth/register', 'auth/Register')->name('register-page');
+Route::inertia('/auth/login', 'Auth/Login')->name('login-page');
+Route::inertia('/auth/register', 'Auth/Register')->name('register-page');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');

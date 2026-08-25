@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { dialogDesktopWidth, dialogMobileWidth } from '@/ui_constants/constants';
+import { dialogDesktopWidth, dialogMobileWidth } from '@/constants/constants';
 import { adminDashboard } from '@/routes';
 import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';

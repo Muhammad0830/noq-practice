@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ShopCard from '@/components/shop/ShopCard.vue';
+import ShopCard from '@/components/Shop/ShopCard.vue';
 import { Shop } from '@/types/Shop';
 
 const { data } = defineProps<{ data: Shop[] }>()

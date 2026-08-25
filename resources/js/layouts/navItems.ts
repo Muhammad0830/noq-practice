@@ -1,5 +1,5 @@
-import { adminDashboard, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
-import { Heart, Home, LayoutDashboard, LayoutList, Store } from '@lucide/vue';
+import { adminAnalytics, adminDashboard, adminSchedulingPage, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
+import { ChartNoAxesGantt, ChartPie, Heart, Home, LayoutDashboard, LayoutList, SquareChartGantt, Store } from '@lucide/vue';
 
 export const userNavItems = [
     {
@@ -42,23 +42,23 @@ export const adminNavItems = [
     },
     {
         id: 1,
-        label: 'Shops',
-        route: (shop_id: number) => shopsList(),
-        url: '/shops',
-        icon: Store,
+        label: 'Analytics',
+        route: (shop_id: number) => adminAnalytics({ shop: shop_id }),
+        url: '/analytics',
+        icon: ChartPie,
     },
     {
         id: 2,
-        label: 'Services',
+        label: 'Services Manage',
         route: (shop_id: number) => adminServiceList({ shop: shop_id }),
-        url: '/admin/services',
-        icon: LayoutList,
+        url: '/service/list',
+        icon: SquareChartGantt,
     },
     {
         id: 3,
-        label: 'Favourites',
-        route: (shop_id: number) => favourites(),
-        url: '/favourites',
+        label: 'Schedule Manage',
+        route: (shop_id: number) => adminSchedulingPage({ shop: shop_id }),
+        url: '/scheduling',
         icon: Heart,
     },
 ]

@@ -5,10 +5,10 @@ import { Undo2 } from '@lucide/vue';
 import { useCreateShopForm } from '../../forms/createShopForm.js';
 import { ShopCategory } from '@/types/Shop.js';
 import { computed } from 'vue';
-import ShopCreateSteps from '@/components/shop/ShopCreateSteps.vue';
-import ShopCreateDefinition from '@/components/shop/ShopCreateDefinition.vue';
-import ShopCreateScheduling from '@/components/shop/ShopCreateScheduling.vue';
-import ShopCreateServices from '@/components/shop/ShopCreateServices.vue';
+import ShopCreateSteps from '@/components/Shop/ShopCreateSteps.vue';
+import ShopCreateDefinition from '@/components/Shop/ShopCreateDefinition.vue';
+import ShopCreateScheduling from '@/components/Shop/ShopCreateScheduling.vue';
+import ShopCreateServices from '@/components/Shop/ShopCreateServices.vue';
 
 const page = usePage();
 const step = computed(() => page.props.step)

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Clock, Pencil } from '@lucide/vue';
 import { computed, Ref } from 'vue';
-import SwitchButton from '../ui/SwitchButton.vue';
+import SwitchButton from '../UI/SwitchButton.vue';
 import { Link } from '@inertiajs/vue3';
 import { adminServiceEditPage } from '@/routes/index.js';
 import { Service } from '@/types/Service.js';

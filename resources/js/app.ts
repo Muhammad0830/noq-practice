@@ -18,9 +18,9 @@ createInertiaApp({
                 return null;
             case name === 'Test':
                 return null;
-            case name.startsWith('auth/'):
+            case name.startsWith('Auth/'):
                 return AuthLayout;
-            case name.startsWith('admin/'):
+            case name.startsWith('Admin/'):
                 return [AppLayout];
             default:
                 return AppLayout;

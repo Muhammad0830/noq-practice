@@ -23,14 +23,14 @@ class ServicesController extends Controller
     {
         $services = Service::get();
 
-        return Inertia::render('user/PopularServices', [
+        return Inertia::render('User/PopularServices', [
             'data' => $services,
         ]);
     }
 
     public function createServicesPage(Shop $shop): Response
     {
-        return Inertia::render('admin/services/Create', [
+        return Inertia::render('Admin/Service/Create', [
             'shop_id' => $shop->id,
         ]);
     }
@@ -57,7 +57,7 @@ class ServicesController extends Controller
     {
         $services = Service::where('shop_id', $shop->id)->get();
 
-        return Inertia::render('admin/services/List', [
+        return Inertia::render('Admin/Service/List', [
             'services' => $services,
             'shop_id' => $shop->id,
         ]);
@@ -65,7 +65,7 @@ class ServicesController extends Controller
 
     public function editPage(Shop $shop, Service $service, Request $request): Response
     {
-        return Inertia::render('admin/services/Edit', [
+        return Inertia::render('Admin/Service/Edit', [
             'service' => $service,
         ]);
     }

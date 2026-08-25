@@ -7,9 +7,9 @@ import { computed, ref } from 'vue';
 import { useDisplay } from 'vuetify';
 import { logout } from '@/routes/index.js';
 import HeeaderNavMenu from './HeeaderNavMenu.vue';
-import ThemeToggler from '../../shared/ThemeToggler.vue';
-import HeaderProfileMenu from '../../shared/HeaderProfileMenu.vue';
-import HeaderDialog from '../../shared/HeaderDialog.vue';
+import ThemeToggler from '../../Shared/ThemeToggler.vue';
+import HeaderProfileMenu from '../../Shared/HeaderProfileMenu.vue';
+import HeaderDialog from '../../Shared/HeaderDialog.vue';
 
 interface HeaderLayoutProps {
     sidebarOpenWidth: number,

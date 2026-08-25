@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Shop } from '@/types/Shop';
 import { shopsList } from '@/routes';
-import { formatDate } from '@/utils/formatDate';
+import { formatDate } from '@/helpers/formatDate';
 import { Link } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
 

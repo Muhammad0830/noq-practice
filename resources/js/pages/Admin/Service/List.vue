@@ -4,7 +4,7 @@ import { adminServiceCreatePage } from '@/routes';
 import { Link, router, usePage } from '@inertiajs/vue3';
 import { Plus } from '@lucide/vue';
 import { computed, ref } from 'vue';
-import ServiceItems from '@/components/service/ServiceItems.vue';
+import ServiceItems from '@/components/Service/ServiceItems.vue';
 import { toggleActive } from "@/actions/App/Http/Controllers/ServicesController";
 
 interface ServicesListProps {

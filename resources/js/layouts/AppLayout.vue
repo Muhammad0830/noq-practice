@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3';
-import AdminLayout from './admin/AdminLayout.vue';
-import UserLayout from './user/UserLayout.vue';
+import AdminLayout from './Admin/AdminLayout.vue';
+import UserLayout from './User/UserLayout.vue';
 import { computed } from 'vue';
 
 const page = usePage();

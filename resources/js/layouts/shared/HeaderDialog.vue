@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { dialogDesktopWidth, dialogMobileWidth } from '@/ui_constants/constants';
+import { dialogDesktopWidth, dialogMobileWidth } from '@/constants/constants';
 import { useDisplay } from 'vuetify';
 
 const isModalOpen = defineModel<boolean>()

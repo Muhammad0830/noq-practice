@@ -12,6 +12,7 @@ const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
 
 const page = usePage();
+console.log(page.url, page.url.startsWith(adminNavItems[0].url))
 </script>
 
 <template>
@@ -19,7 +20,7 @@ const page = usePage();
         <Link v-for="item in adminNavItems" :href="item.route(shop_id)" :key="item.id">
             <v-list-item :prepend-icon="item.icon" :title="item.label"
                 class="hover:bg-primary/70! transition-padding duration-200"
-                :class="[{ 'bg-primary/70!': page.url.startsWith(item.url) }, isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"></v-list-item>
+                :class="[{ 'bg-primary/70!': page.url.includes(item.url) }, isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"></v-list-item>
         </Link>
 
         <Link :href="dashboard()">
