@@ -36,24 +36,29 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $user = $request->user();
-        $admin = [
-            ...$user->toArray(),
-            'admin' => $user->admin
-                ? [
-                    'id' => $user->admin->id,
-                    'shops' => $user->admin->shops->map(fn($shop) => [
-                        'id' => $shop->id,
-                        'name' => $shop->name,
-                        'role' => $shop->pivot->role,
-                    ])
-                ] : null,
-        ];
+
+        if ($user) {
+            $user = [
+                ...$user->toArray(),
+                'admin' => $user->admin
+                    ? [
+                        'id' => $user->admin->id,
+                        'shops' => $user->admin->shops->map(fn($shop) => [
+                            'id' => $shop->id,
+                            'name' => $shop->name,
+                            'role' => $shop->pivot->role,
+                        ])
+                    ] : null,
+            ];
+        } else {
+            $user = null;
+        }
 
         return array_merge(
             parent::share($request),
             [
                 'auth' => [
-                    'user' => $user ? $admin : null,
+                    'user' => $user,
                     'isAdmin' => $request->user()?->admin()->exists() ?? false
                 ],
 

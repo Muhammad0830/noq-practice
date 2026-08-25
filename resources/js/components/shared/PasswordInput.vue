@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { Eye, EyeOff } from '@lucide/vue';
-import { usePasswordInput } from '@/composables/PasswordInput';
-
-const { visible, toggleVisible } = usePasswordInput();
+import { ref } from "vue";
 
 const password = defineModel<string>();
+const { passwordError } = defineProps<{ passwordError?: string }>()
 
-const { passwordError } = defineProps<{ passwordError?: string }>() 
+const visible = ref(false);
+
+function toggleVisible() {
+    visible.value = !visible.value;
+}
 </script>
 
 <template>
