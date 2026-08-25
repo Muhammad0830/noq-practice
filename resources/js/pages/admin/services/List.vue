@@ -1,23 +1,49 @@
 <script setup lang="ts">
 import { Service } from '@/types/Service';
-import { useServicesForm } from '@/forms/servicesForm';
 import { adminServiceCreatePage } from '@/routes';
-import { Link, usePage } from '@inertiajs/vue3';
+import { Link, router, usePage } from '@inertiajs/vue3';
 import { Plus } from '@lucide/vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import ServiceItems from '@/components/service/ServiceItems.vue';
+import { toggleActive } from "@/actions/App/Http/Controllers/ServicesController";
 
-interface UseServicesFormProps {
+interface ServicesListProps {
     services: Service[];
     shop_id: number
 }
 
 const page = usePage();
-const shop_id = computed(() => page.props.shop_id);
+const shop_id = computed<number>(() => page.props.shop_id);
 
-const { services } = defineProps<UseServicesFormProps>()
+const { services: data } = defineProps<ServicesListProps>()
 
-const { form, toggleActive } = useServicesForm({ services: services });
+const services = ref<Service[]>(data);
+
+const toggleServiceActive = (
+    service: Service,
+    newValue: boolean,
+) => {
+    const previousValue = service.is_active
+
+    service.is_active = newValue
+
+    router.put(
+        toggleActive({
+            shop: shop_id.value,
+            service: service.id,
+        }).url,
+        {
+            is_active: newValue,
+        },
+        {
+            preserveScroll: true,
+
+            onError: () => {
+                service.is_active = previousValue
+            },
+        }
+    )
+}
 </script>
 
 <template>
@@ -30,6 +56,6 @@ const { form, toggleActive } = useServicesForm({ services: services });
             </Link>
         </div>
 
-        <ServiceItems v-model="form" @toggle-active="toggleActive" />
+        <ServiceItems v-model="services" @toggle-service-active="toggleServiceActive" />
     </div>
 </template>

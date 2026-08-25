@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UseServicesFormProps } from '@/forms/servicesForm';
+import { ServicesCreateFormProps } from '@/forms/schemas/ShopServicesSchema';
 import { InertiaForm, usePage } from '@inertiajs/vue3';
 import { Plus, Trash2 } from '@lucide/vue';
 import { computed } from 'vue';
@@ -7,7 +7,7 @@ import { computed } from 'vue';
 const page = usePage();
 const shop_id = computed(() => page.props.shop_id);
 
-const formModel = defineModel<InertiaForm<UseServicesFormProps>>({ required: true })
+const formModel = defineModel<InertiaForm<ServicesCreateFormProps>>({ required: true })
 
 const emit = defineEmits<{
     addServiceItem: [],
@@ -109,6 +109,7 @@ const emit = defineEmits<{
     inset-inline: 0;
 }
 
+.delete-item-btn-leave-to,
 .delete-item-btn-enter-from {
     opacity: 0;
     transform: scale(0);

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Services\ServicesServiceContract;
 use App\DTOs\ServiceDTO;
+use App\DTOs\ServiceUpdateDTO;
 use App\Http\Requests\CreateServiceRequest;
+use App\Http\Requests\ServiceEditRequest;
 use App\Models\Service;
 use App\Models\Shop;
 use Illuminate\Http\RedirectResponse;
@@ -53,7 +55,7 @@ class ServicesController extends Controller
 
     public function list(Shop $shop): Response
     {
-        $services = Service::get();
+        $services = Service::where('shop_id', $shop->id)->get();
 
         return Inertia::render('admin/services/List', [
             'services' => $services,
@@ -61,14 +63,29 @@ class ServicesController extends Controller
         ]);
     }
 
-    public function editPage(Service $service, Request $request): Response
+    public function editPage(Shop $shop, Service $service, Request $request): Response
     {
         return Inertia::render('admin/services/Edit', [
             'service' => $service,
         ]);
     }
 
-    public function toggleActive(Service $service, Request $request)
+    public function editService(Shop $shop, Service $service, ServiceEditRequest $request, ServicesServiceContract $servicesService): RedirectResponse
+    {
+        try {
+            $data = $request->validated();
+
+            $dto = ServiceUpdateDTO::fromArray($data);
+
+            $servicesService->update($dto);
+
+            return redirect()->route('admin-service-list', ['shop' => $shop->id, 'service' => $service->id])->with('message', "{$service->name} Service updated successfully!");
+        } catch (Throwable $e) {
+            return back(500, ['shop' => $shop->id, 'service' => $service->id])->with('message', "{$service->name} update failed!, {$e}");
+        }
+    }
+
+    public function toggleActive(Shop $shop, Service $service, Request $request)
     {
         return back()->with('message', "{$service->name} updated successfully");
     }

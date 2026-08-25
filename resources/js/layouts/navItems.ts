@@ -1,5 +1,5 @@
-import { adminDashboard, adminServiceList, dashboard, favourites, servcies, shopsList, todo } from '@/routes/index.js';
-import { CircleCheckBig, Heart, Home, LayoutDashboard, LayoutList, Store } from '@lucide/vue';
+import { adminDashboard, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
+import { Heart, Home, LayoutDashboard, LayoutList, Store } from '@lucide/vue';
 
 export const userNavItems = [
     {
@@ -30,13 +30,6 @@ export const userNavItems = [
         url: '/favourites',
         icon: Heart,
     },
-    {
-        id: 4,
-        label: 'Todo',
-        route: todo(),
-        url: '/todo',
-        icon: CircleCheckBig,
-    }
 ]
 
 export const adminNavItems = [

@@ -22,7 +22,7 @@ const emit = defineEmits<{ openModal: [] }>()
                         query: { 'step': 'shop-definition' }
                     })">
                         <v-list-item
-                            class="px-2 min-h-8! h-4! cursor-pointer text-yellow-400! hover:bg-foreground/10! rounded">
+                            class="px-2 min-h-8! h-4! cursor-pointer text-yellow-500! hover:bg-foreground/10! rounded">
                             <span>Add your own shop!</span>
                         </v-list-item>
                     </Link>

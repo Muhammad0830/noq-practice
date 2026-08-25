@@ -63,7 +63,7 @@ class HandleInertiaRequests extends Middleware
                 ],
 
                 'shop_id' => fn() =>
-                    $request->route('shop'),
+                    $request->route('shop')?->id,
 
                 'flash' => [
                     'message' => fn() => $request->session()->get('message'),

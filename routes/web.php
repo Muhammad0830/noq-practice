@@ -7,7 +7,6 @@ use App\Http\Controllers\ShopsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
-    Route::inertia('/todo', 'TodoPage')->name('todo');
     Route::inertia('/about', 'AboutPage')->name('about');
 
     Route::inertia('/dashboard', 'user/Dashboard')->name('dashboard');
@@ -31,7 +30,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin/shop/{shop}')->group(functio
     Route::get('/service/list', [ServicesController::class, 'list'])->name('admin-service-list');
     Route::get('/service/create', [ServicesController::class, 'createServicesPage'])->name('admin-service-create-page');
     Route::get('/service/{service}/edit', [ServicesController::class, 'editPage'])->name('admin-service-edit-page');
-    Route::put('/service/{service}/edit/toggleActive', [ServicesController::class, 'toggleActive'])->name('admin-service-edit');
+    Route::put('/service/{service}/edit/toggleActive', [ServicesController::class, 'toggleActive'])->name('admin-service-toggle-active');
+    Route::put('/service/{service}/edit', [ServicesController::class, 'editService'])->name('admin-service-edit');
 
     Route::post('/service/create', [ServicesController::class, 'createServices'])->name('admin-service-create');
 });

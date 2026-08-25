@@ -28,5 +28,6 @@ class UseCaseProvider extends ServiceProvider
             ShopCreateUseCaseContract::class,
             ShopCreateUseCase::class
         );
+
     }
 }

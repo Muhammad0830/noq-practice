@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Contracts\Repositories\ServicesRepositoryContract;
 use App\Contracts\Services\ServicesServiceContract;
-use App\DTOs\ServiceDTO;
+use App\DTOs\ServiceUpdateDTO;
 
 class ServicesService implements ServicesServiceContract
 {
@@ -18,5 +18,12 @@ class ServicesService implements ServicesServiceContract
         foreach ($services as $key => $service) {
             $this->repository->create($service, $shop_id);
         }
+    }
+
+    public function update(ServiceUpdateDTO $dto): void
+    {
+        $service = $this->repository->find($dto->id);
+
+        $this->repository->update($service, $dto);
     }
 }

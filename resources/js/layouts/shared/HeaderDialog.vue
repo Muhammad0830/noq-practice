@@ -7,7 +7,6 @@ const isModalOpen = defineModel<boolean>()
 const emit = defineEmits<{ logout: [] }>()
 
 const { xs } = useDisplay();
-
 </script>
 
 <template>

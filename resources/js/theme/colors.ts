@@ -12,6 +12,6 @@ export const colors = {
         secondary: '#0c2836',
         background: '#021821',
         foreground: '#ffffff',
-        destructive: '#87071c',
+        destructive: '#fc1239',
     },
 }

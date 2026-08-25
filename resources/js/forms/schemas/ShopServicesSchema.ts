@@ -23,6 +23,14 @@ export const servicesItemSchema = z.object({
     is_active: z.boolean().default(true),
 })
 
+const servicesScheme = z.object({
+    services: z.array(servicesItemSchema)
+})
+
+export type ServicesCreateFormProps = z.infer<typeof servicesScheme>;
+
+export type ServicesEditFormProps = z.infer<typeof servicesItemSchema>;
+
 export const servicesInitials = () => ({
     id: Math.random(),
     shop_id: Math.random(),
@@ -33,5 +41,3 @@ export const servicesInitials = () => ({
     description: '',
     is_active: true,
 })
-
-export type servicesSchemeProps = z.infer<typeof servicesItemSchema>; 

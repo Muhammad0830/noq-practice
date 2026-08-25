@@ -5,11 +5,11 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
 
-const isDialogOpen = defineModel<boolean>({ required: true })
-const { xs } = useDisplay();
-
 const page = usePage();
 const user = computed(() => page.props.auth.user);
+
+const isDialogOpen = defineModel<boolean>({ required: true })
+const { xs } = useDisplay();
 </script>
 
 <template>

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { Clock, Pencil } from '@lucide/vue';
-import { Link } from '@inertiajs/vue3';
-import { adminServiceEdit } from '@/routes';
-import { computed } from 'vue';
-import { UseServicesFormProps } from '@/forms/servicesForm.js';
+import { computed, Ref } from 'vue';
 import SwitchButton from '../ui/SwitchButton.vue';
+import { Link } from '@inertiajs/vue3';
+import { adminServiceEditPage } from '@/routes/index.js';
+import { Service } from '@/types/Service.js';
 
-const form = defineModel<UseServicesFormProps>({ required: true })
-const emit = defineEmits<{ toggleActive: [serviceId: number, is_active: boolean] }>()
+const services = defineModel<Service[]>({ required: true })
+const emit = defineEmits<{ toggleServiceActive: [serviceId: Service, is_active: boolean] }>()
 
 const sortedServices = computed(() => {
-    return [...form.value.services].sort((a, b) => {
+    return [...services.value].sort((a, b) => {
         return Number(b.is_active) - Number(a.is_active)
     })
 })
@@ -36,12 +36,12 @@ const sortedServices = computed(() => {
                 <div :class="{ 'opacity-50': !service.is_active }">3 Staffs</div>
 
                 <div class="flex items-center gap-2">
-                    <Link :href="adminServiceEdit({ 'service': service.id, 'shop': service.shop_id })">
+                    <Link :href="adminServiceEditPage({ shop: service.shop_id, service: service.id })">
                         <v-btn :icon="Pencil" size="small" variant="tonal" class="scale-85"></v-btn>
                     </Link>
 
-                    <SwitchButton :model-value="service.is_active"
-                        @update:model-value="emit('toggleActive', service.id, $event)" />
+                    <SwitchButton :model-value="Boolean(service.is_active)"
+                        @update:model-value="emit('toggleServiceActive', service, $event)" />
                 </div>
             </div>
         </div>

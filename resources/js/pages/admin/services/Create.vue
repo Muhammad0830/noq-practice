@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import CreateServiceItem from '@/components/service/CreateServiceItem.vue';
-import { useServicesForm } from '@/forms/servicesForm';
+import { useServicesForm } from '@/forms/servicesCreateForm';
 import { adminServiceList } from '@/routes';
 import { Link, usePage } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
