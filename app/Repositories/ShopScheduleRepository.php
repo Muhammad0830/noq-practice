@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Contracts\Repositories\ShopScheduleRepositoryContract;
 use App\DTOs\SchedulingTimelineDTO;
 use App\Models\ShopSchedule;
+use Illuminate\Database\Eloquent\Collection;
 
 class ShopScheduleRepository implements ShopScheduleRepositoryContract
 {
@@ -17,5 +18,10 @@ class ShopScheduleRepository implements ShopScheduleRepositoryContract
             'end_time' => $dto->endTime,
             'type' => $dto->type,
         ]);
+    }
+
+    public function getWeeksSchedule(int $shop_id): Collection
+    {
+        return ShopSchedule::where('shop_id', $shop_id)->get();
     }
 }
