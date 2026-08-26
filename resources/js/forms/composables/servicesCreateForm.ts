@@ -1,6 +1,6 @@
 import { InertiaForm, useForm } from "@inertiajs/vue3";
 import { toRaw } from "vue";
-import { servicesInitials, servicesItemSchema, ServicesCreateFormProps } from "./schemas/ShopServicesSchema";
+import { servicesInitials, servicesItemSchema, ServicesCreateFormProps } from "../schemas/ShopServicesSchema";
 import z from "zod";
 import { createServices } from "@/actions/App/Http/Controllers/ServicesController";
 

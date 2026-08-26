@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ShopCategory } from '@/types/Shop';
-import { CreateShopForm } from '@/forms/createShopForm';
+import { CreateShopForm } from '@/forms/composables/createShopForm';
 import { capitalize } from '@/helpers/capitalizeHelper';
 import { createShopPage } from '@/routes';
 import { InertiaForm, router } from '@inertiajs/vue3';

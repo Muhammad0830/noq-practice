@@ -28,7 +28,9 @@ class ShopService implements ShopServiceContract
                 continue;
             }
 
-            foreach ($dayDto->items as $item) {
+            $items = array_merge($dayDto->closed, [$dayDto->open]);
+
+            foreach ($items as $item) {
                 $this->scheduleRepository->create($item, $shop_id);
             }
         }

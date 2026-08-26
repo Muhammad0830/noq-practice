@@ -2,7 +2,7 @@
 import { dashboard } from '@/routes';
 import { router, usePage } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
-import { useCreateShopForm } from '../../forms/createShopForm.js';
+import { useCreateShopForm } from '../../forms/composables/createShopForm.js';
 import { ShopCategory } from '@/types/Shop.js';
 import { computed } from 'vue';
 import ShopCreateSteps from '@/components/Shop/ShopCreateSteps.vue';

@@ -41,11 +41,13 @@ class FilteredWeeksScheduleDTO
         array $closedTimes,
         string $day
     ): array {
+        $openArray = array_filter(
+            $openTimes,
+            fn($schedule) => $schedule['day_of_week'] === $day
+        );
+
         return [
-            'open' => array_values(array_filter(
-                $openTimes,
-                fn($schedule) => $schedule['day_of_week'] === $day
-            )),
+            'open' => $openArray[array_key_first($openArray)] ?? null,
 
             'closed' => array_values(array_filter(
                 $closedTimes,

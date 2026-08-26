@@ -1,4 +1,4 @@
-export const DayOfWeekEnum = {
+export const dayOfWeekEnum = {
     MONDAY: 'monday',
     TUESDAY: 'tuesday',
     WEDNESDAY: 'wednesday',
@@ -14,13 +14,13 @@ export const schedulingTypeEnum = {
 }
 
 export type DayOfWeekItemType =
-    typeof DayOfWeekEnum[keyof typeof DayOfWeekEnum]
+    typeof dayOfWeekEnum[keyof typeof dayOfWeekEnum]
 
 export type SchedulingType =
     typeof schedulingTypeEnum[keyof typeof schedulingTypeEnum]
 
 export const UserStatusLabels = {
-    [DayOfWeekEnum.MONDAY]: 'Monday review',
-    [DayOfWeekEnum.TUESDAY]: 'Tuesday review',
-    [DayOfWeekEnum.WEDNESDAY]: 'Wednesday preview',
+    [dayOfWeekEnum.MONDAY]: 'Monday review',
+    [dayOfWeekEnum.TUESDAY]: 'Tuesday review',
+    [dayOfWeekEnum.WEDNESDAY]: 'Wednesday preview',
 };

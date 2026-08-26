@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateShopRequest extends FormRequest
+class SchedulingRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,24 +16,8 @@ class CreateShopRequest extends FormRequest
     {
         $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-        $rules = [
-            // Definition Validation 
-            'definition.name' => ['required', 'string', 'max:255'],
-            'definition.category' => ['required', 'integer', 'min:1'],
-            'definition.description' => ['nullable', 'string'],
-            'definition.address' => ['required', 'string'],
-            'definition.phone' => ['required', 'string'],
+        $rules = [];
 
-            // Services Validation
-            'services' => ['required', 'array', 'min:1'],
-            'services.*.name' => ['required', 'string', 'max:255'],
-            'services.*.duration_min' => ['required', 'integer', 'min:1'],
-            'services.*.price' => ['required', 'numeric', 'min:1'],
-            'services.*.buffer_time' => ['nullable', 'integer', 'min:0'],
-            'services.*.description' => ['nullable', 'string'],
-        ];
-
-        // Scheduling Validation per Day
         foreach ($days as $day) {
             $rules["scheduling.{$day}.isOpen"] = [
                 'required',

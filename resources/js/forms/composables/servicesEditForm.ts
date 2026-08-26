@@ -1,5 +1,5 @@
 import { InertiaForm, useForm } from "@inertiajs/vue3"
-import { ServicesEditFormProps, servicesItemSchema } from "./schemas/ShopServicesSchema";
+import { ServicesEditFormProps, servicesItemSchema } from "../schemas/ShopServicesSchema";
 import { editService } from "@/actions/App/Http/Controllers/ServicesController";
 import { Service } from "@/types/Service";
 

@@ -1,28 +1,34 @@
-import { DayOfWeekEnum, DayOfWeekItemType, SchedulingType, schedulingTypeEnum } from "@/enums/schedulingDayOfWeekEnum";
+import { dayOfWeekEnum, DayOfWeekItemType, SchedulingType, schedulingTypeEnum } from "@/enums/schedulingDayOfWeekEnum";
 import z from "zod";
 
 export interface SchedulingTimeLineProps {
-    id: string;
-    dayOfWeek: DayOfWeekItemType;
-    startTime: string;
-    endTime: string;
+    id: number;
+    shop_id: number;
+    day_of_week: DayOfWeekItemType;
+    start_time: string;
+    end_time: string;
     type: SchedulingType;
 }
 
 export interface SchedulingOneDayProps {
-    items: SchedulingTimeLineProps[];
+    open: SchedulingTimeLineProps;
+    closed: SchedulingTimeLineProps[];
     isOpen: boolean;
 }
 
 export const schedulingSchema = z.object({
-    monday: schedulingOneDaySchema(DayOfWeekEnum.MONDAY),
-    tuesday: schedulingOneDaySchema(DayOfWeekEnum.TUESDAY),
-    wednesday: schedulingOneDaySchema(DayOfWeekEnum.WEDNESDAY),
-    thursday: schedulingOneDaySchema(DayOfWeekEnum.THURSDAY),
-    friday: schedulingOneDaySchema(DayOfWeekEnum.FRIDAY),
-    saturday: schedulingOneDaySchema(DayOfWeekEnum.SATURDAY),
-    sunday: schedulingOneDaySchema(DayOfWeekEnum.SUNDAY),
+    monday: schedulingOneDaySchema(dayOfWeekEnum.MONDAY),
+    tuesday: schedulingOneDaySchema(dayOfWeekEnum.TUESDAY),
+    wednesday: schedulingOneDaySchema(dayOfWeekEnum.WEDNESDAY),
+    thursday: schedulingOneDaySchema(dayOfWeekEnum.THURSDAY),
+    friday: schedulingOneDaySchema(dayOfWeekEnum.FRIDAY),
+    saturday: schedulingOneDaySchema(dayOfWeekEnum.SATURDAY),
+    sunday: schedulingOneDaySchema(dayOfWeekEnum.SUNDAY),
 })
+
+const schedulingObjectSchema = z.object({ scheduling: schedulingSchema });
+
+export type SchedulingForm = z.infer<typeof schedulingObjectSchema>
 
 export const schedulingInitials = {
     monday: schedulingOneDayInitials('monday', 'closed', '13:00', '14:00'),
@@ -36,19 +42,21 @@ export const schedulingInitials = {
 
 function schedulingOneDaySchema(day: DayOfWeekItemType) {
     return z.object({
-        items: z.array(schedulingTimeLineSchema(day)),
+        open: schedulingTimeLineSchema(day),
+        closed: z.array(schedulingTimeLineSchema(day)),
         isOpen: z.boolean().default(true),
     });
 }
 
 function schedulingTimeLineSchema(day: DayOfWeekItemType) {
     return z.object({
-        id: z.uuid().default(() => crypto.randomUUID()),
-        dayOfWeek: z.literal(day),
-        startTime: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, {
+        id: z.int(),
+        shop_id: z.int(),
+        day_of_week: z.literal(day),
+        start_time: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, {
             message: "Invalid time format, expected HH:MM",
         }),
-        endTime: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, {
+        end_time: z.string().regex(/^([01]\d|2[0-3]):([0-5]\d)$/, {
             message: "Invalid time format, expected HH:MM",
         }),
         type: z.enum(schedulingTypeEnum),
@@ -58,11 +66,12 @@ function schedulingTimeLineSchema(day: DayOfWeekItemType) {
 export function schedulingOneDayInitials(
     day: DayOfWeekItemType,
     type?: SchedulingType,
-    startTime?: string,
-    endTime?: string
+    start_time?: string,
+    end_time?: string
 ): SchedulingOneDayProps {
     return {
-        items: [schedulingTimeLineInitials(day), schedulingTimeLineInitials(day, type, startTime, endTime)],
+        open: schedulingTimeLineInitials(day),
+        closed: [schedulingTimeLineInitials(day, type, start_time, end_time)],
         isOpen: true
     }
 }
@@ -70,14 +79,15 @@ export function schedulingOneDayInitials(
 export function schedulingTimeLineInitials(
     day: DayOfWeekItemType,
     type?: SchedulingType,
-    startTime?: string,
-    endTime?: string
+    start_time?: string,
+    end_time?: string
 ): SchedulingTimeLineProps {
     return {
-        id: crypto.randomUUID(),
-        dayOfWeek: day,
-        startTime: startTime ?? '09:00',
-        endTime: endTime ?? '18:00',
+        id: Math.floor(Math.random() * 100) * 99999,
+        shop_id: Math.floor(Math.random() * 100) * 99999,
+        day_of_week: day,
+        start_time: start_time ?? '09:00',
+        end_time: end_time ?? '18:00',
         type: type ?? 'open',
-    }
+    };
 }

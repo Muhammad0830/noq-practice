@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CreateShopForm } from '@/forms/createShopForm.js';
+import { CreateShopForm } from '@/forms/composables/createShopForm.js';
 import { InertiaForm, router } from '@inertiajs/vue3';
 import ShopCreateSchedulingItem from './ShopCreateSchedulingItem.vue';
 import { onMounted } from 'vue';
@@ -22,7 +22,7 @@ function handleNext() {
 }
 
 onMounted(() => {
-    if (!validateDefinition) {
+    if (!validateDefinition()) {
         router.visit(createShopPage({ query: { 'step': 'shop-definition' } }))
     }
 })

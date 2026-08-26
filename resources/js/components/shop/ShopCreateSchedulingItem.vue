@@ -4,7 +4,6 @@ import { useSchedulingTransitionGroup } from '@/components/Composables/Schedulin
 import { SchedulingOneDayProps, schedulingTimeLineInitials, SchedulingTimeLineProps } from '@/forms/schemas/ShopSchedulingSchema';
 import { isToday } from '@/helpers/dateHelper';
 import { Check, ChevronDown, ChevronUp, PlusCircle, Trash2, X } from '@lucide/vue';
-import { computed } from 'vue';
 import { useDisplay } from 'vuetify';
 
 const dayOfWeekItem = defineModel<SchedulingOneDayProps>('dayOfWeekItem', { required: true })
@@ -12,23 +11,18 @@ const { day } = defineProps<{ day: string }>()
 
 const { onBeforeLeave, onLeave, onAfterEnter, onAfterLeave, onBeforeEnter, onEnter } = useSchedulingTransitionGroup()
 
-const openItem = computed(() => dayOfWeekItem.value.items.filter((item) => item.type === 'open'));
-const breaks = computed(() => dayOfWeekItem.value.items.filter(item => item.type === 'closed'))
-
-const openTime = computed(() => openItem.value[0]?.startTime)
-const closeTime = computed(() => openItem.value[0]?.endTime)
-
 const { xs, smAndUp } = useDisplay();
 
 function addNewBreak(day: DayOfWeekItemType): void {
     const newItem = schedulingTimeLineInitials(day, 'closed', '13:00', '14:00')
-    dayOfWeekItem.value.items.push(newItem);
+    dayOfWeekItem.value.closed.push(newItem);
 }
 
 function deleteBreak(itemProp: SchedulingTimeLineProps) {
-    dayOfWeekItem.value.items = dayOfWeekItem.value.items.filter(item => item !== itemProp);
+    dayOfWeekItem.value.closed = dayOfWeekItem.value.closed.filter(item => item !== itemProp);
 }
 
+console.log(dayOfWeekItem.value)
 </script>
 
 <template>
@@ -49,24 +43,24 @@ function deleteBreak(itemProp: SchedulingTimeLineProps) {
 
                             <div class="flex items-center gap-2 text-sm">
                                 <div class="flex items-center gap-1">
-                                    <span>{{ openTime }}</span>
+                                    <span>{{ dayOfWeekItem.open?.start_time ?? '--' }}</span>
                                     <span>-</span>
-                                    <span>{{ closeTime }}</span>
+                                    <span>{{ dayOfWeekItem.open?.end_time ?? '--' }}</span>
                                 </div>
 
-                                <div class="text-primary">{{ breaks.length }} breaks</div>
+                                <div class="text-primary">{{ dayOfWeekItem.closed.length }} breaks</div>
                             </div>
                         </v-col>
 
                         <v-col v-if="smAndUp" cols="6" class="flex justify-end pr-6">
                             <div class="flex items-center gap-2 text-sm">
                                 <div class="flex items-center gap-1">
-                                    <span>{{ openTime }}</span>
+                                    <span>{{ dayOfWeekItem.open?.start_time ?? '--' }}</span>
                                     <span>-</span>
-                                    <span>{{ closeTime }}</span>
+                                    <span>{{ dayOfWeekItem.open?.end_time ?? '--' }}</span>
                                 </div>
 
-                                <div class="text-primary">{{ breaks.length }} breaks</div>
+                                <div class="text-primary">{{ dayOfWeekItem.closed.length }} breaks</div>
                             </div>
                         </v-col>
                     </v-row>
@@ -77,24 +71,38 @@ function deleteBreak(itemProp: SchedulingTimeLineProps) {
                 <TransitionGroup name="schedulingItems" tag="ul" @before-enter="onBeforeEnter" @enter="onEnter"
                     @after-enter="onAfterEnter" @before-leave="onBeforeLeave" @leave="onLeave"
                     @after-leave="onAfterLeave">
-                    <li v-for="(item, index) in dayOfWeekItem.items" :key="item.id"
+
+                    <li :key="dayOfWeekItem.open.id"
                         class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground"
                         :class="{ 'opacity-50': !dayOfWeekItem.isOpen }">
-                        <p :class="{ 'cursor-default': !dayOfWeekItem.isOpen }" class="flex-1">{{ item.type === 'open' ?
-                            'Open Hours'
-                            : 'Break Hours' }}</p>
+                        <p :class="{ 'cursor-default': !dayOfWeekItem.isOpen }" class="flex-1">Open Hours</p>
                         <div class="flex items-center gap-2 sm:justify-end">
                             <label class="max-sm:hidden">Start Time</label>
-                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time" v-model="item.startTime"
+                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time"
+                                v-model="dayOfWeekItem.open.start_time" class="max-w-28 translate-y-2" />
+                            <span class="sm:hidden">-</span>
+                            <label class="max-sm:hidden">End Time</label>
+                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time"
+                                v-model="dayOfWeekItem.open.end_time" class="max-w-28 translate-y-2" />
+                            <div class="w-9"></div>
+                        </div>
+                    </li>
+
+                    <li v-for="(item, index) in dayOfWeekItem.closed" :key="item.id"
+                        class="flex max-sm:flex-col items-center left-0! right-full! justify-between text-foreground"
+                        :class="{ 'opacity-50': !dayOfWeekItem.isOpen }">
+                        <p :class="{ 'cursor-default': !dayOfWeekItem.isOpen }" class="flex-1">Break Hours</p>
+                        <div class="flex items-center gap-2 sm:justify-end">
+                            <label class="max-sm:hidden">Start Time</label>
+                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time" v-model="item.start_time"
                                 class="max-w-28 translate-y-2" />
                             <span class="sm:hidden">-</span>
                             <label class="max-sm:hidden">End Time</label>
-                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time" v-model="item.endTime"
+                            <v-text-field :disabled="!dayOfWeekItem.isOpen" type="time" v-model="item.end_time"
                                 class="max-w-28 translate-y-2" />
                             <div class="w-9">
                                 <v-btn :disabled="!dayOfWeekItem.isOpen" @click="() => deleteBreak(item)"
-                                    v-if="item.type === 'closed'" variant="tonal" color="red" density="comfortable"
-                                    :icon="Trash2"></v-btn>
+                                    variant="tonal" color="red" density="comfortable" :icon="Trash2"></v-btn>
                             </div>
                         </div>
                     </li>
@@ -128,15 +136,12 @@ function deleteBreak(itemProp: SchedulingTimeLineProps) {
     transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
 }
 
-/* 2. declare enter from and leave to state */
 .schedulingItems-enter-from,
 .schedulingItems-leave-to {
     opacity: 0;
     transform: translateX(100px);
 }
 
-/* 3. ensure leaving items are taken out of layout flow so that moving
-      animations can be calculated correctly. */
 .schedulingItems-leave-active {
     position: absolute;
     width: 93.5%;

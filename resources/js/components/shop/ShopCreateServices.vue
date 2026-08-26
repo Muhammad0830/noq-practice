@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { CreateShopForm, useCreateShopForm } from '@/forms/createShopForm';
+import { CreateShopForm, useCreateShopForm } from '@/forms/composables/createShopForm';
 import { createShopPage } from '@/routes';
 import { InertiaForm, router } from '@inertiajs/vue3';
 import { onMounted } from 'vue';

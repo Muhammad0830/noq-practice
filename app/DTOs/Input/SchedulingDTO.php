@@ -2,6 +2,8 @@
 
 namespace App\DTOs\Input;
 
+use Illuminate\Support\Facades\Log;
+
 class SchedulingDTO
 {
     public function __construct(

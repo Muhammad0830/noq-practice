@@ -13,7 +13,7 @@ export interface SchedulingItem {
 }
 
 export interface SchedulingDay {
-    open: SchedulingItem[];
+    open: SchedulingItem;
     closed: SchedulingItem[];
 }
 

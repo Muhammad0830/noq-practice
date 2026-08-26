@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ServiceEditSubmitDialog from '@/components/Service/ServiceEditSubmitDialog.vue';
 import TimeInput from '@/components/Shared/TimeInput.vue';
-import { useServicesEditForm } from '@/forms/servicesEditForm';
+import { useServicesEditForm } from '@/forms/composables/servicesEditForm';
 import { adminServiceList } from '@/routes';
 import { Service } from '@/types/Service';
 import { Link, usePage } from '@inertiajs/vue3';

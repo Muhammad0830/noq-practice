@@ -12,7 +12,6 @@ const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
 
 const page = usePage();
-console.log(page.url, page.url.startsWith(adminNavItems[0].url))
 </script>
 
 <template>
