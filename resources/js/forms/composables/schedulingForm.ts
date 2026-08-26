@@ -14,8 +14,7 @@ export const useSchedulingForm = (scheduling: SchedulingWeekData): UseScheduling
 
     function submit(shop_id: number): void {
         form.submit(schedulingUpdate({ shop: shop_id }), {
-            onSuccess: () => console.log('success'),
-            onError: (e) => console.log('error', e),
+            onError: (e) => console.error('error', e),
         });
     }
 

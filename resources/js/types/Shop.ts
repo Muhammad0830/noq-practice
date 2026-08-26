@@ -1,7 +1,7 @@
 import { Service } from "./Service";
 
 export interface Shop {
-    id: string;
+    id: number;
     name: string;
     description: string;
 

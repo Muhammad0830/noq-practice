@@ -21,8 +21,6 @@ function addNewBreak(day: DayOfWeekItemType): void {
 function deleteBreak(itemProp: SchedulingTimeLineProps) {
     dayOfWeekItem.value.closed = dayOfWeekItem.value.closed.filter(item => item !== itemProp);
 }
-
-console.log(dayOfWeekItem.value)
 </script>
 
 <template>

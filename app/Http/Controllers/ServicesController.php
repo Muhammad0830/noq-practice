@@ -81,7 +81,14 @@ class ServicesController extends Controller
 
             return redirect()->route('admin-service-list', ['shop' => $shop->id, 'service' => $service->id])->with('message', "{$service->name} Service updated successfully!");
         } catch (Throwable $e) {
-            return back(500, ['shop' => $shop->id, 'service' => $service->id])->with('message', "{$service->name} update failed!, {$e}");
+            Log::error('Service update failed', [
+                'shop_id' => $shop->id,
+                'service_id' => $service->id,
+                'message' => $e->getMessage(),
+                'exception' => $e,
+            ]);
+
+            return back()->with('message', "{$service->name} update failed!, {$e}");
         }
     }
 

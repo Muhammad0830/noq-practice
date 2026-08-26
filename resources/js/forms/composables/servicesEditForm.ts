@@ -33,7 +33,6 @@ export const useServicesEditForm = (service: Service): UseServicesEditFormProps 
         if (!validate()) return;
 
         form.submit(editService({ shop: shop_id, service: form.id }), {
-            onSuccess: () => console.log('Service updated successfully!'),
             onError: (e) => console.error('Service edit failed', e)
         })
     }

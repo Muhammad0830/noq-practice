@@ -1,6 +1,6 @@
-import { adminAnalytics, adminDashboard, adminSchedulingPage, adminServiceList, dashboard, favourites, servcies, shopsList } from '@/routes/index.js';
+import { adminAnalytics, adminDashboard, adminSchedulingPage, adminServiceList, dashboard, favourites, services, shopsList } from '@/routes/index.js';
 import { AdminNavItemProps, UserNavItemProps } from '@/types/Shared';
-import { CalendarDays, ChartPie, Heart, Home, LayoutDashboard, LayoutList, RotateCwFadingClock, SquareChartGantt, Store } from '@lucide/vue';
+import { CalendarDays, ChartPie, Heart, Home, LayoutDashboard, LayoutList, SquareChartGantt, Store } from '@lucide/vue';
 
 export const userNavItems: UserNavItemProps[] = [
     {
@@ -20,7 +20,7 @@ export const userNavItems: UserNavItemProps[] = [
     {
         id: 2,
         label: 'Popular Services',
-        route: servcies({ query: { 'popular': true } }),
+        route: services({ query: { 'popular': true } }),
         url: '/services',
         icon: LayoutList,
     },

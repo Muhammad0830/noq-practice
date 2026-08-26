@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import { Shop } from '@/types/Shop';
 import { shopView } from '@/routes';
+import { Shop } from '@/types/Shop';
 import { Link } from '@inertiajs/vue3';
 import { Heart, MessageCircle } from '@lucide/vue';
 
 const { shop } = defineProps<{ shop: Shop }>()
 
-function addToFavourites(id: string) {
+function addToFavourites(id: number) {
 
 }
 </script>
 
 <template>
-    <div
-        class="relative group cursor-default overflow-hidden hover:scale-101 bg-secondary transition-all duration-100">
-        <Link :href="shopView(shop.id)">
+    <div class="relative group cursor-default overflow-hidden hover:scale-101 bg-secondary transition-all duration-100">
+        <Link :href="shopView({ shop: shop.id })">
             <div class="flex flex-col gap-2 p-2 border rounded w-full group-hover:bg-primary/5">
                 <div class="w-full aspect-square rounded border"></div>
 

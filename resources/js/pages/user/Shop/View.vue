@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Shop } from '@/types/Shop';
-import { shopsList } from '@/routes';
-import { formatDate } from '@/helpers/formatDate';
+import { bookPage, shopsList } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
 
@@ -20,7 +19,7 @@ const { data: shop } = defineProps<{ data: Shop }>()
         No Result has been found
     </div>
 
-    <div class="flex flex-col gap-2 mt-6">
+    <div class="flex flex-col gap-2 mt-6 p-4 rounded-lg border">
         <div class="text-lg flex items-center gap-2">
             <span class="font-bold">Name:</span>
             <span>{{ shop.name }}</span>
@@ -28,7 +27,7 @@ const { data: shop } = defineProps<{ data: Shop }>()
 
         <div class="flex items-center gap-2">
             <span class="font-bold">Description:</span>
-            <span>{{ shop.description }}</span>
+            <span>{{ shop.description ?? 'UNKNOWN' }}</span>
         </div>
     </div>
 
@@ -37,24 +36,26 @@ const { data: shop } = defineProps<{ data: Shop }>()
         This shop has no services yet.
     </div>
 
-    <div class="flex flex-col gap-2 mt-6">
-        <div v-for="service in shop.services" class="flex items-center gap-4 justify-between border p-4 rounded">
-            <div class="flex-1 flex flex-col gap-2">
-                <span class="w-full truncate">{{ service.name }}</span>
-                <span class="w-full truncate">{{ service.description }}</span>
-            </div>
+    <div v-else class="flex flex-col gap-2 mt-6">
+        <h5 class="text-lg font-bold">Services</h5>
+        <v-card v-for="service in shop.services" :key="service.id" color="transparent">
+            <div class="flex items-center gap-4 justify-between border p-4 rounded">
+                <div class="w-20 aspect-square rounded-md border"></div>
 
-            <div class="flex flex-col gap-2">
-                <div class="text-sm flex items-center gap-2 justify-end">
-                    <span>Created at:</span>
-                    <span class="font-semibold">{{ formatDate(service.created_at) }}</span>
+                <div class="min-w-0 flex-1 flex flex-col gap-2">
+                    <span class="text-lg w-full truncate">{{ service.name }}</span>
+                    <span class="w-full text-foreground/90 truncate">{{ service.duration_min }} min</span>
                 </div>
-                <div class="text-sm flex items-center gap-2 justify-end">
-                    <span>Updated at:</span>
-                    <span class="font-semibold">{{ formatDate(service.updated_at) }}</span>
+
+                <div class="flex-1">
+                    <span class="text-xl text-primary">${{ service.price }}</span>
                 </div>
+
+                <Link :href="bookPage({ shop: shop.id, service: service.id })" class="flex flex-col gap-2">
+                    <v-btn variant="flat" color="primary" class="text-white! font-semibold!">Book</v-btn>
+                </Link>
             </div>
-        </div>
+        </v-card>
     </div>
 
 </template>

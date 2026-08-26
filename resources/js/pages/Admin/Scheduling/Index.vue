@@ -3,17 +3,13 @@ import ShopCreateSchedulingItem from '@/components/Shop/ShopCreateSchedulingItem
 import { useSchedulingForm } from '@/forms/composables/schedulingForm';
 import { SchedulingWeekData } from '@/types/Scheduling';
 import { usePage } from '@inertiajs/vue3';
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 
 const page = usePage()
 const shop_id = computed(() => page.props.shop_id);
 
 const { scheduling } = defineProps<{ scheduling: SchedulingWeekData }>()
 const { form, submit } = useSchedulingForm(scheduling);
-console.log('scheduling', form.scheduling)
-watch(form, () => {
-    console.log('scheduling', form.scheduling)
-}, { deep: true })
 </script>
 
 <template>

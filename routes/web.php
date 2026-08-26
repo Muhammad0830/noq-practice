@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminAnalyticsController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\SchedulingController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ShopsController;
@@ -16,12 +17,15 @@ Route::middleware('auth')->group(function () {
     Route::inertia('/profile', 'Profile')->name('profile');
 
     Route::get('/create-shop', [ShopsController::class, 'createPage'])->name('create-shop-page');
-    Route::get('/shops', [ShopsController::class, 'getAll'])->name('shops-list');
+    Route::get('/shops/list', [ShopsController::class, 'getAll'])->name('shops-list');
     Route::get('/shops/{shop}/view', [ShopsController::class, 'getOne'])->name('shop-view');
-    Route::get('/services', [ServicesController::class, 'getAll'])->name('servcies');
+    Route::get('/services', [ServicesController::class, 'getAll'])->name('services');
     Route::get('/favourites', [ServicesController::class, 'getAll'])->name('favourites');
 
+    Route::get('/shop/{shop}/service/{service}/book', [BookingController::class, 'bookPage'])->name('book-page');
+
     Route::post('/create-shop', [ShopsController::class, 'createShop'])->name('create-shop');
+    Route::post('/shop/{shop}/service/{service}/book', [BookingController::class, 'createBooking'])->name('create-booking');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\UseCases\ShopCreateUseCaseContract;
 use App\DTOs\Input\ShopCreateDTO;
 use App\Http\Requests\CreateShopRequest;
+use App\Models\Shop;
 use App\Models\ShopCategory;
 use Illuminate\Http\Request;
 use App\Contracts\Repositories\ShopRepositoryContract;
@@ -17,16 +18,16 @@ class ShopsController extends Controller
     {
         $shops = $repository->getAll();
 
-        return Inertia::render('User/shops/Index', [
+        return Inertia::render('User/Shop/List', [
             'data' => $shops,
         ]);
     }
 
-    public function getOne(string $shopId, ShopRepositoryContract $repository): Response
+    public function getOne(Shop $shop, ShopRepositoryContract $repository): Response
     {
-        $shop = $repository->find($shopId);
+        $shop = $repository->find($shop->id);
 
-        return Inertia::render('User/shops/View', [
+        return Inertia::render('User/Shop/View', [
             'data' => $shop
         ]);
     }

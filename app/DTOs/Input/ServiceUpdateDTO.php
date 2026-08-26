@@ -8,11 +8,11 @@ class ServiceUpdateDTO
         public readonly int $id,
         public readonly int $shop_id,
         public readonly string $name,
-        public readonly string $description,
+        public readonly ?string $description,
         public readonly int $price,
         public readonly int $duration_min,
         public readonly bool $is_active,
-        public readonly int $buffer_time
+        public readonly ?int $buffer_time
     ) {
     }
 
