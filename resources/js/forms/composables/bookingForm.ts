@@ -7,6 +7,7 @@ export interface UseBookingFormProps {
     form: InertiaForm<BookingForm>;
     validate: () => boolean;
     submit: (shop_id: number, service_id: number) => void;
+    updateDate: (date: Date) => void;
 }
 
 export const useBookingForm = (): UseBookingFormProps => {
@@ -43,5 +44,11 @@ export const useBookingForm = (): UseBookingFormProps => {
         })
     }
 
-    return { form, validate, submit }
+    function updateDate(date: Date) {
+        const newDate = new Date(date);
+
+        form.date = newDate;
+    }
+
+    return { form, validate, submit, updateDate }
 }

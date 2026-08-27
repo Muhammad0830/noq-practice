@@ -3,7 +3,7 @@ import z from "zod";
 export const bookingSchema = z.object({
     shop_id: z.int().min(1, 'Shop id is required'),
     service_id: z.int().min(1, 'Service id is required'),
-    date: z.coerce.date('Invalid date value').refine((date) => date.getTime() >= Date.now(), {
+    date: z.coerce.date('Invalid date value').refine((date) => date.toISOString() >= new Date().toISOString(), {
         message: 'The date must be in the future',
     }),
 });
