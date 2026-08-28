@@ -18,7 +18,9 @@ class BookingController extends Controller
 {
     public function bookPage(Shop $shop, Service $service, GetOneDayScheduleUseCaseContract $useCase): Response
     {
-        $scheduling = $useCase->execute($shop->id);
+        $today = now();
+
+        $scheduling = $useCase->execute($shop->id, $service->id, $service->duration_min, $today);
 
         return Inertia::render('User/Booking/Index', [
             'shop' => $shop,

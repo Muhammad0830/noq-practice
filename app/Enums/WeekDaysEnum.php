@@ -2,6 +2,8 @@
 
 namespace App\Enums;
 
+use Carbon\CarbonInterface;
+
 enum WeekDaysEnum: int
 {
     case MONDAY = 0;
@@ -19,10 +21,8 @@ enum WeekDaysEnum: int
             : 'unknown';
     }
 
-    public static function getToday(): string
+    public static function getTodayLabel(CarbonInterface $date): string
     {
-        $today = now();
-
-        return self::getDayName($today->weekday() - 1);
+        return self::getDayName($date->weekday() - 1);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Contracts\Repositories;
 
 use App\DTOs\Input\SchedulingTimelineDTO;
 use App\Models\ShopSchedule;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 interface ShopScheduleRepositoryContract
 {

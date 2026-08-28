@@ -3,11 +3,13 @@
 namespace App\Providers;
 
 use App\Contracts\Repositories\AdminRepositoryContract;
+use App\Contracts\Repositories\BookingsRepositoryContract;
 use App\Contracts\Repositories\ServicesRepositoryContract;
 use App\Contracts\Repositories\ShopRepositoryContract;
 use App\Contracts\Repositories\ShopScheduleRepositoryContract;
 use App\Contracts\Repositories\UserRepositoryContract;
 use App\Repositories\AdminRepository;
+use App\Repositories\BookingsRepository;
 use App\Repositories\ServicesRepository;
 use App\Repositories\ShopRepository;
 use App\Repositories\ShopScheduleRepository;
@@ -41,6 +43,11 @@ class RepositoryProvider extends ServiceProvider
         $this->app->bind(
             AdminRepositoryContract::class,
             AdminRepository::class,
+        );
+
+        $this->app->bind(
+            BookingsRepositoryContract::class,
+            BookingsRepository::class,
         );
     }
 }

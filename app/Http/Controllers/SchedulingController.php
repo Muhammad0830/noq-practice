@@ -26,12 +26,6 @@ class SchedulingController extends Controller
         ]);
     }
 
-    public function getScheduleOfADay(Shop $shop, Service $service): RedirectResponse
-    {
-
-        return back(200, ['' => '']);
-    }
-
     public function schedulingUpdate(Shop $shop, SchedulingRequest $request, SchedulingServiceContract $service): RedirectResponse
     {
         try {

@@ -29,7 +29,7 @@ class SchedulingService implements SchedulingServiceContract
 
     public function getOneDaysSchedule(int $shop_id, string $day): ShopOperatingScheduleDTO
     {
-        $schedules = $this->repository->getOneDay($shop_id, $day)->array();
+        $schedules = $this->repository->getOneDay($shop_id, $day)->toArray();
 
         $openSchedule = array_find($schedules, fn($schedule) => $schedule['type'] === 'open');
         $breaks = array_filter($schedules, fn($schedule) => $schedule['type'] == 'closed');
@@ -39,8 +39,6 @@ class SchedulingService implements SchedulingServiceContract
             open_time: $openSchedule['start_time'],
             close_time: $openSchedule['end_time'],
             breaks: $breaksWithOnlyTime,
-            available: [],
-            booked: []
         );
     }
 
