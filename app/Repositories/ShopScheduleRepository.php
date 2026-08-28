@@ -15,6 +15,15 @@ class ShopScheduleRepository implements ShopScheduleRepositoryContract
         return ShopSchedule::find($id);
     }
 
+    public function getOneDay(int $shop_id, string $day): Collection
+    {
+        Log::debug('debug', [$shop_id, $day, ShopSchedule::where('shop_id', $shop_id)->where('day_of_week', $day)->get()]);
+        return ShopSchedule::where('shop_id', $shop_id)
+            ->where('day_of_week', $day)
+            ->get();
+    }
+
+
     public function create(SchedulingTimelineDTO $dto, int $shop_id): void
     {
         ShopSchedule::create([

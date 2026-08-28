@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\UseCases\GetOneDayScheduleUseCaseContract;
+use App\Enums\WeekDaysEnum;
 use App\Models\Service;
 use App\Models\Shop;
+use App\Models\ShopSchedule;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -12,11 +16,14 @@ use Throwable;
 
 class BookingController extends Controller
 {
-    public function bookPage(Shop $shop, Service $service): Response
+    public function bookPage(Shop $shop, Service $service, GetOneDayScheduleUseCaseContract $useCase): Response
     {
+        $scheduling = $useCase->execute($shop->id);
+
         return Inertia::render('User/Booking/Index', [
             'shop' => $shop,
             'service' => $service,
+            'scheduling' => $scheduling,
         ]);
     }
 

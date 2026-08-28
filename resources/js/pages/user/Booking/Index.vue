@@ -11,7 +11,7 @@ import { ChevronLeft, ChevronRight } from '@lucide/vue';
 import { ref } from 'vue';
 import { useDisplay } from 'vuetify/lib/composables/display.mjs';
 
-const { shop, service } = defineProps<{ shop: Shop, service: Service }>()
+const { shop, service, scheduling } = defineProps<{ shop: Shop, service: Service, scheduling: any }>()
 
 const { form, validate, submit, updateDate } = useBookingForm();
 
@@ -27,6 +27,7 @@ function selectTodayAndReturn() {
     returnToStart()
 }
 
+console.log(scheduling)
 </script>
 
 <template>
