@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { DayOfWeekItemType } from '@/enums/schedulingDayOfWeekEnum';
-import { useSchedulingTransitionGroup } from '@/components/Composables/SchedulingItemsTransitionGroup';
+import { useSchedulingTransitionGroup } from '@/composables/SchedulingItemsTransitionGroup';
 import { SchedulingOneDayProps, schedulingTimeLineInitials, SchedulingTimeLineProps } from '@/forms/schemas/ShopSchedulingSchema';
 import { isToday } from '@/helpers/dateHelper';
 import { Check, ChevronDown, ChevronUp, PlusCircle, Trash2, X } from '@lucide/vue';

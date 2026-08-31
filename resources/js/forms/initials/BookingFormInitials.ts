@@ -1,10 +1,11 @@
-export const BookingFormInitials = () => {
-    const newDate = new Date();
-    newDate.setHours(0, 0, 0, 0);
+export const BookingFormInitials = (date: string) => {
+    const initialDate = new Date(date);
+
+    initialDate.setHours(0, 0, 0, 0)
 
     return {
         service_id: 0,
         shop_id: 0,
-        date: newDate,
+        date: initialDate,
     }
 }

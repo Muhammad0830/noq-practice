@@ -18,16 +18,127 @@ class BookingService implements BookingServiceContract
     {
         $bookings = $this->repository->getForOneDay($service_id, $date)->toArray();
 
-        $bookingWithTimeOnly = array_map(fn($booking) =>
-            ['start_time' => $booking['start_time'], 'end_time' => $booking['end_time']], $bookings);
+        $bookingWithTimeOnly = array_map(
+            fn($booking) =>
+            [
+                'start_time' => $date->copy()
+                    ->setTimeFromTimeString($booking['start_time']),
+                'end_time' => $date->copy()
+                    ->setTimeFromTimeString($booking['end_time']),
+            ],
+            $bookings
+        );
 
         return $bookingWithTimeOnly;
     }
 
-    public function availableTimes(ShopOperatingScheduleDTO $scheduleDTO, array $bookings, int $service_duration): array
-    {
-        
+    public function availableTimes(
+        ShopOperatingScheduleDTO $scheduleDTO,
+        array $bookings,
+        int $service_duration,
+        ?int $service_buffer_time,
+        CarbonInterface $date,
+    ): array {
+        $buffer = $service_buffer_time ?? 0;
 
-        return [];
+        $open = $date->copy()->setTimeFromTimeString($scheduleDTO->open_time);
+        $close = $date->copy()->setTimeFromTimeString($scheduleDTO->close_time);
+
+        $blocked_intervals = [
+            ...$bookings,
+            ...$scheduleDTO->breaks,
+        ];
+
+        usort(
+            $blocked_intervals,
+            fn($a, $b) => $a['start_time']->timestamp <=> $b['start_time']->timestamp
+        );
+
+        $free_intervals = $this->getFreeIntervals(
+            $open,
+            $close,
+            $blocked_intervals
+        );
+
+        return $this->generateSlots(
+            $free_intervals,
+            $service_duration,
+            $buffer,
+        );
+    }
+
+    private function getFreeIntervals(
+        CarbonInterface $open,
+        CarbonInterface $close,
+        array $blocked_intervals,
+    ): array {
+        $free_intervals = [];
+
+        $cursor = $open->copy();
+
+        foreach ($blocked_intervals as $blocked) {
+            if ($blocked['end_time']->lessThanOrEqualTo($cursor)) {
+                continue;
+            }
+
+            if ($blocked['start_time']->greaterThan($cursor)) {
+                $free_intervals[] = [
+                    'start_time' => $cursor->copy(),
+                    'end_time' => $blocked['start_time']->copy(),
+                ];
+            }
+
+            if ($blocked['end_time']->greaterThan($cursor)) {
+                $cursor = $blocked['end_time']->copy();
+            }
+        }
+
+        if ($cursor->lessThan($close)) {
+            $free_intervals[] = [
+                'start_time' => $cursor,
+                'end_time' => $close->copy(),
+            ];
+        }
+
+        return $free_intervals;
+    }
+
+    private function generateSlots(
+        array $free_intervals,
+        int $service_duration,
+        int $buffer,
+    ): array {
+        $slots = [];
+
+        $total_duration = $service_duration + $buffer;
+
+        foreach ($free_intervals as $interval) {
+            $cursor = $interval['start_time']->copy();
+
+            while (
+                $cursor
+                    ->copy()
+                    ->addMinutes($total_duration)
+                    ->lessThanOrEqualTo($interval['end_time'])
+            ) {
+                $slot_end = $cursor
+                    ->copy()
+                    ->addMinutes($total_duration);
+
+                $service_end = $cursor
+                    ->copy()
+                    ->addMinutes($service_duration);
+
+                $slots[] = [
+                    'from' => $cursor->format('H:i'),
+                    'service_to' => $service_end->format('H:i'),
+                    'to' => $slot_end->format('H:i'),
+                ];
+
+                $cursor = $slot_end;
+            }
+        }
+
+        return $slots;
     }
 }

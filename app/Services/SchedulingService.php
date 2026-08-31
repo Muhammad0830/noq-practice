@@ -8,7 +8,7 @@ use App\DTOs\Input\SchedulingDTO;
 use App\DTOs\Input\SchedulingTimelineDTO;
 use App\DTOs\Output\FilteredWeeksScheduleDTO;
 use App\DTOs\Output\ShopOperatingScheduleDTO;
-use Illuminate\Database\Eloquent\Collection;
+use Carbon\CarbonInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -27,17 +27,22 @@ class SchedulingService implements SchedulingServiceContract
         return FilteredWeeksScheduleDTO::fromArray($all);
     }
 
-    public function getOneDaysSchedule(int $shop_id, string $day): ShopOperatingScheduleDTO
+    public function getOneDaysSchedule(int $shop_id, string $day, CarbonInterface $date): ShopOperatingScheduleDTO
     {
         $schedules = $this->repository->getOneDay($shop_id, $day)->toArray();
 
         $openSchedule = array_find($schedules, fn($schedule) => $schedule['type'] === 'open');
         $breaks = array_filter($schedules, fn($schedule) => $schedule['type'] == 'closed');
-        $breaksWithOnlyTime = array_map(fn($break) => ['start_time' => $break['start_time'], 'end_time' => $break['end_time']], $breaks);
+        $breaksWithOnlyTime = array_map(fn($break) => [
+            'start_time' => $date->copy()
+                ->setTimeFromTimeString($break['start_time']),
+            'end_time' => $date->copy()
+                ->setTimeFromTimeString($break['end_time'])
+        ], $breaks);
 
         return new ShopOperatingScheduleDTO(
-            open_time: $openSchedule['start_time'],
-            close_time: $openSchedule['end_time'],
+            open_time: $openSchedule['start_time'] ?? null,
+            close_time: $openSchedule['end_time'] ?? null,
             breaks: $breaksWithOnlyTime,
         );
     }

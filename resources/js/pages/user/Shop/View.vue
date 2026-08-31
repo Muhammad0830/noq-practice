@@ -4,6 +4,7 @@ import { bookPage, shopsList } from '@/routes';
 import { Link } from '@inertiajs/vue3';
 import { Undo2 } from '@lucide/vue';
 import ServiceListItem from '@/components/Shop/ServiceListItem.vue';
+import { getDateOnly } from '@/helpers/dateHelper';
 
 const { data: shop } = defineProps<{ data: Shop }>()
 </script>
@@ -41,7 +42,8 @@ const { data: shop } = defineProps<{ data: Shop }>()
         <h5 class="text-lg font-bold">Services</h5>
 
         <ServiceListItem v-for="service in shop.services" :key="service.id" :service="service"
-            :route="bookPage({ shop: service.shop_id, service: service.id })" navigate-btn-title="Book" />
+            :route="bookPage({ shop: service.shop_id, service: service.id }, { query: { date: getDateOnly(new Date()) } })"
+            navigate-btn-title="Book" />
     </div>
 
 </template>

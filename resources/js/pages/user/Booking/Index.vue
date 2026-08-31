@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BookingConfirmDialog from '@/components/Booking/BookingConfirmDialog.vue';
-import { useDatePicker } from '@/components/Composables/DatePicker';
+import { useDatePicker } from '@/composables/DatePicker';
 import ServiceListItem from '@/components/Shop/ServiceListItem.vue';
 import { useBookingForm } from '@/forms/composables/bookingForm';
 import { formatAsMonthAndYear, formatDate, getDateOnly, getServiceEndTime, getTimeOnly } from '@/helpers/dateHelper';
@@ -10,12 +10,19 @@ import { Shop } from '@/types/Shop';
 import { ChevronLeft, ChevronRight } from '@lucide/vue';
 import { ref } from 'vue';
 import { useDisplay } from 'vuetify/lib/composables/display.mjs';
+import { useBookingSchedule } from '@/composables/bookingSchedule';
+import BookingCards from '@/components/Booking/BookingCards.vue';
+import { AvailableTimeDataProps } from '@/types/Scheduling';
 
-const { shop, service, scheduling } = defineProps<{ shop: Shop, service: Service, scheduling: any }>()
-
-const { form, validate, submit, updateDate } = useBookingForm();
+const props = defineProps<{ shop: Shop, service: Service, scheduling: AvailableTimeDataProps, date: string }>()
 
 const { dates, goPrevious, goNext, canGoPrevious, today, startDate, returnToStart } = useDatePicker();
+const { form, validate, submit, updateDate } = useBookingForm(props.date);
+const { scheduleCache, selectedDate, loading, hasFreshCache, selectDate } = useBookingSchedule(
+    props.shop.id,
+    props.service.id,
+    props.scheduling,
+    props.date);
 
 const { xs, smAndUp } = useDisplay();
 
@@ -27,7 +34,19 @@ function selectTodayAndReturn() {
     returnToStart()
 }
 
-console.log(scheduling)
+function handleDateSelect(date: Date) {
+    const dateString = getDateOnly(date)
+
+    selectDate(dateString)
+
+    updateDate(date)
+
+    console.log('cache', scheduleCache.value)
+}
+
+console.log('props.date', props.date)
+console.log('dates 1', dates.value[2].toISOString())
+console.log('form.date 1', form.date.toISOString())
 </script>
 
 <template>
@@ -75,7 +94,7 @@ console.log(scheduling)
                         density="comfortable" :icon="ChevronLeft"></v-btn>
 
                     <div class="flex items-center sm:gap-2 gap-1">
-                        <v-card v-for="date in dates" @click="() => updateDate(date)"
+                        <v-card v-for="date in dates" @click="() => handleDateSelect(date)"
                             :color="date.toISOString() === form.date.toISOString() ? 'primary' : 'primary8'"
                             class="cursor-pointer flex! items-center justify-center rounded-lg sm:w-11 w-10 aspect-square font-bold max-sm:text-sm"
                             :class="[date.toISOString() === form.date.toISOString() ? 'text-white' : 'text-primary', today.toISOString() === date.toISOString() && 'border border-primary!']">
@@ -87,66 +106,8 @@ console.log(scheduling)
                 </div>
             </div>
 
-            <div class="grid lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 sm:gap-3 gap-2">
-                <v-card
-                    class="cursor-pointer bg-primary text-white border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Available</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>11:00</span>
-                        <span>-</span>
-                        <span>12:00</span>
-                    </div>
-                </v-card>
-
-                <v-card class="opacity-50 bg-secondary border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Break</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>12:00</span>
-                        <span>-</span>
-                        <span>13:00</span>
-                    </div>
-                </v-card>
-
-                <v-card
-                    class="cursor-pointer bg-secondary/80! hover:bg-secondary! border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Available</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>13:00</span>
-                        <span>-</span>
-                        <span>14:00</span>
-                    </div>
-                </v-card>
-
-                <v-card
-                    class="cursor-pointer bg-secondary/80! hover:bg-secondary! border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Available</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>11:00</span>
-                        <span>-</span>
-                        <span>12:00</span>
-                    </div>
-                </v-card>
-
-                <v-card
-                    class="cursor-pointer bg-secondary/80! hover:bg-secondary! border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Break</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>12:00</span>
-                        <span>-</span>
-                        <span>13:00</span>
-                    </div>
-                </v-card>
-
-                <v-card
-                    class="cursor-pointer bg-secondary/80! hover:bg-secondary! border p-3! rounded-lg flex! flex-col items-center gap-2">
-                    <span class="text-center text-lg font-semibold">Available</span>
-                    <div class="flex items-center gap-1 text-lg font-bold">
-                        <span>13:00</span>
-                        <span>-</span>
-                        <span>14:00</span>
-                    </div>
-                </v-card>
-            </div>
+            <BookingCards :is-shop-open="!!scheduleCache[selectedDate]?.data.open_time"
+                :schedule-data="scheduleCache[selectedDate]?.data" />
 
             <v-btn @click="() => {
                 if (validate()) {

@@ -23,7 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/favourites', [ServicesController::class, 'getAll'])->name('favourites');
     Route::get('/shop/{shop}/service/{service}/book/schedule', [SchedulingController::class, 'schedulingPage']);
 
-    Route::get('/shop/{shop}/service/{service}/book', [BookingController::class, 'bookPage'])->name('book-page');
+    Route::get('/shop/{shop}/service/{service}/book', [SchedulingController::class, 'bookingSchedule'])->name('book-page');
 
     Route::post('/create-shop', [ShopsController::class, 'createShop'])->name('create-shop');
     Route::post('/shop/{shop}/service/{service}/book', [BookingController::class, 'createBooking'])->name('create-booking');

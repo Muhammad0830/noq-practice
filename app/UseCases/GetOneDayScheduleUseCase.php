@@ -17,21 +17,28 @@ class GetOneDayScheduleUseCase implements GetOneDayScheduleUseCaseContract
     ) {
     }
 
-    public function execute(int $shop_id, int $service_id, int $service_duration, CarbonInterface $date): ShopBookingScheduleDTO
-    {
+    public function execute(
+        int $shop_id,
+        int $service_id,
+        int $service_duration,
+        ?int $service_buffer_time,
+        CarbonInterface $date
+    ): ShopBookingScheduleDTO {
         $day = WeekDaysEnum::getTodayLabel($date);
 
-        $dto = $this->schedulingService->getOneDaysSchedule($shop_id, $day);
+        $dto = $this->schedulingService->getOneDaysSchedule($shop_id, $day, $date);
         $bookings = $this->bookingService->getOneDayBookings($service_id, $date);
 
-        $availableTimes = $this->bookingService->availableTimes($dto, $bookings, $service_duration);
+        if ($dto->open_time) {
+            $availableTimes = $this->bookingService->availableTimes($dto, $bookings, $service_duration, $service_buffer_time, $date);
+        }
 
         return new ShopBookingScheduleDTO(
             open_time: $dto->open_time,
             close_time: $dto->close_time,
             breaks: $dto->breaks,
             bookings: $bookings,
-            available: [],
+            available: $dto->open_time ? $availableTimes : [],
         );
     }
 }

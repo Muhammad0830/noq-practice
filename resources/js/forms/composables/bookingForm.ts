@@ -1,7 +1,7 @@
 import { InertiaForm, useForm } from "@inertiajs/vue3"
 import { BookingForm, bookingSchema } from "../schemas/BookingSchema";
-import { createBooking } from "@/actions/App/Http/Controllers/BookingController";
 import { BookingFormInitials } from "../initials/BookingFormInitials";
+import { createBooking } from "@/routes";
 
 export interface UseBookingFormProps {
     form: InertiaForm<BookingForm>;
@@ -10,8 +10,8 @@ export interface UseBookingFormProps {
     updateDate: (date: Date) => void;
 }
 
-export const useBookingForm = (): UseBookingFormProps => {
-    const form = useForm<BookingForm>(BookingFormInitials);
+export const useBookingForm = (initialDate: string): UseBookingFormProps => {
+    const form = useForm<BookingForm>(BookingFormInitials(initialDate));
 
     function validate(): boolean {
         form.clearErrors();
