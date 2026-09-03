@@ -9,38 +9,62 @@ const emit = defineEmits<{ openModal: [] }>()
 </script>
 
 <template>
-    <v-menu :close-on-content-click="false" location="bottom center" offset="8">
-        <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" rounded="xl" variant="outlined" :icon="UserRound" density="comfortable"></v-btn>
-        </template>
-        <template v-slot:default="{ isActive }">
-            <v-card min-width=" 200" max-width="250" rounded="lg">
-                <v-list class="flex flex-col gap-1 justify-space-between pa-2 bg-secondary">
-                    <ProfileMenuProfileItem :is-active="isActive" />
+  <v-menu
+    :close-on-content-click="false"
+    location="bottom center"
+    offset="8"
+  >
+    <template #activator="{ props }">
+      <v-btn
+        v-bind="props"
+        rounded="xl"
+        variant="outlined"
+        :icon="UserRound"
+        density="comfortable"
+      />
+    </template>
+    <template #default="{ isActive }">
+      <v-card
+        min-width=" 200"
+        max-width="250"
+        rounded="lg"
+      >
+        <v-list class="flex flex-col gap-1 justify-space-between pa-2 bg-secondary">
+          <ProfileMenuProfileItem v-model="isActive.value" />
 
-                    <Link @click="() => isActive.value = false" :href="createShopPage({
-                        query: { 'step': 'shop-definition' }
-                    })">
-                        <v-list-item
-                            class="px-2 min-h-8! h-4! cursor-pointer text-yellow-500! hover:bg-foreground/10! rounded">
-                            <span>Add your own shop!</span>
-                        </v-list-item>
-                    </Link>
+          <Link
+            :href="createShopPage({
+              query: { 'step': 'shop-definition' }
+            })"
+            @click="() => isActive.value = false"
+          >
+            <v-list-item
+              class="px-2 min-h-8! h-4! cursor-pointer text-yellow-500! hover:bg-foreground/10! rounded"
+            >
+              <span>Add your own shop!</span>
+            </v-list-item>
+          </Link>
 
-                    <Link @click="() => isActive.value = false" :href="settings()">
-                        <v-list-item class="px-2 min-h-8! h-4! cursor-pointer hover:bg-foreground/10! rounded">
-                            <span>Settings</span>
-                        </v-list-item>
-                    </Link>
+          <Link
+            :href="settings()"
+            @click="() => isActive.value = false"
+          >
+            <v-list-item class="px-2 min-h-8! h-4! cursor-pointer hover:bg-foreground/10! rounded">
+              <span>Settings</span>
+            </v-list-item>
+          </Link>
 
-                    <v-list-item @click="() => {
-                        isActive.value = false
-                        emit('openModal')
-                    }" class="px-2 min-h-8! h-4! cursor-pointer hover:bg-destructive/10! rounded">
-                        <span class="text-destructive">Logout</span>
-                    </v-list-item>
-                </v-list>
-            </v-card>
-        </template>
-    </v-menu>
+          <v-list-item
+            class="px-2 min-h-8! h-4! cursor-pointer hover:bg-destructive/10! rounded"
+            @click="() => {
+              isActive.value = false
+              emit('openModal')
+            }"
+          >
+            <span class="text-destructive">Logout</span>
+          </v-list-item>
+        </v-list>
+      </v-card>
+    </template>
+  </v-menu>
 </template>

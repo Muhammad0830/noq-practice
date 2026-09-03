@@ -12,11 +12,11 @@ import HeaderProfileMenu from '../../Shared/HeaderProfileMenu.vue';
 import HeaderDialog from '../../Shared/HeaderDialog.vue';
 
 interface HeaderLayoutProps {
-    sidebarOpenWidth: number,
-    sidebarRailWidth: number,
-    shop_id: number,
+  sidebarOpenWidth: number,
+  sidebarRailWidth: number,
+  shopId: number,
 }
-const { sidebarOpenWidth, sidebarRailWidth, shop_id } = defineProps<HeaderLayoutProps>()
+const { sidebarOpenWidth, sidebarRailWidth, shopId } = defineProps<HeaderLayoutProps>()
 
 const { lgAndUp, mdAndUp, mdAndDown } = useDisplay()
 
@@ -31,45 +31,67 @@ const isModalOpen = ref(false);
 const isMenuOpen = ref(false);
 
 function handleToggle() {
-    if (mdAndUp.value) toggleSidebar()
-    else isMenuOpen.value = !isMenuOpen.value
+  if (mdAndUp.value) toggleSidebar()
+  else isMenuOpen.value = !isMenuOpen.value
 }
 
 </script>
 
 <template>
-    <v-app-bar class="bg-secondary flex">
-        <!-- logo -->
-        <div class="h-full bg-appPrimary! lg:border-r flex items-center lg:justify-center text-2xl text-primary max-lg:pl-4 font-bold transition-w duration-300"
-            :style="{ width: `${!isOpen && lgAndUp ? sidebarRailWidth : sidebarOpenWidth}px`, fontSize: `${!isOpen && lgAndUp ? '20px' : '24px'}` }">
-            NoQ
-        </div>
+  <v-app-bar class="bg-secondary flex">
+    <!-- logo -->
+    <div
+      class="h-full bg-appPrimary! lg:border-r flex items-center lg:justify-center text-2xl text-primary max-lg:pl-4 font-bold transition-w duration-300"
+      :style="{ width: `${!isOpen && lgAndUp ? sidebarRailWidth : sidebarOpenWidth}px`, fontSize: `${!isOpen && lgAndUp ? '20px' : '24px'}` }"
+    >
+      NoQ
+    </div>
 
-        <div class="flex items-center gap-4 justify-between flex-1 px-4">
-            <!-- sidebar toggler-->
-            <v-btn v-if="lgAndUp" @click="toggleSidebar" variant="flat" color="background" class="text-primary"
-                :icon="PanelLeft" rounded density="comfortable"></v-btn>
+    <div class="flex items-center gap-4 justify-between flex-1 px-4">
+      <!-- sidebar toggler-->
+      <v-btn
+        v-if="lgAndUp"
+        variant="flat"
+        color="background"
+        class="text-primary"
+        :icon="PanelLeft"
+        rounded
+        density="comfortable"
+        @click="toggleSidebar"
+      />
 
-            <!-- user name -->
-            <span>{{ user?.name || 'Unknown' }}</span>
+      <!-- user name -->
+      <span>{{ user?.name || 'Unknown' }}</span>
 
-            <div class="flex items-center gap-4 max-lg:flex-1 max-lg:justify-end">
-                <!-- menu toggler -->
-                <v-btn v-if="mdAndDown" @click="handleToggle" :icon="Menu" rounded="xl" variant="outlined"
-                    density="comfortable"></v-btn>
+      <div class="flex items-center gap-4 max-lg:flex-1 max-lg:justify-end">
+        <!-- menu toggler -->
+        <v-btn
+          v-if="mdAndDown"
+          :icon="Menu"
+          rounded="xl"
+          variant="outlined"
+          density="comfortable"
+          @click="handleToggle"
+        />
 
-                <!-- dark & light mode toggler -->
-                <ThemeToggler />
+        <!-- dark & light mode toggler -->
+        <ThemeToggler />
 
-                <!-- profile menu/dropdown -->
-                <HeaderProfileMenu @open-modal="() => isModalOpen = true" />
-            </div>
-        </div>
-    </v-app-bar>
+        <!-- profile menu/dropdown -->
+        <HeaderProfileMenu @open-modal="() => isModalOpen = true" />
+      </div>
+    </div>
+  </v-app-bar>
 
-    <!-- logout dialog -->
-    <HeaderDialog v-model="isModalOpen" @logout="() => router.post(logout())" />
+  <!-- logout dialog -->
+  <HeaderDialog
+    v-model="isModalOpen"
+    @logout="() => router.post(logout())"
+  />
 
-    <!-- mobile navLinks menu -->
-    <HeeaderNavMenu :shop_id="shop_id" v-model="isMenuOpen" />
+  <!-- mobile navLinks menu -->
+  <HeeaderNavMenu
+    v-model="isMenuOpen"
+    :shop-id="shopId"
+  />
 </template>

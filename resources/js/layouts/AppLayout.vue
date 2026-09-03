@@ -10,12 +10,12 @@ const isAdmin = computed(() => page.props.auth.isAdmin)
 </script>
 
 <template>
-    <v-layout>
-        <AdminLayout v-if="adminPanel && isAdmin">
-            <slot />
-        </AdminLayout>
-        <UserLayout v-else>
-            <slot />
-        </UserLayout>
-    </v-layout>
+  <v-layout>
+    <AdminLayout v-if="adminPanel && isAdmin">
+      <slot />
+    </AdminLayout>
+    <UserLayout v-else>
+      <slot />
+    </UserLayout>
+  </v-layout>
 </template>

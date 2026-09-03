@@ -33,6 +33,16 @@ const time = computed({
 </script>
 
 <template>
-    <v-text-field class="sm:w-28" type="time" :label="label" :error-messages="errorMessages" :disabled="disabled"
-        :readonly="readonly" :required="required" v-model="time" id="name" density="comfortable"></v-text-field>
+  <v-text-field
+    id="name"
+    v-model="time"
+    class="sm:w-28"
+    type="time"
+    :label="label"
+    :error-messages="errorMessages"
+    :disabled="disabled"
+    :readonly="readonly"
+    :required="required"
+    density="comfortable"
+  />
 </template>

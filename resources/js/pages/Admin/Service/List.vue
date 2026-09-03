@@ -7,15 +7,10 @@ import { computed, ref } from 'vue';
 import ServiceItems from '@/components/Service/ServiceItems.vue';
 import { toggleActive } from "@/actions/App/Http/Controllers/ServicesController";
 
-interface ServicesListProps {
-    services: Service[];
-    shop_id: number
-}
-
 const page = usePage();
 const shop_id = computed<number>(() => page.props.shop_id);
 
-const { services: data } = defineProps<ServicesListProps>()
+const { services: data } = defineProps<{services: Service[]}>()
 
 const services = ref<Service[]>(data);
 
@@ -47,15 +42,26 @@ const toggleServiceActive = (
 </script>
 
 <template>
-    <div class="flex flex-col gap-4">
-        <div class="flex items-center gap-4 justify-between">
-            <h1 class="text-xl font-bold">Service Management</h1>
+  <div class="flex flex-col gap-4">
+    <div class="flex items-center gap-4 justify-between">
+      <h1 class="text-xl font-bold">
+        Service Management
+      </h1>
 
-            <Link :href="adminServiceCreatePage({ shop: shop_id })">
-                <v-btn :prepend-icon="Plus" color="foreground" variant="tonal">Create New</v-btn>
-            </Link>
-        </div>
-
-        <ServiceItems v-model="services" @toggle-service-active="toggleServiceActive" />
+      <Link :href="adminServiceCreatePage({ shop: shop_id })">
+        <v-btn
+          :prepend-icon="Plus"
+          color="foreground"
+          variant="tonal"
+        >
+          Create New
+        </v-btn>
+      </Link>
     </div>
+
+    <ServiceItems
+      v-model="services"
+      @toggle-service-active="toggleServiceActive"
+    />
+  </div>
 </template>

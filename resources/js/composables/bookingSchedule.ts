@@ -53,7 +53,6 @@ export const useBookingSchedule = (
     function fetchSchedule(date: string) {
         loading.value = true;
 
-        console.log('working', date)
         router.visit(
             bookPage({
                 shop: shop_id,

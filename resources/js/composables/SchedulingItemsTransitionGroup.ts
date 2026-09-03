@@ -27,7 +27,7 @@ export function useSchedulingTransitionGroup(): UseSchedulingItemsTransitionGrou
         const endHeight = parent.offsetHeight;
 
         parent.style.height = `${startHeight}px`;
-        parent.offsetHeight; // Force reflow
+        void parent.offsetHeight; // Force reflow
 
         parent.style.transition = '';
         parent.style.height = `${endHeight}px`;
@@ -63,7 +63,7 @@ export function useSchedulingTransitionGroup(): UseSchedulingItemsTransitionGrou
         const endHeight = parent.offsetHeight;
 
         parent.style.height = startHeight;
-        parent.offsetHeight; // Force reflow
+        void parent.offsetHeight; // Force reflow
 
         // Re-enable transition to smoothly animate to the larger end height
         parent.style.transition = '';

@@ -15,23 +15,42 @@ const { xs } = useDisplay();
 </script>
 
 <template>
-    <v-dialog :max-width="xs ? dialogMobileWidth : dialogDesktopWidth" v-model="isDialogOpen">
-        <template v-slot:default="{ isActive }">
-            <v-card title="Edit Service Confirmation" class="bg-secondary">
-                <v-card-text>
-                    Are you sure you want to Edit this Service?
-                </v-card-text>
+  <v-dialog
+    v-model="isDialogOpen"
+    :max-width="xs ? dialogMobileWidth : dialogDesktopWidth"
+  >
+    <template #default="{ isActive }">
+      <v-card
+        title="Edit Service Confirmation"
+        class="bg-secondary"
+      >
+        <v-card-text>
+          Are you sure you want to Edit this Service?
+        </v-card-text>
 
-                <v-card-actions>
-                    <v-btn @click="() => isActive.value = false" variant="tonal" color="primary" size="x-large"
-                        density="comfortable" text="Cancel"></v-btn>
-                    <v-btn @click="() => {
-                        emit('submit', shop_id)
-                        isActive.value = false;
-                    }" variant="flat" color="primary" class="text-white" size="x-large" density="comfortable"
-                        text="Edit"></v-btn>
-                </v-card-actions>
-            </v-card>
-        </template>
-    </v-dialog>
+        <v-card-actions>
+          <v-btn
+            variant="tonal"
+            color="primary"
+            size="x-large"
+            density="comfortable"
+            text="Cancel"
+            @click="() => isActive.value = false"
+          />
+          <v-btn
+            variant="flat"
+            color="primary"
+            class="text-white"
+            size="x-large"
+            density="comfortable"
+            text="Edit"
+            @click="() => {
+              emit('submit', shop_id)
+              isActive.value = false;
+            }"
+          />
+        </v-card-actions>
+      </v-card>
+    </template>
+  </v-dialog>
 </template>

@@ -23,11 +23,11 @@ export const servicesItemSchema = z.object({
     is_active: z.boolean().default(true),
 })
 
-const servicesScheme = z.object({
+export const servicesSchema = z.object({
     services: z.array(servicesItemSchema)
 })
 
-export type ServicesCreateFormProps = z.infer<typeof servicesScheme>;
+export type ServicesCreateFormProps = z.infer<typeof servicesSchema>;
 
 export type ServicesEditFormProps = z.infer<typeof servicesItemSchema>;
 

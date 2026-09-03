@@ -8,10 +8,10 @@ import SidebarToggler from '../../Shared/SidebarToggler.vue';
 export interface SidebarLayoutProps {
     sidebarOpenWidth: number,
     sidebarRailWidth: number,
-    shop_id: number,
+    shopId: number,
 }
 
-const { sidebarOpenWidth, sidebarRailWidth, shop_id } = defineProps<SidebarLayoutProps>()
+const { sidebarOpenWidth, sidebarRailWidth, shopId } = defineProps<SidebarLayoutProps>()
 
 const sidebarStore = useSidebarStore();
 const { isOpen } = storeToRefs(sidebarStore);
@@ -19,19 +19,39 @@ const { mdAndUp, lgAndUp } = useDisplay()
 </script>
 
 <template>
-    <v-navigation-drawer v-if="mdAndUp && !lgAndUp" location="left" temporary :width="sidebarOpenWidth" v-model="isOpen"
-        class="bg-secondary flex! flex-col justify-between!">
-        <v-list density="compact" nav class="h-full flex flex-col justify-between">
-            <SidebarNavLinks :shop_id="shop_id" />
-        </v-list>
-    </v-navigation-drawer>
+  <v-navigation-drawer
+    v-if="mdAndUp && !lgAndUp"
+    v-model="isOpen"
+    location="left"
+    temporary
+    :width="sidebarOpenWidth"
+    class="bg-secondary flex! flex-col justify-between!"
+  >
+    <v-list
+      density="compact"
+      nav
+      class="h-full flex flex-col justify-between"
+    >
+      <SidebarNavLinks :shop-id="shopId" />
+    </v-list>
+  </v-navigation-drawer>
 
-    <v-navigation-drawer v-if="lgAndUp" permanent :rail="!isOpen" :width="sidebarOpenWidth"
-        :rail-width="sidebarRailWidth" class="bg-secondary flex! flex-col justify-between!">
-        <v-list density="compact" nav class="h-full flex flex-col justify-between">
-            <SidebarNavLinks :shop_id="shop_id" />
+  <v-navigation-drawer
+    v-if="lgAndUp"
+    permanent
+    :rail="!isOpen"
+    :width="sidebarOpenWidth"
+    :rail-width="sidebarRailWidth"
+    class="bg-secondary flex! flex-col justify-between!"
+  >
+    <v-list
+      density="compact"
+      nav
+      class="h-full flex flex-col justify-between"
+    >
+      <SidebarNavLinks :shop-id="shopId" />
 
-            <SidebarToggler />
-        </v-list>
-    </v-navigation-drawer>
+      <SidebarToggler />
+    </v-list>
+  </v-navigation-drawer>
 </template>

@@ -23,7 +23,7 @@ export const useBookingForm = (initialDate: string): UseBookingFormProps => {
                 const fieldName = issue.path[0] as keyof typeof form.errors;
                 form.setError(fieldName, issue.message)
             })
-            console.log(form.errors);
+            
             return false;
         }
 
@@ -39,7 +39,6 @@ export const useBookingForm = (initialDate: string): UseBookingFormProps => {
         }
 
         form.submit(createBooking({ shop: shop_id, service: service_id }), {
-            onSuccess: () => console.log('success'),
             onError: () => console.log('error'),
         })
     }

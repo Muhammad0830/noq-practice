@@ -29,7 +29,7 @@ export const useServicesForm = (): UseServicesFormInterface => {
                 shop_id: shop_id,
             }))
             .submit(createServices({ shop: shop_id }), {
-                onError: (e: any) => {
+                onError: (e) => {
                     console.error('error', e);
                 }
             });

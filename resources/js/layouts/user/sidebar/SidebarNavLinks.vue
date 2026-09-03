@@ -19,23 +19,40 @@ const isDialogOpen = ref(false);
 </script>
 
 <template>
-    <div class="flex flex-col gap-1">
-        <Link v-for="item in userNavItems" :href="item.route" :key="item.id">
-            <v-list-item :prepend-icon="item.icon" :title="item.label"
-                class="hover:bg-primary/70! transition-padding duration-200"
-                :class="[{ 'bg-primary/70!': page.url.startsWith(item.url) }, isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"></v-list-item>
-        </Link>
+  <div class="flex flex-col gap-1">
+    <Link
+      v-for="item in userNavItems"
+      :key="item.id"
+      :href="item.route"
+    >
+      <v-list-item
+        :prepend-icon="item.icon"
+        :title="item.label"
+        class="hover:bg-primary/70! transition-padding duration-200"
+        :class="[{ 'bg-primary/70!': page.url.startsWith(item.url) }, isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"
+      />
+    </Link>
 
-        <Link v-if="isAdmin && user?.admin.shops.length === 1"
-            :href="adminDashboard({ shop: user?.admin.shops[0].id })">
-            <v-list-item :prepend-icon="UserShield" title="Admin Panel"
-                class="hover:bg-primary/70! transition-padding duration-200"
-                :class="[isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"></v-list-item>
-        </Link>
-        <v-list-item v-else-if="isAdmin" :prepend-icon="UserShield" @click="() => isDialogOpen = true"
-            title="Admin Panel" class="hover:bg-primary/70! transition-padding duration-200"
-            :class="[isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"></v-list-item>
+    <Link
+      v-if="isAdmin && user?.admin.shops.length === 1"
+      :href="adminDashboard({ shop: user?.admin.shops[0].id })"
+    >
+      <v-list-item
+        :prepend-icon="UserShield"
+        title="Admin Panel"
+        class="hover:bg-primary/70! transition-padding duration-200"
+        :class="[isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"
+      />
+    </Link>
+    <v-list-item
+      v-else-if="isAdmin"
+      :prepend-icon="UserShield"
+      title="Admin Panel"
+      class="hover:bg-primary/70! transition-padding duration-200"
+      :class="[isOpen ? 'px-2' : 'px-4.5!', 'gap-0!']"
+      @click="() => isDialogOpen = true"
+    />
 
-        <ShopChooseDialog v-model="isDialogOpen" />
-    </div>
+    <ShopChooseDialog v-model="isDialogOpen" />
+  </div>
 </template>

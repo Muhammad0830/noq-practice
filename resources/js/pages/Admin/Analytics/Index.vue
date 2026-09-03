@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    Analytics Page
+  Analytics Page
 </template>
