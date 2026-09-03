@@ -5,7 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import vuetify from 'vite-plugin-vuetify';
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
+import eslint from 'vite-plugin-eslint';
 
 export default defineConfig({
     plugins: [
@@ -22,6 +23,7 @@ export default defineConfig({
         vuetify(),
         tailwindcss(),
         wayfinder(),
+        eslint(),
     ],
     server: {
         watch: {

@@ -26,3 +26,26 @@ export interface SchedulingWeekData {
     saturday: SchedulingDay;
     sunday: SchedulingDay;
 }
+
+export interface AvailableTimeProps {
+    from: string;
+    to: string;
+}
+
+export interface StartEndTimeProps {
+    start_time: string;
+    end_time: string;
+}
+
+export interface AvailableTimeDataProps {
+    available: AvailableTimeProps[];
+    bookings: StartEndTimeProps[];
+    breaks: StartEndTimeProps[];
+    open_time: string | null;
+    close_time: string | null;
+}
+
+export interface ScheduleCache {
+    data: AvailableTimeDataProps
+    fetchedAt: number
+}

@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Contracts\UseCases\GetOneDayScheduleUseCaseContract;
 use App\Contracts\UseCases\ShopCreateUseCaseContract;
 use App\Contracts\UseCases\UserRegisterUseCaseContract;
+use App\UseCases\GetOneDayScheduleUseCase;
 use App\UseCases\ShopCreateUseCase;
 use App\UseCases\UserRegisterUseCase;
 use Illuminate\Support\ServiceProvider;
@@ -29,5 +31,9 @@ class UseCaseProvider extends ServiceProvider
             ShopCreateUseCase::class
         );
 
+        $this->app->bind(
+            GetOneDayScheduleUseCaseContract::class,
+            GetOneDayScheduleUseCase::class
+        );
     }
 }

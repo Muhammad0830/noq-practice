@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    Settings
+  Settings
 </template>

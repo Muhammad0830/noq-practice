@@ -3,5 +3,5 @@
 </script>
 
 <template>
-    <div>Admin Dashboard</div>
+  <div>Admin Dashboard</div>
 </template>

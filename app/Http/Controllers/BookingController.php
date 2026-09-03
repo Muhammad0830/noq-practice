@@ -6,20 +6,10 @@ use App\Models\Service;
 use App\Models\Shop;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
-use Inertia\Inertia;
-use Inertia\Response;
 use Throwable;
 
 class BookingController extends Controller
 {
-    public function bookPage(Shop $shop, Service $service): Response
-    {
-        return Inertia::render('User/Booking/Index', [
-            'shop' => $shop,
-            'service' => $service,
-        ]);
-    }
-
     public function createBooking(Shop $shop, Service $service): RedirectResponse
     {
         try {

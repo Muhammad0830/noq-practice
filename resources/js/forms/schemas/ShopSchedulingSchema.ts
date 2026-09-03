@@ -26,7 +26,7 @@ export const schedulingSchema = z.object({
     sunday: schedulingOneDaySchema(dayOfWeekEnum.SUNDAY),
 })
 
-const schedulingObjectSchema = z.object({ scheduling: schedulingSchema });
+export const schedulingObjectSchema = z.object({ scheduling: schedulingSchema });
 
 export type SchedulingForm = z.infer<typeof schedulingObjectSchema>
 

@@ -5,15 +5,16 @@ const { smAndDown } = useDisplay()
 </script>
 
 <template>
-    <v-layout>
-        <div class="h-screen w-screen flex items-center justify-center">
-
-            <v-card class="bg-secondary" :min-width="smAndDown ? '300px' : '350px'">
-                <div class="p-4 flex flex-col items-center gap-4">
-                    <slot></slot>
-                </div>
-            </v-card>
-
+  <v-layout>
+    <div class="h-screen w-screen flex items-center justify-center">
+      <v-card
+        class="bg-secondary"
+        :min-width="smAndDown ? '300px' : '350px'"
+      >
+        <div class="p-4 flex flex-col items-center gap-4">
+          <slot />
         </div>
-    </v-layout>
+      </v-card>
+    </div>
+  </v-layout>
 </template>

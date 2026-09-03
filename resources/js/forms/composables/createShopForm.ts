@@ -2,8 +2,8 @@ import { InertiaForm, useForm } from "@inertiajs/vue3";
 import z from "zod";
 import { schedulingInitials, schedulingSchema } from "../schemas/ShopSchedulingSchema";
 import { servicesInitials, servicesItemSchema } from "../schemas/ShopServicesSchema";
-import { createShop } from "@/actions/App/Http/Controllers/ShopsController";
 import { definitionInitials, definitionSchema } from "../schemas/ShopDefinitionSchema";
+import { createShop } from "@/actions/App/Http/Controllers/ShopsController";
 
 interface UseCreateShopFormProps {
     form: InertiaForm<CreateShopForm>,

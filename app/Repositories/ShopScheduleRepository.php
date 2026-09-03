@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Contracts\Repositories\ShopScheduleRepositoryContract;
 use App\DTOs\Input\SchedulingTimelineDTO;
 use App\Models\ShopSchedule;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
 class ShopScheduleRepository implements ShopScheduleRepositoryContract
@@ -14,6 +14,14 @@ class ShopScheduleRepository implements ShopScheduleRepositoryContract
     {
         return ShopSchedule::find($id);
     }
+
+    public function getOneDay(int $shop_id, string $day): Collection
+    {
+        return ShopSchedule::where('shop_id', $shop_id)
+            ->where('day_of_week', $day)
+            ->get();
+    }
+
 
     public function create(SchedulingTimelineDTO $dto, int $shop_id): void
     {

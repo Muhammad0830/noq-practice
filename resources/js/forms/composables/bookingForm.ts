@@ -1,7 +1,7 @@
 import { InertiaForm, useForm } from "@inertiajs/vue3"
 import { BookingForm, bookingSchema } from "../schemas/BookingSchema";
-import { createBooking } from "@/actions/App/Http/Controllers/BookingController";
 import { BookingFormInitials } from "../initials/BookingFormInitials";
+import { createBooking } from "@/routes";
 
 export interface UseBookingFormProps {
     form: InertiaForm<BookingForm>;
@@ -10,8 +10,8 @@ export interface UseBookingFormProps {
     updateDate: (date: Date) => void;
 }
 
-export const useBookingForm = (): UseBookingFormProps => {
-    const form = useForm<BookingForm>(BookingFormInitials);
+export const useBookingForm = (initialDate: string): UseBookingFormProps => {
+    const form = useForm<BookingForm>(BookingFormInitials(initialDate));
 
     function validate(): boolean {
         form.clearErrors();
@@ -23,7 +23,7 @@ export const useBookingForm = (): UseBookingFormProps => {
                 const fieldName = issue.path[0] as keyof typeof form.errors;
                 form.setError(fieldName, issue.message)
             })
-            console.log(form.errors);
+            
             return false;
         }
 
@@ -39,7 +39,6 @@ export const useBookingForm = (): UseBookingFormProps => {
         }
 
         form.submit(createBooking({ shop: shop_id, service: service_id }), {
-            onSuccess: () => console.log('success'),
             onError: () => console.log('error'),
         })
     }
