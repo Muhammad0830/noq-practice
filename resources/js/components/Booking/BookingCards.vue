@@ -1,28 +1,36 @@
 <script setup lang="ts">
-import { getTimeOnly } from '@/helpers/dateHelper';
-import { AvailableTimeDataProps } from '@/types/Scheduling';
+import { AvailableTimeDataProps, SelectTimeProps } from '@/types/Scheduling';
 import { computed } from 'vue';
 
-const { isShopOpen, scheduleData } = defineProps<{ isShopOpen: boolean, scheduleData: AvailableTimeDataProps }>()
+const { isShopOpen, scheduleData, selectedTime } = defineProps<{
+  isShopOpen: boolean,
+  scheduleData: AvailableTimeDataProps | undefined,
+  selectedTime: SelectTimeProps | null,
+}>()
+
+const emit = defineEmits<{ selectTime: [time: SelectTimeProps] }>()
+
+console.log(scheduleData)
 
 const timeCards = computed(() => {
-    const availables = scheduleData.available.map(item => ({ start: item.from, end: item.to, type: 'available' }));
+  if (!scheduleData) {
+    return [];
+  }
 
-    const breaks = scheduleData.breaks.map(item => {
-        const start = getTimeOnly(new Date(item.start_time));
-        const end = getTimeOnly(new Date(item.end_time));
+  const availables = scheduleData?.available.map(item => ({ start: item.from, end: item.to, type: 'available' }));
 
-        return {
-            start,
-            end,
-            type: 'break'
-        }
-    });
+  const breaks = scheduleData?.breaks.map(item => {
+    return {
+      start: item.start_time,
+      end: item.end_time,
+      type: 'break'
+    }
+  });
 
-    const bookings = scheduleData.bookings.map(item => ({ start: item.start_time, end: item.end_time, type: 'booking' }));
+  const bookings = scheduleData.bookings.map(item => ({ start: item.start_time, end: item.end_time, type: 'booking' }));
 
-    return [...availables, ...breaks, ...bookings]
-        .sort((a, b) => a.start.localeCompare(b.start));
+  return [...availables, ...breaks, ...bookings]
+    .sort((a, b) => a.start.localeCompare(b.start));
 })
 </script>
 
@@ -34,10 +42,17 @@ const timeCards = computed(() => {
     <v-card
       v-for="timeItem in timeCards"
       :key="`${timeItem.start}-${timeItem.end}`"
-      :class="[timeItem.type === 'available' ? 'border-primary! bg-secondary!' : timeItem.type === 'break' ? '' : '']"
-      class="cursor-pointer border p-3! rounded-lg flex! flex-col items-center gap-2"
+      class="cursor-pointer border p-3! rounded-lg flex! flex-col items-center gap-1"
+      :class="[
+        timeItem.type === 'available' ? 'border-primary! bg-secondary' : timeItem.type === 'break' ? 'opacity-70' : 'opacity-50 bg-primary!',
+        selectedTime?.start === timeItem.start ? 'bg-primary!' : '',]"
+      :disabled="timeItem.type === 'booking' || timeItem.type === 'break'"
+      @click="() => {
+        emit('selectTime', timeItem)
+      }"
     >
-      <span class="text-center text-lg font-semibold">Available</span>
+      <span class="text-center font-semibold">{{ timeItem.type === 'available' ? 'AVAILABLE' : timeItem.type === 'break'
+        ? 'BREAK' : 'BOOKED' }}</span>
       <div class="flex items-center gap-1 text-lg font-bold">
         <span>{{ timeItem.start }}</span>
         <span>-</span>
@@ -45,6 +60,7 @@ const timeCards = computed(() => {
       </div>
     </v-card>
   </div>
+
   <div
     v-else
     class="p-4 min-h-40 rounded-lg border border-primary bg-secondary flex justify-center items-center text-lg font-bold text-primary"

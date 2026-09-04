@@ -22,7 +22,6 @@ class ShopScheduleRepository implements ShopScheduleRepositoryContract
             ->get();
     }
 
-
     public function create(SchedulingTimelineDTO $dto, int $shop_id): void
     {
         ShopSchedule::create([

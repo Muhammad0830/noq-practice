@@ -49,3 +49,8 @@ export interface ScheduleCache {
     data: AvailableTimeDataProps
     fetchedAt: number
 }
+
+export interface SelectTimeProps {
+    start: string;
+    end: string;
+}

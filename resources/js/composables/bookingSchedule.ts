@@ -40,6 +40,8 @@ export const useBookingSchedule = (
         }
 
         fetchSchedule(date)
+
+        console.log('cache', scheduleCache)
     }
 
     function updateUrl(date: string) {
@@ -64,8 +66,12 @@ export const useBookingSchedule = (
                 preserveScroll: true,
 
                 onSuccess: (page) => {
+                    const props = page.props as unknown as {
+                        scheduling: { data: AvailableTimeDataProps };
+                    };
+
                     scheduleCache.value[date] = {
-                        data: page.props.scheduling as AvailableTimeDataProps,
+                        data: props.scheduling.data,
                         fetchedAt: Date.now(),
                     }
                 },

@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { dialogDesktopWidth, dialogMobileWidth } from '@/constants/constants';
 import { formatAsMonthAndYear, getTimeOnly } from '@/helpers/dateHelper';
-import { useDisplay } from 'vuetify/lib/composables/display.mjs';
+import { Service } from '@/types/Service';
+import { useDisplay } from 'vuetify';
 
-const { selectedDate, endTime } = defineProps<{ selectedDate: Date, endTime: string }>()
+const { selectedDate, endTime, service, shopName } = defineProps<{
+  selectedDate: Date,
+  endTime: string,
+  service: Service,
+  shopName: string,
+}>()
 const isDialogOpen = defineModel<boolean>()
 const emit = defineEmits<{ submit: [] }>()
 
@@ -13,7 +18,7 @@ const { xs } = useDisplay()
 <template>
   <v-dialog
     v-model="isDialogOpen"
-    :max-width="xs ? dialogMobileWidth : dialogDesktopWidth"
+    :width="xs ? 320 : 600"
   >
     <template #default="{ isActive }">
       <v-card
@@ -21,7 +26,22 @@ const { xs } = useDisplay()
         class="text-center bg-secondary"
       >
         <v-card-text>
-          <span>Are you sure you want to Book this time?</span>
+          <span class="text-nowrap">Check your booking information.</span>
+
+          <div class="my-4 flex flex-col flex-wrap gap-1 items-center justify-center w-full">
+            <div class="flex gap-2 items-center">
+              <span class="font-bold text-lg">Shop:</span>
+              <span class="text-lg bg-primary/20 px-1 rounded truncate">{{ shopName }}aewgawgaw aewg e</span>
+            </div>
+            <div class="flex gap-2 items-center">
+              <span class="font-bold text-lg">Service:</span>
+              <span class="text-lg bg-primary/20 px-1 rounded">{{ service.name }}</span>
+            </div>
+            <div class="flex gap-2 items-center">
+              <span class="font-bold text-lg">Price:</span>
+              <span class="text-lg bg-primary/20 px-1 rounded">${{ service.price }}</span>
+            </div>
+          </div>
 
           <div class="mt-2 flex flex-col items-center gap-1 text-lg">
             <div class="bg-primary/20 px-1 rounded">

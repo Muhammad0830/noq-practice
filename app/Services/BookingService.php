@@ -4,7 +4,11 @@ namespace App\Services;
 
 use App\Contracts\Repositories\BookingsRepositoryContract;
 use App\Contracts\Services\BookingServiceContract;
+use App\DTOs\Input\BookingCreateDTO;
 use App\DTOs\Output\ShopOperatingScheduleDTO;
+use App\Enums\BookingStatusEnum;
+use App\Models\Service;
+use Carbon\Carbon;
 use Carbon\CarbonInterface;
 
 class BookingService implements BookingServiceContract
@@ -12,6 +16,23 @@ class BookingService implements BookingServiceContract
     public function __construct(
         private BookingsRepositoryContract $repository,
     ) {
+    }
+
+    public function create(BookingCreateDTO $dto, Service $service, int $user_id): void
+    {
+        $start_time = Carbon::parse($dto->date);
+        $end_time = Carbon::parse($dto->date)->addMinutes($service->duration_min);
+
+        $data = [
+            'shop_id' => $dto->shop_id,
+            'service_id' => $dto->service_id,
+            'user_id' => $user_id,
+            'start_time' => $start_time,
+            'end_time' => $end_time,
+            'status' => BookingStatusEnum::PENDING,
+        ];
+
+        $this->repository->create($data);
     }
 
     public function getOneDayBookings(int $service_id, CarbonInterface $date): array
