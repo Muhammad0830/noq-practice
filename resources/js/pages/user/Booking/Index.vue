@@ -12,34 +12,46 @@ import { ref } from 'vue';
 import { useDisplay } from 'vuetify/lib/composables/display.mjs';
 import { useBookingSchedule } from '@/composables/bookingSchedule';
 import BookingCards from '@/components/Booking/BookingCards.vue';
-import { AvailableTimeDataProps } from '@/types/Scheduling';
+import { AvailableTimeDataProps, SelectTimeProps } from '@/types/Scheduling';
 
-const props = defineProps<{ shop: Shop, service: Service, scheduling: AvailableTimeDataProps, date: string }>()
+const props = defineProps<{ shop: Shop, service: Service, scheduling: { data: AvailableTimeDataProps }, date: string }>()
 
 const { dates, goPrevious, goNext, canGoPrevious, today, startDate, returnToStart } = useDatePicker();
-const { form, validate, submit, updateDate } = useBookingForm(props.date);
+const { form, validate, submit, updateDate } = useBookingForm(props.date, props.shop.id, props.service.id);
 const { scheduleCache, selectedDate, selectDate } = useBookingSchedule(
-    props.shop.id,
-    props.service.id,
-    props.scheduling,
-    props.date);
+  props.shop.id,
+  props.service.id,
+  props.scheduling.data,
+  props.date);
 
 const { xs, smAndUp } = useDisplay();
 
+const selectedTime = ref<SelectTimeProps | null>(null)
 const isConfirmDialogOpen = ref(false);
 
 function selectTodayAndReturn() {
-    const newDate = new Date(today);
-    form.date = newDate;
-    returnToStart()
+  const newDate = new Date(today);
+  form.date = newDate;
+  returnToStart()
 }
 
 function handleDateSelect(date: Date) {
-    const dateString = getDateOnly(date)
+  const dateString = getDateOnly(date)
 
-    selectDate(dateString)
+  selectDate(dateString)
 
-    updateDate(date)
+  updateDate(date)
+}
+
+function handleSelectTime(time: SelectTimeProps): void {
+  selectedTime.value = time;
+
+  const newDate = new Date(form.date);
+  const [hours, minutes] = time.start.split(':');
+
+  newDate.setHours(+hours, +minutes, 0, 0);
+
+  form.date = newDate;
 }
 </script>
 
@@ -57,7 +69,7 @@ function handleDateSelect(date: Date) {
 
     <form
       class="space-y-4"
-      @submit.prevent="() => submit(shop.id, service.id)"
+      @submit.prevent="() => submit()"
     >
       <div class="flex flex-col gap-4 mt-8">
         <div class="flex items-center justify-between gap-2">
@@ -158,9 +170,12 @@ function handleDateSelect(date: Date) {
       <BookingCards
         :is-shop-open="!!scheduleCache[selectedDate]?.data.open_time"
         :schedule-data="scheduleCache[selectedDate]?.data"
+        :selected-time="selectedTime"
+        @select-time="handleSelectTime"
       />
 
       <v-btn
+        :disabled="!selectedTime"
         variant="flat"
         color="primary"
         class="text-white! font-bold!"
@@ -177,8 +192,10 @@ function handleDateSelect(date: Date) {
 
   <BookingConfirmDialog
     v-model="isConfirmDialogOpen"
-    :submit="submit"
+    :service="props.service"
     :selected-date="form.date"
     :end-time="getServiceEndTime(form.date, service.duration_min)"
+    :shop-name="props.shop.name"
+    @submit="submit"
   />
 </template>

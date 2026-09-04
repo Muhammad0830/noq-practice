@@ -1,11 +1,12 @@
-export const BookingFormInitials = (date: string) => {
-    const initialDate = new Date(date);
+import { getDateOnly } from "@/helpers/dateHelper";
 
-    initialDate.setHours(0, 0, 0, 0)
+export const BookingFormInitials = (props: { date: string, shopId: number, serviceId: number }) => {
+    const initialDate = new Date(props.date);
 
     return {
-        service_id: 0,
-        shop_id: 0,
-        date: initialDate,
+        service_id: props.serviceId,
+        shop_id: props.shopId,
+        date: getDateOnly(initialDate),
+        time: '',
     }
 }

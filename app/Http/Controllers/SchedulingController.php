@@ -7,6 +7,7 @@ use App\Contracts\UseCases\GetOneDayScheduleUseCaseContract;
 use App\DTOs\Input\SchedulingDTO;
 use App\Enums\WeekDaysEnum;
 use App\Http\Requests\SchedulingRequest;
+use App\Http\Resources\BookingScheduleResource;
 use App\Models\Service;
 use App\Models\Shop;
 use App\Models\ShopSchedule;
@@ -51,7 +52,7 @@ class SchedulingController extends Controller
             'shop' => $shop,
             'service' => $service,
             'date' => $carbonDate->toDateString(),
-            'scheduling' => $scheduling,
+            'scheduling' => fn() => new BookingScheduleResource($scheduling),
         ]);
     }
 

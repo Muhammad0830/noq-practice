@@ -6,12 +6,12 @@ import { createBooking } from "@/routes";
 export interface UseBookingFormProps {
     form: InertiaForm<BookingForm>;
     validate: () => boolean;
-    submit: (shop_id: number, service_id: number) => void;
+    submit: () => void;
     updateDate: (date: Date) => void;
 }
 
-export const useBookingForm = (initialDate: string): UseBookingFormProps => {
-    const form = useForm<BookingForm>(BookingFormInitials(initialDate));
+export const useBookingForm = (initialDate: string, shopId: number, serviceId: number): UseBookingFormProps => {
+    const form = useForm<BookingForm>(BookingFormInitials({ date: initialDate, shopId, serviceId }));
 
     function validate(): boolean {
         form.clearErrors();
@@ -23,24 +23,24 @@ export const useBookingForm = (initialDate: string): UseBookingFormProps => {
                 const fieldName = issue.path[0] as keyof typeof form.errors;
                 form.setError(fieldName, issue.message)
             })
-            
+
             return false;
         }
 
         return true;
     }
 
-    function submit(shop_id: number, service_id: number): void {
-        form.shop_id = shop_id;
-        form.service_id = service_id;
-
+    function submit(): void {
         if (!validate()) {
             return;
         }
+        console.log('working')
 
-        form.submit(createBooking({ shop: shop_id, service: service_id }), {
+        form.submit(createBooking({ shop: form.shop_id, service: form.service_id }), {
             onError: () => console.log('error'),
         })
+
+        console.log(form.errors, 'working')
     }
 
     function updateDate(date: Date) {

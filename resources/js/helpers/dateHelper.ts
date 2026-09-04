@@ -25,7 +25,7 @@ export const formatDate = (date?: Date) => {
 
 export const getDateOnly = (dateObject: Date) => {
     const year = dateObject.getFullYear()
-    const month = String(dateObject.getMonth()).padStart(2, '0')
+    const month = String(dateObject.getMonth() + 1).padStart(2, '0')
     const date = String(dateObject.getDate()).padStart(2, '0')
 
     return `${year}-${month}-${date}`

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminAnalyticsController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\SchedulingController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ShopsController;
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/services', [ServicesController::class, 'getAll'])->name('services');
     Route::get('/favourites', [ServicesController::class, 'getAll'])->name('favourites');
     Route::get('/shop/{shop}/service/{service}/book/schedule', [SchedulingController::class, 'schedulingPage']);
+    Route::get('/history', [HistoryController::class, 'index'])->name('history.index');
 
     Route::get('/shop/{shop}/service/{service}/book', [SchedulingController::class, 'bookingSchedule'])->name('book-page');
 
